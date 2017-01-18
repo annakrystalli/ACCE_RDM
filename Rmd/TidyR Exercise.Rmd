@@ -1,0 +1,50 @@
+---
+title: "TidyR Exercises"
+author: "ACCE Data Management Course"
+date: "April 14, 2016"
+output: html_document
+---
+
+<br>
+
+## Example data 1 {.smaller}
+
+In an investigation of sexual dimorphism in a tropical bird species, wing length of male and female birds within breeding pairs were recorded across a number of regions within the species range. Reshape the data so that differences in average wing length between sexes could be tested.
+
+
+**data**
+
+<https://drive.google.com/open?id=0B9BMeZ9H2nRxZlFURnBRZlRRWEE>
+
+
+
+
+***
+
+<br>
+
+## Example data 2 {.smaller}
+
+In an investigation of how different tree species affect tropical rainforest microclimate, measurements of temperature and humidity were made at ground level (below) and above the canopy (above) for individual trees.  
+
+
+
+**data**
+
+<https://drive.google.com/open?id=0B9BMeZ9H2nRxU01LWFJzeFYydXc>
+
+
+***
+
+<br>
+
+## Example data 3 {.smaller}
+
+In this study, daily trends in 3 different stocks (X,Y,Z) was monitored daily. We need the data reshaped in an appropriate format that would allow the trend of stocks to be examined as a function of stock identity, month or day. Beware of the date format!
+
+
+
+**data**
+
+<https://drive.google.com/open?id=0B9BMeZ9H2nRxdTdOa3Z5NkxxcG8>
+

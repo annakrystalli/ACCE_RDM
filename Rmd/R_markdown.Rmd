@@ -1,0 +1,40 @@
+---
+title: "R markdown"
+output: html_document
+---
+- Use **`RMarkdown`** to create documents tying everything together
+
+
+
+## R Markdown {.smaller}
+
+- **`R`** version of **`Markdown`**
+- **`Markdown`:** Stripped down version of markup -> html
+- Can embed `chunks of r code`
+- Allows to you to weave **text**, **`code`** and **r output** together 
+- Outputs to **wide variety of formats** 
+
+<br>
+
+<img src="~/Documents/WORK/ACCE Data management course/Resources/figures/RMarkdownOutputFormats.png" height="200">
+
+## Example R Markdown Documents
+
+- [**progress report**](file:///Users/Anna/Google%20Drive/Sex%20Roles%20in%20Birds%20Data%20Project/Outputs/reports/Report_2.html)
+
+- [**code `README`**](https://rpubs.com/annakrystalli/123196)
+
+- [**metadata documentation**](http://www.esapubs.org/archive/ecol/E096/269/metadata.php)
+
+
+## R Markdown Resources
+
+<br>
+
+- [**R Markdown website**](http://rmarkdown.rstudio.com/)
+- [**R Markdown basics**](http://rmarkdown.rstudio.com/authoring_basics.html)
+- [**R Markdown cheatsheet**](http://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+
+<br>
+
+<img src="http://3.bp.blogspot.com/-z3gtVOQ8sr4/UOwWB7hlA_I/AAAAAAAAAQE/0a5_c4oKvN4/s1600/RStudio_markdown.png" height="200">

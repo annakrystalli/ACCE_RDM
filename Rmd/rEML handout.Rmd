@@ -1,0 +1,186 @@
+
+# Metadata in Open Science
+
+
+Metadata is the backbone of digital curation. Without it a digital resource may be irretrievable, unidentifiable or unusable. 
+
+- **Descriptive Metadata** *enables identification, location and retrieval of information resources by users, often including the use of controlled vocabularies for classification and indexing and links to related resources.*
+
+- **Technical Metadata** *describes the technical processes used to produce, or required to use a digital object.*
+
+- **Administrative Metadata** *is used to manage administrative aspects of the digital object such as intellectual property rights and acquisition.*
+
+
+This usually takes the form of a structured set of elements. Different communities develop different standards which define both the **structure** and **content** of metadata.
+
+
+## Ecological Metadata Language (EML) {.smaller}
+
+The last decade has witnessed a tremendous explosion of ecological and environmental data, with the potential to greatly enhance understanding of the complexity of the biosphere. 
+
+However, broad-scale or synthetic research is hampered by data being:
+
+- extremely heterogeneous and complexity 
+
+- dispersed across many separate repositories. 
+
+<big>data are **largely unorganized and inaccessible**</big>
+
+<br>
+
+**Ecological Metadata Language (EML)** is a metadata standard developed by and for the ecology discipline. EML is a set of XML schema documents that allow for the **structural expression of metadata**.
+
+<big>**Wide adoption and use of EML will create exciting new opportunities for data discovery, access, integration and synthesis.**</big>
+
+
+
+## Install EML r package {.smaller}
+
+There are interface software that can be used to produce EML files but 
+an r package is being developed which will allows the creation of EML files in R
+
+```{r, eval = F}
+install.packages("devtools", repos = "http://cran.us.r-project.org")
+```
+```{r}
+library("devtools")
+```
+
+```{r, eval = F}
+install_github("ropensci/EML", build=FALSE, 
+               dependencies=c("DEPENDS", "IMPORTS"))
+```
+```{r}
+library("EML")
+
+```
+
+
+
+## An example {.smaller}
+
+Here's a small example dataset of counts of fish recorded across different rivers
+
+```{r, echo=FALSE}
+dat <- data.frame(river = factor(c("SAC",  
+                                   "SAC",   
+                                   "AM")),
+                  spp   = c("Oncorhynchus tshawytscha",  
+                            "Oncorhynchus tshawytscha", 
+                            "Oncorhynchus kisutch"),
+                  stg   = ordered(c("smolt", 
+                                    "parr", 
+                                    "smolt"), 
+                                  levels=c("parr", 
+                                           "smolt")), # => parr < smolt
+                  ct    = c(293L,    
+                            410L,    
+                            210L),
+                  day   = as.Date(c("2013-09-01", 
+                                    "2013-09-1", 
+                                    "2013-09-02")),
+                  stringsAsFactors = FALSE)
+```
+
+
+```{r}
+dat
+
+```
+Like many real data sets, the column headings are convenient for data entry and manipulation, but **not particularly descriptive to a user not already familiar with this data**. 
+
+More important still, they **don't let us know what units they are measured in** (or in the case of categorical / factor data like species names or life stages, **what the factor abbreviations refer to**). So let us take a moment to be more explicit:
+
+We can store this information by creating EML files through the function ```eml_write()``` where we explicity supply variable descriptions and units (as lists) through the  **```col.defs```** and **```unit.defs```** arguments respectively
+
+
+## Metadata structure {.smaller}
+<big>**```col.defs```** are relatively self explanatory, but **```unit.defs```** can be a little tricky.</big>
+
+<br>
+
+  - For ```factors```, this is a definition of the levels involved.
+
+  - For ```numeric``` data, units must be specified according from the link below, or custom units defined.  
+    + EML standard units 
+<https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/./eml-unitTypeDefinitions.html#StandardUnitDictionary>
+    + Optionally you can express the precision and bounds of the unit as well.
+    
+  - For ```Dates``` or ```times```, the format must be specified, (e.g. YYYY or MM-DD-YY). Optionally you can also define the precision.
+  
+  - For ```character strings```, a definition of the kind of string can be given
+
+## Let's explore using our example {.smaller}
+
+```{r}
+col.defs <- c("River site used for collection",
+              "Species scientific name",
+              "Life Stage", 
+              "count of live fish in traps",
+              "The day on which traps were sampled")
+
+
+unit.defs <- list(
+  c(SAC = "The Sacramento River",     # Factor 
+    AM = "The American River"),
+ "Scientific name",                   # Character string 
+  c(parr = "third life stage",        # Ordered factor 
+    smolt = "fourth life stage"),
+  c(unit = "number", 
+    precision = 1, 
+    bounds = c(0, Inf)),              # Integer
+  c(format = "YYYY-MM-DD",            # Date
+    precision = 1))
+```
+
+## Create EML file {.smaller}
+
+```{r, eval = F}
+eml_write(dat,
+          unit.defs = unit.defs,
+          col.defs = col.defs,
+          creator = "Anna Krystalli",
+          contact = "annakrystalli@googlemail.com",
+          file = "workflow/outputs/EML/EML_example.xml")
+
+```
+
+The file is now ready to be published to academic repositories. Here we will publish to ```figshare``` as an example
+
+```{r, eval=FALSE}
+eml_publish("workflow/outputs/EML/EML_example.xml", 
+            description="Example EML file from EML",
+            categories = "Ecology", 
+            tags = "EML", 
+            destination="figshare") 
+```
+
+
+## Extracting information from EML files {.smaller}
+
+Data and metadat can also be extracted from EML files using the ```eml_get()``` function. 
+First we need to load our EML file
+
+```{r}
+obj <- eml_read("~/Documents/WORK/ACCE Data management course/workflow/outputs/EML/EML_example.xml")
+```
+```{r, eval=FALSE}
+dat <- eml_get(obj, "data.frame")
+```
+
+dat
+```
+```{r}
+eml_get(obj, "contact")
+eml_get(obj, "citation_info")
+
+```
+
+## More details on EML
+
+EML data modules
+<https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/./eml-attribute.html#NumberType>
+
+Digital Curation Center : Ecological Metadata Language resources
+
+<http://www.dcc.ac.uk/resources/metadata-standards/eml-ecological-metadata-language>

@@ -1,0 +1,303 @@
+---
+title: "TidyR - Tidying data"
+author: "ACCE Data Management Course"
+date: 
+output: html_document
+---
+
+<br>
+
+## Principles of tidy data {.smaller}
+<br>
+
+<big>**tidying**: structuring datasets to facilitate analysis.</big>
+<br>
+
+  - <small>**One variable per column**.</small>
+  - <small>**One row per observation**.</small>
+
+<br>
+
+### **Why?**
++ <small>**Easier to index**.</small>
++ <small>**Easier to analyse**.</small>
+
+
+*Best to record data in tidy format but ```tidyR``` package provides functions to tidy untidy data*
+
+<br>
+
+## Examples of messy data {.smaller}
+
+- Column headers are values, not variable names.
+
+- Multiple variables are stored in one column.
+
+- Variables are stored in both rows and columns.
+
+- Multiple types of observational units are stored in the same row.
+
+
+<br>
+
+<big> Most messy datasets can be tidied with a small set of tools: 
+
+**gathering**, **separating** and **spreading**. </big>
+
+<br> 
+
+***
+
+## **`tidyR`** {.smaller}
+
+#### Install tidyR
+
+```{r, message=F}
+#install.packages("tidyr", "dplyr")
+
+library(tidyr)
+library(dplyr)
+
+```
+
+-if you are asked about storing to a personal library just type 'y' (yes)
+
+<br> 
+
+***
+
+## 1 - **gathering** (wide -> long) {.smaller}
+### one variable over many columns
+
+In this experiment three (rather unusually named) people were given two different drugs (a and b) and their heart rate was recorded:
+
+```{r}
+
+messy <- data.frame(
+  name = c("Wilbur", "Petunia", "Gregory"),
+  a = c(67, 80, 64),
+  b = c(56, 90, 50)
+)
+head(messy)
+
+```
+
+**How many variables have we got?**
+
+**A sensible model we might want to fit:**
+
+```heart rate ~ drug```
+
+
+How can we supply the data to a modelling function? (e.g. ```lm()```)
+
+<br>
+
+We use the function ```gather()``` in the tidy package to reshape the dataframe from wide to long format
+
+
+```gather(data, key, value, ..., na.rm = FALSE, convert = FALSE)```
+
+- ```data``` :       **a data frame**
+- ```key``` :   **name for the identifier of the columns to gather** 
+- ```value```:  **name for the new variable being created**
+- ```...```:  **select the columns to be stacked**
+    + <small>you can use ```:``` to select all variables between two columns.</small> 
+    + <small>use bare variable names (ie " " not required).</small>
+
+```{r}
+
+tidy  <- gather(data = messy, key = drug, value = heartrate, a:b)
+
+
+
+```
+
+
+
+```{r}
+tidy
+```
+
+```heart rate ~ drug```
+
+## 2 - **separate** (split)  {.smaller}
+### more than one variable in a single column
+
+In this study, parasite counts were made on samples taken from 3 elephant faecal boluses and two locations 
+
+
+```{r}
+
+messy <- data.frame(
+  id = rep(1:2, each = 6),
+  spl.id = paste(rep(rep(1:3, each = 2),2), c("centre", "outer"), sep = "-"),
+  counts = rnbinom(12, mu = 2, size = 15)
+)
+head(messy, 8)
+```
+
+
+
+
+We use ```separate()``` to split ```spl.id``` into ```bolus``` and ```location```, using a regular expression to describe the character that separates them.
+
+```separate(data, col, into, sep , remove = TRUE, convert = FALSE, extra = "error", ...)```
+
+- ```data``` :         **a data frame**
+- ```col``` :   **name of column to split** 
+- ```into``` :   **name for the new variable being created** (as character vector)
+- ```sep```:  character as regular expression to match to any **non-alphanumeric** values
+    + numeric indicates position of split
+    + **length of ```sep``` should be one less than length of ```into```**
+
+
+
+
+
+```{r}
+
+separate(data = messy, into = c("bolus", "location"), col = spl.id, sep= "\\-")
+
+```
+
+
+## 3 - Combination {.smaller}
+
+In this study, the time people spent on their phones was measured at two locations (work and home) and at two time points.
+
+```{r}
+
+messy <- data.frame(
+  id = 1:4,
+  trt = sample(rep(c('control', 'treatment'), each = 2)),
+  work.T1 = runif(4),
+  home.T1 = runif(4),
+  work.T2 = runif(4),
+  home.T2 = runif(4)
+)
+head(messy, 8)
+```
+
+
+
+First we first use ```gather()``` to turn columns ```work.T1```, ```home.T1```, ```work.T2``` and ```home.T2``` into a key-value pair of key and time. (Only the first eight rows are shown to save space.)
+
+```{r}
+
+tidier <- gather(data = messy, key = key, value = time, -id, -trt)
+head(tidier, 8)
+```
+
+
+
+Next we use ```separate()``` to split the key into ```location``` and ```time```, using a regular expression to describe the character that separates them.
+
+
+```{r}
+
+tidy <- separate(data = tidier, col = key, into = c("location", "timepoint"), sep = "\\.") 
+
+head(tidy, 8)
+
+```
+
+<br>
+
+***
+
+
+# TidyR Data exercises {.bigger}
+
+<br>
+
+## Example data 1 {.smaller}
+
+In an investigation of sexual dimorphism in a tropical bird species, wing length of male and female birds within breeding pairs were recorded across a number of regions within the species range. Reshape the data so that differences in average wing length between sexes could be tested.
+
+
+[**data**](https://drive.google.com/open?id=0B9BMeZ9H2nRxZlFURnBRZlRRWEE)
+
+<br>
+
+
+```{r , echo = 2:3}
+birds <- read.csv("~/Google Drive/ACCE RDM workshop/Tidy Data exercise/birds.csv")
+head(birds, 20)
+
+```
+
+
+```{r}
+tidy.birds <- gather(data = birds, key = sex, value = length, male:female)
+head(tidy.birds, 20)
+```
+
+<br>
+
+***
+
+## Example data 2 {.smaller}
+
+In an investigation of how different tree species affect tropical rainforest microclimate, measurements of temperature and humidity were made at ground level (below) and above the canopy (above) for individual trees.  
+
+
+
+**data**
+
+<https://drive.google.com/open?id=0B9BMeZ9H2nRxU01LWFJzeFYydXc>
+
+```{r , echo = 2:3}
+trees <- read.csv("~/Google Drive/ACCE RDM workshop/Tidy Data exercise/trees.csv")
+head(trees, 20)
+
+```
+
+
+
+```{r}
+tidy.trees <- separate(data = trees, col = spl, into = c("tree_id", "elevation"), 
+                       sep = "/")
+head(tidy.trees, 20)
+```
+
+<br>
+
+***
+
+
+## Example data 3 {.smaller}
+
+In this study, daily trends in 3 different stocks (X,Y,Z) was monitored daily. We need the data reshaped in an appropriate format that would allow the trend of stocks to be examined as a function of stock identity, month or day. Beware of the date format!
+
+
+
+[**data**](https://drive.google.com/open?id=0B9BMeZ9H2nRxdTdOa3Z5NkxxcG8)
+
+
+
+
+```{r , echo = 2:3}
+stocks <- read.csv("~/Google Drive/ACCE RDM workshop/Tidy Data exercise/stocks.csv")
+head(stocks, 15)
+
+```
+
+
+```{r}
+stocks %>% 
+  gather(key = stock, value = trend, -date) %>% 
+  separate(col = date, into = c( "month", "day","year"), sep = c("-", "-")) %>%  
+  head(15)
+```
+
+
+
+## Further Reading
+
+Hadley Wickam's paper on Tidy Data
+
+<http://www.jstatsoft.org/v59/i10/paper>
+
+RStudio Data wrangling [cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+

@@ -1,0 +1,291 @@
+---
+title: "Tidy data"
+author: "ACCE Data Management Course"
+date: "17 February 2017, University of York"
+output: 
+    ioslides_presentation:
+        css: css/ioslides_default.css
+---
+
+## Tidy data
+
+<img src="assets/img/tidy_data.png" height="500">
+
+
+## Principles of tidy data 
+
+### tidy data structure
+
+  - **One variable per column**.
+  - **One row per observation**.
+
+### **why?**
+
+<p class="accent_border"><b>Tidy datasets are easy to manipulate, model and visualise</b></p>
+
+> While one can do the exact same analyses with tidy and messy datasets/tools, the tidy approach will generally require much less code, and hence be faster to write, easier to debug, and easier to modify/maintain.
+
+<p class="round_border">Best to record data in tidy format but <code>tidyR</code> package provides functions to tidy untidy data</p>
+
+
+## Install tidyR {.smaller}
+
+```{r, message=F}
+#install.packages("tidyr", "dplyr")
+
+library(tidyr)
+library(dplyr)
+
+```
+
+-if you are asked about storing to a personal library just type 'y' (yes)
+
+## Examples of messy data {.smaller}
+
+- Column headers are values, not variable names.
+
+- Multiple variables are stored in one column.
+
+- Variables are stored in both rows and columns.
+
+- Multiple types of observational units are stored in the same row.
+
+
+<br>
+
+<p class="accent_border"><b>Most messy datasets can be tidied with a small set of tools:</b></p> 
+
+### **gathering**, **separating** and **spreading**. 
+
+## 1 - wide data {.smaller}
+### one variable over many columns
+
+In this experiment three (rather unusually named) people were given two different drugs (a and b) and their heart rate was recorded:
+
+```{r}
+
+messy <- data.frame(
+  name = c("Wilbur", "Petunia", "Gregory"),
+  a = c(67, 80, 64),
+  b = c(56, 90, 50)
+)
+head(messy)
+
+```
+
+**How many variables have we got?**
+
+
+## 1 - wide data  {.smaller}
+ 
+In this experiment three (rather unusually named) people were given two different drugs (a and b) and their heart rate was recorded:
+
+```{r, background="blue"}
+
+messy <- data.frame(
+  name = c("Wilbur", "Petunia", "Gregory"),
+  a = c(67, 80, 64),
+  b = c(56, 90, 50)
+)
+head(messy)
+
+```
+
+**How many variables have we got?**
+
+**A sensible model we might want to fit:**
+
+```heart rate ~ drug```
+
+
+How can we supply the data to a modelling function? (e.g. ```lm()```)
+
+
+## 1 - wide data {.smaller}
+
+We use the function ```gather()``` in the tidy package to reshape the dataframe from wide to long format
+
+
+```gather(data, key, value, ..., na.rm = FALSE, convert = FALSE)```
+
+- ```data``` :       **a data frame**
+- ```key``` :   **name for the identifier of the columns to gather** 
+- ```value```:  **name for the new variable being created**
+- ```...```:  **select the columns to be stacked**
+    + <small>you can use ```:``` to select all variables between two columns.</small> 
+    + <small>use bare variable names (ie " " not required).</small>
+
+```{r}
+
+tidy  <- gather(data = messy, key = drug, value = heartrate, a:b)
+
+
+
+```
+
+## 1 - wide data {.smaller}
+
+```{r}
+tidy
+```
+
+```heart rate ~ drug```
+
+## 2 - clumped data  {.smaller}
+### more than one variable in a single column
+
+In this study, parasite counts were made on samples taken from 3 elephant faecal boluses and two locations 
+
+
+```{r}
+
+messy <- data.frame(
+  id = rep(1:2, each = 6),
+  spl.id = paste(rep(rep(1:3, each = 2),2), c("centre", "outer"), sep = "-"),
+  counts = rnbinom(12, mu = 2, size = 15)
+)
+head(messy, 8)
+```
+
+
+
+## 2 - clumped data {.smaller}
+### more than one variable in a single column
+
+We use ```separate()``` to split ```spl.id``` into ```bolus``` and ```location```, using a regular expression to describe the character that separates them.
+
+```separate(data, col, into, sep , remove = TRUE, convert = FALSE, extra = "error", ...)```
+
+- ```data``` :         **a data frame**
+- ```col``` :   **name of column to split** 
+- ```into``` :   **name for the new variable being created** (as character vector)
+- ```sep```:  character as regular expression to match to any **non-alphanumeric** values
+    + numeric indicates position of split
+    + **length of ```sep``` should be one less than length of ```into```**
+
+
+
+## 2 - clumped data  {.smaller}
+### more than one variable in a single column
+
+```{r}
+
+separate(data = messy, into = c("bolus", "location"), col = spl.id, sep= "\\-")
+
+```
+
+
+## 3 - Combination of messy data {.smaller}
+
+In this study, the time people spent on their phones was measured at two locations (work and home) and at two time points.
+
+```{r}
+
+messy <- data.frame(
+  id = 1:4,
+  trt = sample(rep(c('control', 'treatment'), each = 2)),
+  work.T1 = runif(4),
+  home.T1 = runif(4),
+  work.T2 = runif(4),
+  home.T2 = runif(4)
+)
+head(messy, 8)
+```
+
+
+
+## 3 - Combination of messy data {.smaller}
+
+First we first use ```gather()``` to turn columns ```work.T1```, ```home.T1```, ```work.T2``` and ```home.T2``` into a key-value pair of key and time. (Only the first eight rows are shown to save space.)
+
+```{r}
+
+tidier <- gather(data = messy, key = key, value = time, -id, -trt)
+head(tidier, 8)
+```
+
+## 3 - Combination of messy data {.smaller}
+
+Next we use ```separate()``` to split the key into ```location``` and ```time```, using a regular expression to describe the character that separates them.
+
+
+```{r}
+
+tidy <- separate(data = tidier, col = key, into = c("location", "timepoint"), sep = "\\.") 
+
+head(tidy, 8)
+
+```
+
+
+
+# TidyR Data exercises {.bigger}
+
+**<http://bit.ly/ACCE_TidyR>**
+
+<br>
+
+<http://bit.ly/ACCE_RDM_handouts>
+
+## Example data 1 {.smaller}
+
+
+```{r , echo = 2:3}
+birds <- read.csv("~/Google Drive/ACCE RDM workshop/Tidy Data exercise/birds.csv")
+head(birds, 20)
+
+```
+
+## Example data 1 {.smaller}
+
+```{r}
+tidy.birds <- gather(data = birds, key = sex, value = length, male:female)
+head(tidy.birds, 20)
+```
+
+
+## Example data 2 {.smaller}
+
+
+```{r , echo = 2:3}
+trees <- read.csv("~/Google Drive/ACCE RDM workshop/Tidy Data exercise/trees.csv")
+head(trees, 20)
+
+```
+
+## Example data 2 {.smaller}
+
+```{r}
+tidy.trees <- separate(data = trees, col = spl, into = c("tree_id", "elevation"), 
+                       sep = "/")
+head(tidy.trees, 20)
+```
+
+## Example data 3 {.smaller}
+
+
+```{r , echo = 2:3}
+stocks <- read.csv("~/Google Drive/ACCE RDM workshop/Tidy Data exercise/stocks.csv")
+head(stocks, 15)
+
+```
+
+## Example data 3 {.smaller}
+
+```{r}
+stocks %>% 
+  gather(key = stock, value = trend, -date) %>% 
+  separate(col = date, into = c( "month", "day","year"), sep = c("-", "-")) %>%  
+  head(15)
+```
+
+
+
+## Further Reading
+
+Hadley Wickam's paper on Tidy Data
+
+<http://www.jstatsoft.org/v59/i10/paper>
+
+RStudio Data wrangling [cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+
