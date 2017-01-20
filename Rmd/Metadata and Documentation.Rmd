@@ -1,59 +1,102 @@
 ---
 title: " Data Documentation & Metadata"
 author: "ACCE Data Management Course"
-date: "14 April 2016"
-output: ioslides_presentation
+date: "17 February 2017"
+output: 
+    ioslides_presentation:
+      css: css/ioslides_default.css
 ---
 
-## Documenting your data {.smaller}
+## Documenting your data {.columns-2}
+
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/tomjwebb">@tomjwebb</a> I see tons of spreadsheets that i don&#39;t understand anything (or the stduent), making it really hard to share.</p>&mdash; Erika Berenguer (@Erika_Berenguer) <a href="https://twitter.com/Erika_Berenguer/status/556111838715580417">January 16, 2015</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
-<img src="~/Documents/WORK/ACCE Data management course/workflow/inputs/exercises/metadata/figures/Slide02.jpg" height="500">
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/tomjwebb">@tomjwebb</a> Create a tab on your excel sheet that explains exactly what you did to get each part of the data and how you have treat it so far.</p>&mdash; Erika Berenguer (@Erika_Berenguer) <a href="https://twitter.com/Erika_Berenguer/status/556109844659597312">January 16, 2015</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-## Documenting your data {.smaller}
+<br>
+<br>
 
-
-<img src="~/Documents/WORK/ACCE Data management course/workflow/inputs/exercises/metadata/figures/Slide03.jpg" height="500">
-
-## Documenting your data {.smaller}
-
-
-<img src="~/Documents/WORK/ACCE Data management course/workflow/inputs/exercises/metadata/figures/Slide04.jpg" height="500">
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/tomjwebb">@tomjwebb</a> <a href="https://twitter.com/SuseJohnston">@SuseJohnston</a> Write comments into any data or code file as if for yourself one year from now when you won&#39;t recall the details.</p>&mdash; Albert Cardona (@albertcardona) <a href="https://twitter.com/albertcardona/status/556113639594528769">January 16, 2015</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
-## #OtherPeoplesData
+## Documenting your data {.columns-2}
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/N2zK3sAtr-4" frameborder="0" allowfullscreen></iframe>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/srsupp">@srsupp</a> <a href="https://twitter.com/tomjwebb">@tomjwebb</a> Document! Many sharing platforms exist (e.g. <a href="https://twitter.com/figshare">@figshare</a>), but w/o documentation/metadata, research data aren&#39;t v. useful</p>&mdash; Jonathan Petters (@jon_petters) <a href="https://twitter.com/jon_petters/status/556146541921320961">January 16, 2015</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-## Metadata {.smaller}
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/tomjwebb">@tomjwebb</a> <a href="https://twitter.com/ScientificData">@ScientificData</a> &quot;Document. Everything.&quot; Data without documentation has no value.</p>&mdash; Sven Kochmann (@indianalytics) <a href="https://twitter.com/indianalytics/status/556120920881115136">January 16, 2015</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<br>
+<br>
+
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="it" dir="ltr"><a href="https://twitter.com/tomjwebb">@tomjwebb</a> Annotate, annotate, annotate!</p>&mdash; CanJFishAquaticSci (@cjfas) <a href="https://twitter.com/cjfas/status/556109252788379649">January 16, 2015</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+## Documenting your data {.columns-2}
+
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/tomjwebb">@tomjwebb</a> Have good metadata so others can understand it/use it</p>&mdash; Nathan B Furey (@NBFurey) <a href="https://twitter.com/NBFurey/status/556113773811867648">January 16, 2015</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/Sal_Keith">@Sal_Keith</a> +1 Metadata essential &amp; prerequisite for the new breed of data journals like <a href="https://twitter.com/ScientificData">@ScientificData</a> or repos like <a href="https://twitter.com/datadryad">@datadryad</a> <a href="https://twitter.com/tomjwebb">@tomjwebb</a></p>&mdash; Gavin Simpson (@ucfagls) <a href="https://twitter.com/ucfagls/status/556111062517284864">January 16, 2015</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<br>
+<br>
+
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="und" dir="ltr">Document all the metadata (including protocols).<a href="https://twitter.com/tomjwebb">@tomjwebb</a></p>&mdash; Ward Appeltans (@WrdAppltns) <a href="https://twitter.com/WrdAppltns/status/556108414955560961">January 16, 2015</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+## #otherpeoplesdata dream match!
+
+> imagine an open data set
+
+It's out there somewhere,
+
+#### How would you locate it?
+
+<br>
+
+- what details would you need to know to determine relevance? 
+- what information would you need to know to use it?
+<br>
+
+> #### Think about all you would neeed to understand someone else's data. In 18 months **YOU  will be that other person with your own data.**
+
+## Metadata 
 
 > ### Information that **describes, explains, locates**, or in some way makes it easier to **find, access**, and **use** a resource (in this case, data). 
 
-> Data about data
 
-## Metadata {.smaller}
-
-Important for:
-
-  - **You!** (especially when you come back to datasets after some time)
-  - **Collaborators** (trying to make sense of your data)
-  - **Open Science** (so that your data can contribute to wider scientific investigations)
-  
-<br> 
-
-Think about what you would need to know to understand someone else's data. In 18 months **you WILL be that other person.**
-
-
-**You need to have a plan and a record!**
-
-
-## Metadata {.smaller}
+## Data about data
 
 <img src="~/Documents/WORK/ACCE Data management course/workflow/inputs/exercises/metadata/figures/Slide05.jpg" height="500">
 
-## Planning {.smaller}
+## Metadata & Data Documentation 
 
-### Planning for Data Reuse Checklist
+<br>
+
+### **Different types data require different metadata**
+
+- At the very least: **create a metadata tab within your raw data spreadsheet**
+- Ideally have a system of **normalised tables** [see section 3 in this post](https://dynamicecology.wordpress.com/2016/08/22/ten-commandments-for-good-data-management/) and **`README`s** to manage and document metadata.
+
+<br>      
+	
+
+<p class="accentborder"><b>**Ensure everything someone might need to understand your data is documented**</p></b>
+      
+ 
+
+## planning for data reuse 
+
+**You need to have a plan on how to record metadata**
+
+### Data Reuse Checklist
 
 [http://mozillascience.github.io/checklist/](http://mozillascience.github.io/checklist/
 )
@@ -63,38 +106,40 @@ Think about what you would need to know to understand someone else's data. In 18
 
 <img src="~/Documents/WORK/ACCE Data management course/Resources/figures/msl logo.png" height="100">
 
-## Planning for Data Reuse Checklist
 
-<iframe src="http://mozillascience.github.io/checklist/" style="border: none; width: 440px; height: 900px"></iframe>
-
-## Raw data are sacrosanct {.smaller}
-
-<img src="~/Documents/WORK/ACCE Data management course/workflow/inputs/exercises/metadata/figures/Slide07.jpg" height="500">
-
-## Preserve raw data 
-
-- **Raw data is sacred**
-- Clearly document any processing in the metadata
-
-       + Well-commented script-based manipulation (e.g. in R) makes this easy
-       
-- Do **back up**, won’t you?
+## Let's make a start with your data: {.columns-2}
 
 
-## Metadata & Data Documentation {.smaller}
+#### get organised
 
-- At the very least: **create a metadata tab within your raw data spreadsheet**
-- Different forms of your data may require different metadata
+- Add your data to the `data/` folder.
+- create a new script eg `process_filename.R`
+- load your data
+- have a look at it with `Viewer(data)`
 
-      + **Ensure everything someone might need to understand your data is documented**
-      
-<br>      
-		   
 
+#### what format is in?
+- is it tidy?
+- is it normalised?
+- not sure? ask for help
+
+## tidy and normalise {.columns-2}
+
+- denormalised
+
+<img src="https://dynamicecology.files.wordpress.com/2016/08/denormalized.jpg" height="100">
+
+- almost fully normalised 
+
+<img src="https://dynamicecology.files.wordpress.com/2016/08/normalized.jpg" height="100">
+
+- intermediate 
+
+<img src="https://dynamicecology.files.wordpress.com/2016/08/partnormalized.jpg?w=584&h=184" height="100">
 
 # Example Data & Metadata
 
-## Bird Trait Networks project {.smaller}
+## Bird Trait Networks project 
 
 <br> 
 
@@ -110,7 +155,7 @@ Think about what you would need to know to understand someone else's data. In 18
   - **202** variables
 
 
-## Data & Metadata csv {.smaller}
+## Data & Metadata csv 
 
 Here's the full dataset on bird traits I compiled. This is the **long format**
 
@@ -120,7 +165,7 @@ Here's the full dataset on bird traits I compiled. This is the **long format**
 
 
 
-## Data & Metadata csv {.smaller}
+## Data & Metadata csv 
 
 Here's the analytical dataset. This is the **wide format** and conducive to analysis
 
@@ -129,7 +174,7 @@ Here's the analytical dataset. This is the **wide format** and conducive to anal
 <img src="~/Documents/WORK/ACCE Data management course/workflow/inputs/exercises/metadata/dataw.png" height="350">
 
 
-## Data & Metadata csv {.smaller}
+## Data & Metadata csv 
 
 And here's the metadata table I created for each variable
 
@@ -139,7 +184,7 @@ And here's the metadata table I created for each variable
 
 
  
-## Metadata in R {.smaller}
+## Metadata in R 
 
 When using data in `R`, short (but informative) abbreviations of variable names are preferable for ease of use in coding. 
 
@@ -153,7 +198,7 @@ However, poor recording of what abbreviations stand for can cause much confusion
 
 These can be very useful when plotting, when the full variable descriptions, including units, are required
 
-## Metadata in R {.smaller}
+## Metadata in R 
 
 Knowledge of data type can also be useful
 
@@ -164,7 +209,7 @@ eg. is the data:
 - categorical
 - binary
 
-## Metadata in R {.smaller}
+## Metadata in R 
 
 Let's use an subset of the Bird Trait Networks data to explore some of the concepts and tools we've been discussing:
 
@@ -193,7 +238,7 @@ dd   <- read.csv(paste(input.folder,"data.csv", sep =""))
 ```
 
 
-## Metadata in R {.smaller}
+## Metadata in R 
 
 here's the data:
 ```{r}
@@ -201,7 +246,7 @@ head(dd)
 
 ```
 
-## Metadata in R {.smaller}
+## Metadata in R 
 
 
 here's the metadata:
@@ -216,7 +261,7 @@ head(metadata)
 
 Longer descriptions of variables, units and other useful metadata can be stored as part of dataframes in R using the function ```attributes()```
 
-## Uses of metadata in analysis {.smaller}
+## Uses of metadata in analysis 
 
 All r object have attributes and basic `data.frames` have 3. These can be accessed by using the same function.
 
@@ -225,7 +270,7 @@ str(attributes(dd))
 
 ```
 
-## Appending metadata as attributes {.smaller}
+## Appending metadata as attributes 
 
 So lets append some metadata to the **`dd`** data.frame as attributes. Indexing using the match function ensures the attributes are stores in order that match match the variable names
 
@@ -244,14 +289,14 @@ str(attributes(dd))
 ```
 
 
-## Accessing attributes {.smaller}
+## Accessing attributes 
 
 So let's go ahead and make use of some of those attributes. There's a few ways they can be accessed. Say we want the `descr` attribute for all variables
 ```{r}
 attr(dd, "descr")
 ```
 
-## Accessing attributes {.smaller}
+## Accessing attributes 
 
 So let's go ahead and make use of some of those attributes. There's a few ways they can be accessed. Say we want the `descr` attribute for all variables
 
@@ -259,7 +304,7 @@ So let's go ahead and make use of some of those attributes. There's a few ways t
 attributes(dd)$descr
 ```
 
-## Working with attributes {.smaller}
+## Working with attributes 
 
 Let's make an axis label by combining the description and unit attributes using the `paste` function.
 
@@ -273,7 +318,7 @@ unit
 paste(descr, " (", unit, ")", sep = "")
 ```
 
-## Pros and cons of attributes {.smaller}
+## Pros and cons of attributes 
 
 ### ***PROs***
 
