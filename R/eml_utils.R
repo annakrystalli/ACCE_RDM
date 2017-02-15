@@ -1,5 +1,5 @@
 # ---- create_metadf ----
-create_metadf <- function(df){
+get_attr_shell <- function(df){
     rows <- ncol(df)
     meta <- data.frame(attributeName = rep(NA, times = rows),
                        attributeDefinition = rep(NA, times = rows),
