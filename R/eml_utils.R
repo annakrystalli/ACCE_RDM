@@ -27,3 +27,18 @@ extract_attr_tbl <- function(attr_tbl) {
       "unit", "minimum", "maximum", "formatString", "definition")
  attr_tbl[,attr_hd]
 }
+
+get_attr_factors <- function(attr_tbl) {
+    factors <- NULL
+    vars <- attr_tbl$attributeName[attr_tbl$columnClasses == "factor"]
+    for(var in vars){
+        x <- attr_tbl[attr_tbl$attributeName == var, , drop = F]
+        f_tbl <- data.frame(
+            attributeName = x$attributeName, 
+            code = unlist(strsplit(x$code, ";")),
+            definition = unlist(strsplit(x$levels, ";"))
+        )
+        factors <- rbind(factors, f_tbl)
+    }
+    return(factors)
+}
