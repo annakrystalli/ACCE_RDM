@@ -1,8 +1,7 @@
 "attributeName","attributeDefinition","columnClasses","measurementScale","numberType","unit","minimum","maximum","formatString","definition","code","levels"
-"species","species","character","nominal",NA,NA,NA,NA,NA,"species",NA,NA
-"max.altitude","Maximum altitudinal distribution","numeric","ratio","integer","meter",NA,NA,NA,NA,NA,NA
-"dev.mode","Developmental mode","ordered","ordinal",NA,NA,NA,NA,NA,NA,"1;2;3","Altricial;Semiprecocial;Precocial"
-"courtship.feed.m","Courtship feeding (by the male)","factor","nominal",NA,NA,NA,NA,NA,"Courtship feeding (by the male)","0;1","FALSE;TRUE"
-"song.dur","Song duration","numeric","ratio","real","second",0,NA,NA,NA,NA,NA
-"breed.system","Which adult(s) provides the majority of care:","factor","nominal",NA,NA,NA,NA,NA,"Breeding system","1;2;3;4;5","Pair;Female;Male;Cooperative;Occassional"
-"sra","Sex ratio: Adults","numeric","ratio","real",NA,0,1,NA,NA,NA,NA
+"species","species","character",NA,NA,NA,NA,NA,NA,"species",NA,NA
+"max.altitude","Maximum altitudinal distribution","numeric",NA,"integer","meter",NA,NA,NA,NA,NA,NA
+"dev.mode","Developmental mode","ordered",NA,NA,NA,NA,NA,NA,NA,"1;2;3","Altricial;Semiprecocial;Precocial"
+"courtship.feed.m","Courtship feeding (by the male)","factor",NA,NA,NA,NA,NA,NA,"Courtship feeding (by the male)","0;1","FALSE;TRUE"
+"song.dur","Song duration","numeric",NA,"real","second",0,NA,NA,NA,NA,NA
+"breed.system","Which adult(s) provides the majority of care:","factor",NA,NA,NA,NA,NA,NA,"Breeding system","1;2;3;4;5","Pair;Female;Male;Cooperative;Occassional"

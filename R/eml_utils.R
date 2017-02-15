@@ -4,7 +4,6 @@ get_attr_shell <- function(df){
     meta <- data.frame(attributeName = rep(NA, times = rows),
                        attributeDefinition = rep(NA, times = rows),
                        columnClasses = rep(NA, times = rows),
-                       measurementScale = rep(NA, times = rows),
                        numberType = rep(NA, times = rows),
                        unit = rep(NA, times = rows),
                        minimum = rep(NA, times = rows),
@@ -23,7 +22,7 @@ get_attr_shell <- function(df){
 }
 
 extract_attr_tbl <- function(attr_tbl) {
- attr_hd <- c("attributeName", "attributeDefinition", "measurementScale", "numberType",
+ attr_hd <- c("attributeName", "attributeDefinition", "numberType",
       "unit", "minimum", "maximum", "formatString", "definition")
  attr_tbl[,attr_hd]
 }
