@@ -21,3 +21,9 @@ get_attr_shell <- function(df){
     
     return(meta)
 }
+
+extract_attr_tbl <- function(attr_tbl) {
+ attr_hd <- c("attributeName", "attributeDefinition", "measurementScale", "numberType",
+      "unit", "minimum", "maximum", "formatString", "definition")
+ attr_tbl[,hd]
+}
