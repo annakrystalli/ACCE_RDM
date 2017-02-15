@@ -29,7 +29,7 @@ extract_attr_tbl <- function(attr_tbl) {
 
 get_attr_factors <- function(attr_tbl) {
     factors <- NULL
-    vars <- attr_tbl$attributeName[attr_tbl$columnClasses == "factor"]
+    vars <- attr_tbl$attributeName[attr_tbl$columnClasses %in% c("ordered", "factor")]
     for(var in vars){
         x <- attr_tbl[attr_tbl$attributeName == var, , drop = F]
         f_tbl <- data.frame(
