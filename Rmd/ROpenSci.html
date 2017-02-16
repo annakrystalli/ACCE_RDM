@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="ACCE Data Management Course" />
+
+<meta name="date" content="2017-02-17" />
+
+<title>Open Science in R</title>
+
+<script src="ROpenSci_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="ROpenSci_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="ROpenSci_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="ROpenSci_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="ROpenSci_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="ROpenSci_files/navigation-1.1/tabsets.js"></script>
+<link href="ROpenSci_files/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="ROpenSci_files/highlightjs-1.1/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="css/sandstone.min.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Open Science in R</h1>
+<h4 class="author"><em>ACCE Data Management Course</em></h4>
+<h4 class="date"><em>17 February 2017</em></h4>
+
+</div>
+
+
+<div id="the-age-of-open-science" class="section level2">
+<h2>The age of Open Science</h2>
+<div id="data-standards-are-allowing-the-compilation-of-disparate-datasets-into-large-openly-accessible-databases." class="section level4">
+<h4>Data standards are allowing the compilation of disparate datasets into large openly accessible databases.</h4>
+<ul>
+<li>In turn, R packages are being developed to allow easy access of such resources through R.</li>
+</ul>
+</div>
+<div id="ropensci" class="section level3">
+<h3><a href="https://ropensci.org/">rOpenSci</a></h3>
+<div class="figure">
+<img src="https://bids.berkeley.edu/sites/default/files/styles/250x140/public/projects/ropensci_for_site.jpg?itok=jHOm1GhI" />
+
+</div>
+<ul>
+<li>packages that allow access to data repositories through the R statistical programming environment</li>
+</ul>
+<div id="list-of-packages" class="section level4">
+<h4><a href="https://ropensci.org/packages/index.html">List of Packages</a></h4>
+<p><br></p>
+<p class="accent_border">
+<b>We’ll explore this functionality by focusing on accessing OBIS through the robis package</b>
+</p>
+<p><br></p>
+</div>
+</div>
+</div>
+<div id="example-data-source-obis" class="section level2">
+<h2>example data source: <a href="https://ropensci.org/blog/blog/2017/01/25/obis">OBIS</a></h2>
+<p><br></p>
+<div class="figure">
+<img src="http://iobis.org/images/obis_4.png" />
+
+</div>
+<div id="the-largest-global-database-of-species-occurrence-records-in-the-marine-realm." class="section level4">
+<h4>the largest global database of species occurrence records in the marine realm.</h4>
+<p><br></p>
+<ul>
+<li>Provides world’s <strong>largest scientific knowledge base</strong> on the <strong>diversity, distribution and abundance</strong> of all <strong>marine</strong> organisms in an integrated and standardized format</li>
+<li>As of January 2017, OBIS contains <strong>47.78 million occurrences</strong> of <strong>117,345 species</strong>, all openly available and accessible via the <a href="http://www.iobis.org/manual/api/"><strong>OBIS API</strong></a>.</li>
+</ul>
+<p><br></p>
+<p>Tutorial based on the <a href="https://ropensci.org/blog/blog/2017/01/25/obis"><strong>rOpenSci blogpost</strong></a> by Tom Webb and the <a href="http://www.iobis.org/2016/11/22/sorbycollection/">detailed OBIS tutorial</a></p>
+<blockquote>
+<p>Let’s try and extract some occurence data for a species of interest, the cod <em>Gadus morhua</em>.</p>
+</blockquote>
+<p><br></p>
+</div>
+</div>
+<div id="access-of-obis-through-robis-package" class="section level2">
+<h2>access of OBIS through <code>robis</code> package</h2>
+<div id="provides-programmatic-acces-to-obis-repository-through-r." class="section level3">
+<h3>provides programmatic acces to OBIS repository through R.</h3>
+<p><br></p>
+<div id="install-load-robis-and-associated-packages" class="section level4">
+<h4>install &amp; load robis and associated packages</h4>
+<pre class="r"><code># install robis package using devtools
+library(devtools)
+devtools::install_github(&quot;iobis/robis&quot;)
+# NB - you also need the dev version of ggmap for the satellite maps to work
+devtools::install_github(&quot;dkahle/ggmap&quot;)
+
+library(robis)
+library(ggmap)
+
+pkgs &lt;- c(&quot;ggplot2&quot;, &quot;worrms&quot;, &quot;dplyr&quot;)
+if (!require(&quot;pacman&quot;)) install.packages(&quot;pacman&quot;)
+pacman::p_load(pkgs, character.only = T)</code></pre>
+</div>
+</div>
+</div>
+<div id="get-valid-species-name" class="section level2 smaller">
+<h2>Get valid species name</h2>
+<ul>
+<li>First thing we need to do is identify the a valid species name that OBIS API will recognise.</li>
+<li>OBIS uses the World Register of Marine Species (<a href="http://www.marinespecies.org/">WoRMS</a>) standard taxonomy.</li>
+<li>The taxonomy is accessible through the <a href="https://github.com/ropensci/worrms"><strong>r package <code>worrms</code></strong></a>.</li>
+</ul>
+<div id="get-worms-record" class="section level3 smaller">
+<h3>Get WoRMS record</h3>
+<ul>
+<li>get the <code>WoRMS Aphia ID</code> for a single species - here, Atlantic cod, <code>&quot;Gadus morhua&quot;</code>:</li>
+</ul>
+<pre class="r"><code>my_sp_aphia &lt;- wm_name2id(name = &quot;Gadus morhua&quot;)
+my_sp_aphia</code></pre>
+<pre><code>## [1] 126436</code></pre>
+<div class="figure">
+<img src="http://www.marinespecies.org/images/banner1.jpg" />
+
+</div>
+</div>
+</div>
+<div id="get-valid-name" class="section level2">
+<h2>get valid name</h2>
+<p>Then get the full <code>WoRMS record</code>, as a list using the <code>Aphia ID</code>:</p>
+<pre class="r"><code>my_sp_taxo &lt;- wm_record(id = my_sp_aphia)</code></pre>
+<pre class="r"><code>names(my_sp_taxo)</code></pre>
+<pre><code>##  [1] &quot;AphiaID&quot;         &quot;url&quot;             &quot;scientificname&quot; 
+##  [4] &quot;authority&quot;       &quot;status&quot;          &quot;unacceptreason&quot; 
+##  [7] &quot;rank&quot;            &quot;valid_AphiaID&quot;   &quot;valid_name&quot;     
+## [10] &quot;valid_authority&quot; &quot;kingdom&quot;         &quot;phylum&quot;         
+## [13] &quot;class&quot;           &quot;order&quot;           &quot;family&quot;         
+## [16] &quot;genus&quot;           &quot;citation&quot;        &quot;lsid&quot;           
+## [19] &quot;isMarine&quot;        &quot;isBrackish&quot;      &quot;isFreshwater&quot;   
+## [22] &quot;isTerrestrial&quot;   &quot;isExtinct&quot;       &quot;match_type&quot;     
+## [25] &quot;modified&quot;</code></pre>
+<p class="accent_border">
+<b>we’re interested in the valid_name field</b>
+</p>
+<pre class="r"><code>my_sp_taxo$valid_name</code></pre>
+<pre><code>## [1] &quot;Gadus morhua&quot;</code></pre>
+</div>
+<div id="get-occurences" class="section level2">
+<h2>get occurences</h2>
+<p>Use the validated species name contained in <code>my_sp_taxo$valid_name</code> to search for species occurences in the OBIS database.</p>
+<pre class="r"><code>my_occs &lt;- occurrence(scientificname = my_sp_taxo$valid_name, year = 2012)</code></pre>
+<pre><code>## 
+Retrieved 514 records of 514 (100%)</code></pre>
+<div id="filtering-the-query" class="section level3">
+<h3>filtering the query</h3>
+<p>Widespread species can take a long time to download. Trim the request by filtering.</p>
+<div id="formal-arguments-of-occurence-function" class="section level4">
+<h4>formal arguments of <code>occurence</code> function:</h4>
+<pre class="r"><code>names(formals(occurrence))</code></pre>
+<pre><code>##  [1] &quot;scientificname&quot; &quot;year&quot;           &quot;obisid&quot;         &quot;aphiaid&quot;       
+##  [5] &quot;resourceid&quot;     &quot;nodeid&quot;         &quot;startdate&quot;      &quot;enddate&quot;       
+##  [9] &quot;startdepth&quot;     &quot;enddepth&quot;       &quot;geometry&quot;       &quot;qc&quot;            
+## [13] &quot;fields&quot;         &quot;verbose&quot;</code></pre>
+<p>See more by running <code>?occurrence</code>.</p>
+</div>
+</div>
+</div>
+<div id="query-results" class="section level2">
+<h2>query results</h2>
+<p><br></p>
+<div id="lets-look-at-the-data" class="section level4">
+<h4>Let’s look at the data</h4>
+<pre><code>## # A tibble: 6 × 62
+##          id decimalLongitude decimalLatitude depth    basisOfRecord
+##       &lt;int&gt;            &lt;dbl&gt;           &lt;dbl&gt; &lt;dbl&gt;            &lt;chr&gt;
+## 1 358446058        -71.39851        41.28282   115 HumanObservation
+## 2 358446098        -71.28678        41.26357   100 HumanObservation
+## 3 358446164        -71.18246        41.25775   117 HumanObservation
+## 4 358446280        -71.44735        41.22910   118 HumanObservation
+## 5 358446643        -71.92913        41.19003   175 HumanObservation
+## 6 365029571        -44.00000        59.00000    NA HumanObservation
+## # ... with 57 more variables: eventDate &lt;chr&gt;, institutionCode &lt;chr&gt;,
+## #   collectionCode &lt;chr&gt;, locality &lt;chr&gt;, individualCount &lt;dbl&gt;,
+## #   datasetName &lt;chr&gt;, phylum &lt;chr&gt;, order &lt;chr&gt;, family &lt;chr&gt;,
+## #   genus &lt;chr&gt;, scientificName &lt;chr&gt;, originalScientificName &lt;chr&gt;,
+## #   scientificNameAuthorship &lt;chr&gt;, obisID &lt;int&gt;, resourceID &lt;int&gt;,
+## #   yearcollected &lt;int&gt;, species &lt;chr&gt;, qc &lt;int&gt;, aphiaID &lt;int&gt;,
+## #   speciesID &lt;int&gt;, minimumDepthInMeters &lt;dbl&gt;,
+## #   maximumDepthInMeters &lt;dbl&gt;, datasetID &lt;chr&gt;, dateIdentified &lt;chr&gt;,
+## #   eventID &lt;chr&gt;, geodeticDatum &lt;chr&gt;, modified &lt;chr&gt;,
+## #   occurrenceRemarks &lt;chr&gt;, ownerInstitutionCode &lt;chr&gt;, recordedBy &lt;chr&gt;,
+## #   scientificNameID &lt;chr&gt;, stateProvince &lt;chr&gt;, taxonRank &lt;chr&gt;,
+## #   vernacularName &lt;chr&gt;, waterBody &lt;chr&gt;, class &lt;chr&gt;, continent &lt;chr&gt;,
+## #   higherGeography &lt;chr&gt;, identificationReferences &lt;chr&gt;,
+## #   occurrenceID &lt;chr&gt;, lifestage &lt;chr&gt;, catalogNumber &lt;chr&gt;,
+## #   eventTime &lt;chr&gt;, coordinateUncertaintyInMeters &lt;chr&gt;,
+## #   references &lt;chr&gt;, sex &lt;chr&gt;, footprintWKT &lt;chr&gt;,
+## #   coordinatePrecision &lt;dbl&gt;, fieldNumber &lt;chr&gt;, institutionID &lt;chr&gt;,
+## #   language &lt;chr&gt;, rightsHolder &lt;chr&gt;, specificEpithet &lt;chr&gt;, type &lt;chr&gt;,
+## #   dynamicProperties &lt;chr&gt;, rights &lt;chr&gt;, occurrenceStatus &lt;chr&gt;</code></pre>
+</div>
+</div>
+<div id="plot-data-on-a-map-with-ggplot2" class="section level2">
+<h2>Plot data on a map with <code>ggplot2</code></h2>
+<div id="get-a-base-world-map" class="section level4">
+<h4>Get a base world map:</h4>
+<pre class="r"><code>world &lt;- map_data(&quot;world&quot;)</code></pre>
+</div>
+<div id="add-map-details" class="section level4">
+<h4>add map details</h4>
+<pre class="r"><code>worldmap &lt;- ggplot(world, aes(x=long, y=lat)) +
+  geom_polygon(aes(group=group)) +
+  scale_y_continuous(breaks = (-2:2) * 30) +
+  scale_x_continuous(breaks = (-4:4) * 45) +
+  theme(panel.background = element_rect(fill = &quot;steelblue&quot;)) +
+  coord_equal()</code></pre>
+</div>
+</div>
+<div id="plot-occurences" class="section level2 smaller">
+<h2>Plot occurences</h2>
+<pre class="r"><code>occ_map &lt;- worldmap + geom_point(data = my_occs, 
+                                 aes(x = decimalLongitude, y = decimalLatitude),
+                                 colour = &quot;purple&quot;, shape = 21, alpha = 2/3)
+occ_map</code></pre>
+<p><img src="ROpenSci_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+</div>
+<div id="compare-spatial-distribution-in-time" class="section level2">
+<h2>compare spatial distribution in time</h2>
+<div id="extract-data-for-two-5-year-periods" class="section level4">
+<h4>extract data for two 5 year periods:</h4>
+<ul>
+<li><code>2010 - 2015</code> and <code>1970 - 1975</code>.</li>
+</ul>
+<pre class="r"><code>occs_10s &lt;- occurrence(scientificname = my_sp_taxo$valid_name, year = 2010:2015)
+occs_10s$time_p &lt;- &quot;2010 - 2015&quot;
+
+occs_70s &lt;- occurrence(scientificname = my_sp_taxo$valid_name, year = 1970:1975)
+occs_10s$time_p &lt;- &quot;1970 - 1975&quot;
+
+# combine into a single data.frame
+occs_time &lt;- rbind(occs_10s, occs_70s)
+occs_time$time_p &lt;- factor(occs_time$time_p)</code></pre>
+</div>
+</div>
+<div id="plot-data-by-time-period-time_p" class="section level2">
+<h2>plot data by time period (<code>time_p</code>)</h2>
+<pre class="r"><code>occ_map &lt;- worldmap + geom_point(data = occs_time, 
+                                 aes(x = decimalLongitude, y = decimalLatitude,
+                                     colour = time_p),
+                                 shape = 21, alpha = 2/3)
+
+occ_map</code></pre>
+<p><img src="ROpenSci_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+</div>
+<div id="latitudinal-distribution-by-period" class="section level2">
+<h2>latitudinal distribution by period</h2>
+<pre class="r"><code>g &lt;- ggplot(data = occs_time, aes(x = decimalLatitude)) + 
+    geom_density(aes(group=time_p, colour=time_p, fill= time_p, alpha = 0.5))
+
+g</code></pre>
+<p><img src="ROpenSci_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<pre class="r"><code>cols &lt;- unique(g$data[[1]][&quot;fill&quot;])</code></pre>
+<pre class="r"><code>ggplot2::ggplot(data = occs_time, aes(x = decimalLatitude)) + 
+    geom_density(aes(group=time_p, colour=time_p, fill= time_p, alpha = 0.5)) +
+    geom_vline(xintercept = range(occs_70s$decimalLatitude), colour = &quot;red&quot;) +
+    geom_vline(xintercept = range(occs_10s$decimalLatitude))</code></pre>
+<p><img src="ROpenSci_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+</div>
+<div id="multiple-species" class="section level2">
+<h2>multiple species</h2>
+<ul>
+<li>Start with a data frame of species names:</li>
+</ul>
+<pre class="r"><code>my_sp &lt;- data_frame(sciname = c(&quot;Actinia equina&quot;, &quot;Metridium senile&quot;, &quot;Anemonia viridis&quot;))</code></pre>
+<ul>
+<li>Then get the WoRMS records for each:</li>
+</ul>
+<pre class="r"><code>my_sp_taxo &lt;- wm_records_names(name = my_sp$sciname, fuzzy = FALSE, marine_only = TRUE)</code></pre>
+<p>For ‘n’ species this returns a list of ‘n’ tables. Convert these into a single table with ‘n’ rows:</p>
+<pre class="r"><code>my_sp_taxo &lt;- bind_rows(my_sp_taxo)</code></pre>
+</div>
+<div id="get-occurences-for-multiple-species" class="section level2">
+<h2>get occurences for multiple species</h2>
+<pre class="r"><code>as_data_frame(my_sp_taxo)</code></pre>
+<pre><code>## # A tibble: 3 × 25
+##   AphiaID                                                           url
+##     &lt;int&gt;                                                         &lt;chr&gt;
+## 1  100803 http://www.marinespecies.org/aphia.php?p=taxdetails&amp;id=100803
+## 2  100982 http://www.marinespecies.org/aphia.php?p=taxdetails&amp;id=100982
+## 3  100808 http://www.marinespecies.org/aphia.php?p=taxdetails&amp;id=100808
+## # ... with 23 more variables: scientificname &lt;chr&gt;, authority &lt;chr&gt;,
+## #   status &lt;chr&gt;, unacceptreason &lt;lgl&gt;, rank &lt;chr&gt;, valid_AphiaID &lt;int&gt;,
+## #   valid_name &lt;chr&gt;, valid_authority &lt;chr&gt;, kingdom &lt;chr&gt;, phylum &lt;chr&gt;,
+## #   class &lt;chr&gt;, order &lt;chr&gt;, family &lt;chr&gt;, genus &lt;chr&gt;, citation &lt;chr&gt;,
+## #   lsid &lt;chr&gt;, isMarine &lt;int&gt;, isBrackish &lt;lgl&gt;, isFreshwater &lt;lgl&gt;,
+## #   isTerrestrial &lt;lgl&gt;, isExtinct &lt;lgl&gt;, match_type &lt;chr&gt;, modified &lt;chr&gt;</code></pre>
+<pre class="r"><code>my_occs &lt;- occurrence(scientificname = my_sp_taxo$valid_name)</code></pre>
+</div>
+<div id="plot-mutliple-species" class="section level2">
+<h2>plot mutliple species</h2>
+<pre class="r"><code>occ.map &lt;- worldmap + geom_point(data = my_occs,
+                                 aes(x = decimalLongitude, 
+                                     y = decimalLatitude, 
+                                     colour = species), 
+                                 shape = 21, alpha = 2/3)</code></pre>
+</div>
+<div id="section" class="section level2">
+<h2></h2>
+<pre class="r"><code>occ.map</code></pre>
+<p><img src="ROpenSci_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+</div>
+<div id="plot-by-scientific-name" class="section level2">
+<h2>plot by scientific name</h2>
+<pre class="r"><code>occ.map &lt;- worldmap + geom_point(data = my_occs,
+                                 aes(x = decimalLongitude, 
+                                     y = decimalLatitude, 
+                                     colour = scientificName), 
+                                 shape = 21, alpha = 2/3)</code></pre>
+</div>
+<div id="section-1" class="section level2">
+<h2></h2>
+<pre class="r"><code>occ.map</code></pre>
+<p><img src="ROpenSci_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+</div>
+<div id="exercise-4" class="section level1">
+<h1>exercise 4:</h1>
+<div id="access-some-open-data" class="section level3">
+<h3>access some open data</h3>
+</div>
+<div id="access-and-plot-some-obis-data" class="section level2">
+<h2>access and plot some OBIS data</h2>
+<ul>
+<li><h4 id="install-robis-package">Install robis package</h4></li>
+<li><h4 id="pick-a-marine-species-and-try-and-extract-the-occurences">Pick a marine species and try and extract the occurences</h4>
+<ul>
+<li>not just fish! Huge diversity! Here’s just the <a href="http://www.marinespecies.org/aphia.php?p=taxdetails&amp;id=2">animals</a></li>
+</ul></li>
+<li><h4 id="have-a-go-at-mapping">Have a go at mapping</h4></li>
+</ul>
+<p><br></p>
+<div id="more-ideas" class="section level3">
+<h3>more ideas</h3>
+<ul>
+<li><a href="https://ropensci.org/blog/blog/2017/01/25/obis"><strong>rOpenSci blogpost</strong></a> by Tom Webb</li>
+<li><a href="http://www.iobis.org/2016/11/22/sorbycollection/">detailed OBIS tutorial</a></li>
+</ul>
+</div>
+</div>
+<div id="next" class="section level2">
+<h2>Next</h2>
+<p><br></p>
+<div id="closing-remarks" class="section level3">
+<h3><a href="">Closing Remarks</a></h3>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
