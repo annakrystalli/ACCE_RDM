@@ -22,10 +22,11 @@ get_attr_shell <- function(df){
 }
 
 extract_attr_tbl <- function(attr_tbl) {
- attr_hd <- c("attributeName", "attributeDefinition", "numberType",
+ attr_hd <- c("attributeName", "attributeDefinition", "columnClasses", "numberType",
       "unit", "minimum", "maximum", "formatString", "definition")
- attr_hd$columnClasses <- NA
- attr_tbl[,attr_hd]
+ out <- attr_tbl[,attr_hd]
+ out$columnClasses <- NA
+ out
 }
 
 get_attr_factors <- function(attr_tbl) {
