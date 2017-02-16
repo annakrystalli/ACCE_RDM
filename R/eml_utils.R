@@ -24,6 +24,7 @@ get_attr_shell <- function(df){
 extract_attr_tbl <- function(attr_tbl) {
  attr_hd <- c("attributeName", "attributeDefinition", "numberType",
       "unit", "minimum", "maximum", "formatString", "definition")
+ attr_hd$columnClasses <- NA
  attr_tbl[,attr_hd]
 }
 
