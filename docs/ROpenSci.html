@@ -335,7 +335,7 @@ occ_map</code></pre>
 occs_10s$time_p &lt;- &quot;2010 - 2015&quot;
 
 occs_70s &lt;- occurrence(scientificname = my_sp_taxo$valid_name, year = 1970:1975)
-occs_10s$time_p &lt;- &quot;1970 - 1975&quot;
+occs_70s$time_p &lt;- &quot;1970 - 1975&quot;
 
 # combine into a single data.frame
 occs_time &lt;- bind_rows(occs_10s, occs_70s)
