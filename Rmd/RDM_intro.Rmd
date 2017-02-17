@@ -128,8 +128,8 @@ output:
 focus on reproducibility underpinned by more fundamental qualities:
 
 - openness
-- transaparency
-- aceessibility
+- transparency
+- accessibility
 - reusability
 - collaboration
 
@@ -140,16 +140,16 @@ focus on reproducibility underpinned by more fundamental qualities:
 <img src="assets/img/Open_Science_-_Prinzipien.png" width=400px>
 
 
-## stiffling science?
+## stifling science?
 
 <p class="accent_border"><b>critics say it's constraining, wasted time for which researchers won't be rewarded.</p></b>
 
 #### But this ignores:
 - the value of code and data to other researchers
-- th eimpact such research outputs can have
+- the impact such research outputs can have
 - the technological capacity for producing these outputs through standard openly avalable tools.
 
-#### clealy a balance is needed
+#### clearly a balance is needed
 
 ### but so higher standards are both possible and imperative
 
@@ -433,12 +433,12 @@ read.csv(file, na.strings = c("NA", "-999"), strip.white = TRUE,
 - Check **empty cells**
 - Check the **range of values** (and value types) in each column matches expectation. Use `summary(df)`
 - Check **units of measurement**
-- Check your **software interprets your data correctly** eg. for a data frame `df``;
+- Check your **software interprets your data correctly** eg. for a data frame `df`;
     - `head(df)` will show you  and str(df) are useful)
 
 ## make your data alignable and generalisable
 
-What information would other users require to combine their your data with their's?
+What information would other users require to combine your data with theirs?
 
 - time `temporal (time of day, day, month, year, season)`
 - space `geography (lat, lon)`
@@ -484,8 +484,7 @@ What information would other users require to combine their your data with their
 
 <img src="http://www.revit-lebanon.com/images/Revit_A_3/Adv-12.jpg" width=300px>
 
-## avoid catastrophy
-
+## avoid catastrophe
 ### Backup on disk
 
 - consider using backup software like [Time Machine](https://support.apple.com/en-gb/HT201250) (mac) or [File History](http://www.thundercloud.net/infoave/new/windows-10-has-a-time-machine/) (Windows 10)
@@ -509,7 +508,7 @@ What information would other users require to combine their your data with their
 <iframe width="450" height="315" src="https://www.youtube.com/embed/2TV21gOzfhw" frameborder="0" allowfullscreen></iframe>
 
 - version controlled
-- easily shareble
+- easily shareable
 - works with other apps
 - work on an interface with R ([OSFr](https://github.com/chartgerink/osfr)) is in progress
 
