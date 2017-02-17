@@ -338,7 +338,7 @@ occs_70s &lt;- occurrence(scientificname = my_sp_taxo$valid_name, year = 1970:19
 occs_10s$time_p &lt;- &quot;1970 - 1975&quot;
 
 # combine into a single data.frame
-occs_time &lt;- rbind(occs_10s, occs_70s)
+occs_time &lt;- bind_rows(occs_10s, occs_70s)
 occs_time$time_p &lt;- factor(occs_time$time_p)</code></pre>
 <p><br></p>
 </div>
