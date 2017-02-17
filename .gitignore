@@ -1,0 +1,18 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+Rmd/docs/*
+Rmd/*.html
+!Rmd/index.html
+packrat/lib*/
+Rmd/*.md
+Rmd/assets/data/*
+Rmd/css/*
+Rmd/*_files/
+Rmd/R_markdown.Rmd
+Rmd/TidyR full - Handout.Rmd
+inputs/
+outputs/
+
+!Rmd/css/ioslides_default.css
