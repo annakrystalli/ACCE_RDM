@@ -2,15 +2,35 @@
 title: "Tidy data"
 author: "ACCE Data Management Course"
 date: "17 February 2017, University of York"
-output: 
-    ioslides_presentation:
-        css: css/ioslides_default.css
+output:
+  ioslides_presentation:
+    css: css/ioslides_default.css
+  html_document:
+    css: css/sandstone.min.css
+    fig_width: 7
+    self_contained: no
+    toc: yes
+    toc_depth: 2
+    toc_float: yes
 ---
+
+```{r, echo = F}
+
+if(names(rmarkdown::metadata$output)[1] == "html_document"){
+    hash <- "#"}
+if(names(rmarkdown::metadata$output)[1] == "ioslides_presentation"){
+    hash <- ""}
+```
+
+
+<br>
 
 ## Tidy data
 
-<img src="assets/img/tidy_data.png" height="500">
+<img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/tidy_data.png" height="500">
 
+
+<br>
 
 ## Principles of tidy data 
 
@@ -28,6 +48,8 @@ output:
 <p class="round_border">Best to record data in tidy format but <code>tidyR</code> package provides functions to tidy untidy data</p>
 
 
+<br>
+
 ## Install tidyR {.smaller}
 
 ```{r, message=F}
@@ -42,13 +64,13 @@ library(dplyr)
 
 ## Examples of messy data {.smaller}
 
-- Column headers are values, not variable names.
+- #### Column headers are values, not variable names.
 
-- Multiple variables are stored in one column.
+- #### Multiple variables are stored in one column.
 
-- Variables are stored in both rows and columns.
+- #### Variables are stored in both rows and columns.
 
-- Multiple types of observational units are stored in the same row.
+- #### Multiple types of observational units are stored in the same row.
 
 
 <br>
@@ -56,6 +78,8 @@ library(dplyr)
 <p class="accent_border"><b>Most messy datasets can be tidied with a small set of tools:</b></p> 
 
 ### **gathering**, **separating** and **spreading**. 
+
+<br>
 
 ## 1 - wide data {.smaller}
 ### one variable over many columns
@@ -131,6 +155,8 @@ tidy
 
 ```heart rate ~ drug```
 
+<br>
+
 ## 2 - clumped data  {.smaller}
 ### more than one variable in a single column
 
@@ -175,6 +201,8 @@ separate(data = messy, into = c("bolus", "location"), col = spl.id, sep= "\\-")
 ```
 
 
+<br>
+
 ## 3 - Combination of messy data {.smaller}
 
 In this study, the time people spent on their phones was measured at two locations (work and home) and at two time points.
@@ -218,67 +246,33 @@ head(tidy, 8)
 ```
 
 
-
-# TidyR Data exercises {.bigger}
-
-**<http://bit.ly/ACCE_TidyR>**
+<br>
 
 <br>
 
-<http://bit.ly/ACCE_RDM_handouts>
 
-## Example data 1 {.smaller}
+#`r hash` exercise 1:
 
+### tidy data
 
-```{r , echo = 2:3}
-birds <- read.csv("~/Google Drive/ACCE RDM workshop/Tidy Data exercise/birds.csv")
-head(birds, 20)
+## tidy 3 example datasets
 
-```
+#### get organised
 
-## Example data 1 {.smaller}
+<br>
 
-```{r}
-tidy.birds <- gather(data = birds, key = sex, value = length, male:female)
-head(tidy.birds, 20)
-```
+- create a project
+- create a folder named `data/` in your project
+- create a new script, e.g. `tidy.R`
 
+<br>
 
-## Example data 2 {.smaller}
-
-
-```{r , echo = 2:3}
-trees <- read.csv("~/Google Drive/ACCE RDM workshop/Tidy Data exercise/trees.csv")
-head(trees, 20)
-
-```
-
-## Example data 2 {.smaller}
-
-```{r}
-tidy.trees <- separate(data = trees, col = spl, into = c("tree_id", "elevation"), 
-                       sep = "/")
-head(tidy.trees, 20)
-```
-
-## Example data 3 {.smaller}
+- #### get data from **OSF project** <https://osf.io/kc4mf/>
+- #### tidy the data!
 
 
-```{r , echo = 2:3}
-stocks <- read.csv("~/Google Drive/ACCE RDM workshop/Tidy Data exercise/stocks.csv")
-head(stocks, 15)
 
-```
-
-## Example data 3 {.smaller}
-
-```{r}
-stocks %>% 
-  gather(key = stock, value = trend, -date) %>% 
-  separate(col = date, into = c( "month", "day","year"), sep = c("-", "-")) %>%  
-  head(15)
-```
-
+<br>
 
 
 ## Further Reading
@@ -288,4 +282,19 @@ Hadley Wickam's paper on Tidy Data
 <http://www.jstatsoft.org/v59/i10/paper>
 
 RStudio Data wrangling [cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+
+## next
+
+<br>
+
+```{r, echo = F}
+
+if(names(rmarkdown::metadata$output)[1] == "html_document"){
+    url <- "https://annakrystalli.github.io/ACCE_RDM/docs/exercises.html"}
+if(names(rmarkdown::metadata$output)[1] == "ioslides_presentation"){
+    url <- "file:///Users/Anna/Documents/workflows/ACCE_RDM/Rmd/exercises.html"}
+```
+
+
+### [exercise answers](`r url`)
 

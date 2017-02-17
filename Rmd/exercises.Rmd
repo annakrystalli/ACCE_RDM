@@ -1,0 +1,119 @@
+---
+title: "exercise 1 answers"
+author: "ACCE Data Management Course"
+date: "17 February 2017, University of York"
+output:
+  ioslides_presentation:
+    css: css/ioslides_default.css
+  html_document:
+    css: css/sandstone.min.css
+    fig_width: 5.5
+    self_contained: no
+    toc: yes
+    toc_depth: 2
+    toc_float: yes
+---
+
+<br>
+
+## load packages
+
+```{r, message=F}
+#install.packages("tidyr", "dplyr")
+
+library(tidyr)
+library(dplyr)
+
+```
+
+- #### get data and load from **OSF project** <https://osf.io/kc4mf/>
+
+<br>
+
+## Example data 1 {.smaller}
+
+
+```{r , echo = 2:3}
+birds <- read.csv("~/Google Drive/ACCE RDM workshop/Tidy Data exercise/birds.csv")
+head(birds, 20)
+
+```
+
+
+
+## 
+
+```{r}
+tidy.birds <- gather(data = birds, key = sex, value = length, male:female)
+head(tidy.birds, 20)
+```
+
+
+<br>
+
+## Example data 2
+
+
+```{r , echo = 2:3}
+trees <- read.csv("~/Google Drive/ACCE RDM workshop/Tidy Data exercise/trees.csv")
+head(trees, 20)
+
+```
+
+
+
+## 
+
+```{r}
+tidy.trees <- separate(data = trees, col = spl, into = c("tree_id", "elevation"), 
+                       sep = "/")
+head(tidy.trees, 20)
+```
+
+<br>
+
+## Example data 3 
+
+
+```{r , echo = 2:3}
+stocks <- read.csv("~/Google Drive/ACCE RDM workshop/Tidy Data exercise/stocks.csv")
+head(stocks, 15)
+
+```
+
+## 
+
+```{r}
+stocks %>% 
+  gather(key = stock, value = trend, -date) %>% 
+  separate(col = date, into = c( "month", "day","year"), sep = "-") %>%  
+  head(15)
+```
+
+
+<br>
+
+
+## Further Reading
+
+Hadley Wickam's paper on Tidy Data
+
+<http://www.jstatsoft.org/v59/i10/paper>
+
+RStudio Data wrangling [cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+
+## next
+
+<br>
+
+
+```{r, echo = F}
+
+if(names(rmarkdown::metadata$output)[1] == "html_document"){
+    url <- "https://annakrystalli.github.io/ACCE_RDM/docs/metadata.html"}
+if(names(rmarkdown::metadata$output)[1] == "ioslides_presentation"){
+    url <- "file:///Users/Anna/Documents/workflows/ACCE_RDM/Rmd/metadata.html"}
+```
+
+
+### [metadata & documentation](`r url`)

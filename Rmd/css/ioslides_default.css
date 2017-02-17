@@ -85,6 +85,11 @@ a img {
   border: none;
 }
 
+b, strong {
+    font-weight:bold
+    
+}
+
 /* line 116, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
@@ -272,7 +277,7 @@ body {
 slides > slide {
   display: none;
   font-family: 'Open Sans', Arial, sans-serif;
-  font-size: 20px;
+  font-size: 15px;
   color: #797979;
   width: 900px;
   height: 700px;
@@ -331,7 +336,7 @@ slides > slide.dark {
 
 /* line 147, ../scss/default.scss */
 slides > slide:not(.nobackground):after {
-  font-size: 12pt;
+  font-size: 17pt;
   content: attr(data-slide-num) "/" attr(data-total-slides);
   position: absolute;
   bottom: 20px;
@@ -463,7 +468,7 @@ b {
 
 /* line 266, ../scss/default.scss */
 a {
-  color: #2a7cdf;
+  color: #93c54b;
   text-decoration: none;
   border-bottom: 1px solid rgba(42, 124, 223, 0.5);
 }
@@ -480,7 +485,7 @@ h1, h2, h3 {
 /* line 280, ../scss/default.scss */
 h2 {
   font-variant: small-caps;    
-  font-size: 45px;
+  font-size: 40px;
   line-height: 65px;
   letter-spacing: -2px;
   color: #476b64;
@@ -489,7 +494,7 @@ h2 {
 
 /* line 287, ../scss/default.scss */
 h3 {
-  font-size: 30px;
+  font-size: 27px;
   letter-spacing: -1px;
   line-height: 2;
   font-weight: inherit;
@@ -499,7 +504,7 @@ h3 {
 
 /* line 287, ../scss/default.scss */
 h4 {
-  font-size: 26px;
+  font-size: 23px;
   letter-spacing: -1px;
   line-height: 1.2;
   font-weight: inherit;
@@ -578,8 +583,8 @@ ol ol {
 /* line 337, ../scss/default.scss */
 pre {
   font-family: 'Source Code Pro', 'Courier New', monospace;
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 15px;
+  line-height: 20px;
   padding: 10px 0 10px 60px;
   letter-spacing: -1px;
   margin-bottom: 20px;
@@ -603,7 +608,7 @@ pre[data-lang]:after {
   right: 0;
   top: 0;
   position: absolute;
-  font-size: 16pt;
+  font-size: 17pt;
   color: white;
   padding: 2px 25px;
   text-transform: uppercase;
@@ -805,7 +810,7 @@ table.rmdtable tr:nth-child(odd) {
 /* line 488, ../scss/default.scss */
 table.rmdtable th {
   color: white;
-  font-size: 18px;
+  font-size: 12px;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(40%, #4387fd), color-stop(80%, #2a7cdf)) no-repeat;
   background: -webkit-linear-gradient(top, #4387fd 40%, #2a7cdf 80%) no-repeat;
   background: -moz-linear-gradient(top, #4387fd 40%, #2a7cdf 80%) no-repeat;
@@ -814,7 +819,7 @@ table.rmdtable th {
 }
 /* line 494, ../scss/default.scss */
 table.rmdtable td, table th {
-  font-size: 18px;
+  font-size: 12px;
   padding: 1em 0.5em;
 }
 /* line 499, ../scss/default.scss */
@@ -867,28 +872,28 @@ slide.fill {
 /* Size variants */
 /* line 535, ../scss/default.scss */
 article.smaller p, article.smaller ul, article.smaller ol {
-  font-size: 20px;
+  font-size: 15px;
   line-height: 24px;
   letter-spacing: 0;
 }
 /* line 541, ../scss/default.scss */
 article.smaller table td, article.smaller table th {
-  font-size: 14px;
+  font-size: 11px;
 }
 /* line 545, ../scss/default.scss */
 article.smaller pre {
-  font-size: 15px;
+  font-size: 14px;
   line-height: 20px;
   letter-spacing: 0;
 }
 /* line 550, ../scss/default.scss */
 article.smaller q {
-  font-size: 40px;
+  font-size: 35px;
   line-height: 48px;
 }
 /* line 554, ../scss/default.scss */
 article.smaller q:before, article.smaller q:after {
-  font-size: 60px;
+  font-size: 50px;
 }
 
 /* Builds */
@@ -1567,6 +1572,6 @@ input {
 /* Additions for DT package */
 
 .dataTables_info, .dataTables_paginate {
-  font-size: 14px;
+  font-size: 12px;
 }
 

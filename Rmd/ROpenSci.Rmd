@@ -1,160 +1,403 @@
 ---
-title: "Open Science in R"
+title: "Open Data through R"
 author: "ACCE Data Management Course"
-date: "10 March 2015"
-output: ioslides_presentation
+date: "17 February 2017"
+output:
+  ioslides_presentation:
+    css: css/ioslides_default.css
+  html_document:
+    css: css/sandstone.min.css
+    fig_width: 7
+    self_contained: yes
 ---
+```{r, echo = F}
+
+if(names(rmarkdown::metadata$output)[1] == "html_document"){
+    hash <- "#"}
+if(names(rmarkdown::metadata$output)[1] == "ioslides_presentation"){
+    hash <- ""}
+```
+
+
+<br>
 
 ## The age of Open Science 
 
-Data standards are allowing the compilation of disparate datasets into large openly accessible databases.
+#### Data standards are allowing the compilation of disparate datasets into large openly accessible databases.
 
-In turn, R packages are being developed to allow easy access of such resources through R
+- In turn, R packages are being developed to allow easy access of such resources through R.
 
-We'll explore this functionality by focusing on the **National Biodiversity Network (NBN)** database
+### [rOpenSci](https://ropensci.org/)
 
-## rNBN {.smaller}
+![](https://bids.berkeley.edu/sites/default/files/styles/250x140/public/projects/ropensci_for_site.jpg?itok=jHOm1GhI)
 
-THe NBN is an information network of biodiversity data provided by a collaboration of organisations, such as the UK nature agencies, wildlife trusts, the Natural History Museum, The Marine Biological Association etc. <http://www.nbn.org.uk/>
+- packages that allow access to data repositories through the R statistical programming environment
 
-
-
-```rNBN``` is a statistical package developed for retrieving data from the NBN Gateway
-
-The package utilises the NBN login facilities, ensuring that when you use it you have access to all of the data that you would have access to if you were to login to the NBN Gateway itself.
+#### [List of Packages](https://ropensci.org/packages/index.html)
 
 <br>
 
-Functions within the package allow users to search occurrence data by
+<p class="accent_border"><b>We'll explore this functionality by focusing on accessing OBIS through the robis package</b></p>
 
-    - species 
-    - year-range
-    - location
-    - dataset 
-    - species groups
- 
- <br>
- 
+<br>
 
-## rNBN {.smaller}
+## example data source: [OBIS](https://ropensci.org/blog/blog/2017/01/25/obis)
 
-First install and load the ```rnbn``` package
+<br>
+
+![](http://iobis.org/images/obis_4.png)
+
+#### the largest global database of species occurrence records in the marine realm.
+
+<br>
+
+- Provides world’s **largest scientific knowledge base** on the **diversity, distribution and abundance** of all **marine** organisms in an integrated and standardized format 
+- As of January 2017, OBIS contains **47.78 million occurrences** of **117,345 species**, all openly available and accessible via the [**OBIS API**](http://www.iobis.org/manual/api/). 
+
+<br>
+
+Tutorial based on the [**rOpenSci blogpost**](https://ropensci.org/blog/blog/2017/01/25/obis) by Tom Webb and the [detailed OBIS tutorial](http://www.iobis.org/2016/11/22/sorbycollection/)
+
+> Let's try and extract some occurence data for a species of interest, the cod *Gadus morhua*.
+
+<br>
+
+
+
+## access of OBIS through `robis` package
+
+### provides programmatic acces to OBIS repository through R.
+
+<br>
+
+#### install & load robis and associated packages
 
 ```{r, eval=F}
-install.packages("rnbn", repos = "http://cran.us.r-project.org")
+# install robis package using devtools
+library(devtools)
+devtools::install_github("iobis/robis")
+# NB - you also need the dev version of ggmap for the satellite maps to work
+devtools::install_github("dkahle/ggmap")
 
-library(rnbn)
+library(robis)
+library(ggmap)
+
+pkgs <- c("ggplot2", "worrms", "dplyr")
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(pkgs, character.only = T)
 ```
 
-Have a look at the package functionality
-```{r, eval =FALSE}
-vignette('rnbn_vignette')
+```{r, eval=T, echo=FALSE, warning=FALSE, message=FALSE}
+library(robis)
+library(ggmap)
+library(raster)
 
+library(worrms)
+library(dplyr)
 ```
-
-<file:///Users/Anna/Library/R/3.1/library/rnbn/doc/rnbn_vignette.html>
 
 <br>
 
-Next we need to register with NBN
-<https://data.nbn.org.uk/User/Register>
+## Get valid species name {.smaller}
 
-and activate account 
 
-## Get Taxon code {.smaller}
+- First thing we need to do is identify the a valid species name that OBIS API will recognise. 
+- OBIS uses the World Register of Marine Species ([WoRMS](http://www.marinespecies.org/)) standard taxonomy. 
+- The taxonomy is accessible through the [**r package `worrms`**](https://github.com/ropensci/worrms).
 
-So let's try and extract some occurence data for a species of interest, the copepod *Calanus finmarchicus*
+
+
+### Get WoRMS record {.smaller}
+
+-  get the `WoRMS Aphia ID` for a single species - here, Atlantic cod, `"Gadus morhua"`:
+
+```{r}
+my_sp_aphia <- wm_name2id(name = "Gadus morhua")
+my_sp_aphia
+```
+
+![](http://www.marinespecies.org/images/banner1.jpg)
 
 <br>
 
-The first thing we need to do is identify the correct taxonVersionKey. We use the function **```getTVKQuery()```** to identify it.
+## get valid name
+
+Then get the full `WoRMS record`, as a list using the `Aphia ID`:
+
+```{r}
+my_sp_taxo <- wm_record(id = my_sp_aphia)
+
+```
+
+```{r}
+names(my_sp_taxo)
+```
+
+
+<p class="accent_border"><b>we're interested in the valid_name field</b></p>
+
+
+```{r}
+my_sp_taxo$valid_name
+```
+
+<br>
+
+## get occurences 
+
+Use the validated species name contained in `my_sp_taxo$valid_name` to search for species occurences in the OBIS database.
+
+```{r}
+my_occs <- occurrence(scientificname = my_sp_taxo$valid_name, year = 2012)
+```
+
+### filtering the query
+
+Widespread species can take a long time to download. Trim the request by filtering. 
+
+
+#### formal arguments of `occurence` function:
+```{r}
+names(formals(occurrence))
+```
+
+See more by running `?occurrence`.
+
+<br>
+
+## query results
+
+<br>
+
+#### Let's look at the data
+
+```{r, echo=FALSE}
+head(as_data_frame(my_occs))
+```
 
 
 <br>
 
-NB the first time you call any function within the package you will be asked to authenticate. You can also use function **`nbnLogin(username = 'usr', password = 'pass')`** to login
+## Plot data on a map with `ggplot2`
 
-
-## Get Taxon code {.smaller}
-
-```{r, echo = 3:4, eval=T}
-library(rnbn)
-nbnLogin(username = 'akrystalli', password = 'JoyZipper-14')
-
-
-```
-```{r}
-query.res <- getTVKQuery("Calanus finmarchicus")
-head(query.res)
-```
-## Get Taxon Version Key {.smaller}
-
-Bit confusing so let's have a closer look at the first row (transposed into a column for easier viewing)
-```{r}
-t(query.res[1,])
-```
-
-## Get Taxon code {.smaller}
-
-The first row of the query result table is usually the most relevant entry and the prefered taxonVersionKey is listed under the column ```ptaxonVersionKey``` so I store the key in an object named ```cfin.TVK``` to use for quering the database.
+#### Get a base world map:
 
 ```{r}
-cfin.TVK <- query.res[1, "ptaxonVersionKey"]
-cfin.TVK
+world <- map_data("world")
 ```
 
-## Get Taxon Occurences {.smaller}
-
-I use the taxonVersionKey (```cfin.TVK```) and the function ```getOccurences()``` to extract occurences for the species of interest from the NBN database
+#### add map details
 ```{r}
-occ <- getOccurrences(tvks = cfin.TVK, acceptTandC = T, silent = T)
-
-occ[1:10,c("pTaxonName", "startDate",
-           "latitude", "longitude")]
-```
-
-## Plot on a map {.smaller}
-
-I use the function ```map``` in package ```maps``` to plot the occurences extracted from the NBN database
-
-```{r, eval = F}
-install.packages("maps", repos = "http://cran.us.r-project.org")
-```
-
-```{r, eval =FALSE}
-library(maps)
-map(xlim = c(-10,4), ylim = range(occ$latitude), 
-    fill = T, col = "black", mar = c(1,1,1,1))
-points(occ$longitude, occ$latitude, col = "red", pch = "*")
+worldmap <- ggplot(world, aes(x=long, y=lat)) +
+  geom_polygon(aes(group=group)) +
+  scale_y_continuous(breaks = (-2:2) * 30) +
+  scale_x_continuous(breaks = (-4:4) * 45) +
+  theme(panel.background = element_rect(fill = "steelblue")) +
+  coord_equal()
 
 ```
 
-## Plot on a map {.smaller}
+<br>
+
+## Plot occurences {.smaller}
+```{r}
+occ_map <- worldmap + geom_point(data = my_occs, 
+                                 aes(x = decimalLongitude, y = decimalLatitude),
+                                 colour = "purple", shape = 21, alpha = 2/3)
+occ_map
+
+```
+
+<br>
+
+## compare spatial distribution in time
+
+#### extract data for two 5 year periods: 
+- `2010 - 2015` and `1970 - 1975`.
+
+```{r, message=TRUE, eval=FALSE}
+occs_10s <- occurrence(scientificname = my_sp_taxo$valid_name, year = 2010:2015)
+occs_10s$time_p <- "2010 - 2015"
+
+occs_70s <- occurrence(scientificname = my_sp_taxo$valid_name, year = 1970:1975)
+occs_10s$time_p <- "1970 - 1975"
+
+# combine into a single data.frame
+occs_time <- rbind(occs_10s, occs_70s)
+occs_time$time_p <- factor(occs_time$time_p)
+```
+
+```{r, eval=FALSE, echo=FALSE}
+saveRDS(occs_10s, file = "assets/data/occs2010s.rds")
+saveRDS(occs_70s, file = "assets/data/occs1970s.rds")
+```
+
+```{r, echo=FALSE}
+occs_10s <- readRDS(file = "assets/data/occs2010s.rds")
+occs_10s$time_p <- "2010 - 2015"
+
+occs_70s <- readRDS(file = "assets/data/occs1970s.rds")
+occs_70s$time_p <- "1970 - 1975"
+
+# cobine into a single data.frame
+occs_time <- bind_rows(occs_10s, occs_70s)
+occs_time$time_p <- factor(occs_time$time_p)
+```
+
+<br>
+
+## plot data by time period (`time_p`)
+
+```{r}
+occ_map <- worldmap + geom_point(data = occs_time, 
+                                 aes(x = decimalLongitude, y = decimalLatitude,
+                                     colour = time_p),
+                                 shape = 21, alpha = 2/3)
+
+occ_map
+```
+
+
+<br>
+
+## latitudinal distribution by period
+
+
+```{r}
+g <- ggplot(data = occs_time, aes(x = decimalLatitude)) + 
+    geom_density(aes(group=time_p, colour=time_p, fill= time_p, alpha = 0.5))
+
+g
+```
+
+```{r}
+cols <- unique(g$data[[1]]["fill"])
+```
+
+
+```{r}
+ggplot2::ggplot(data = occs_time, aes(x = decimalLatitude)) + 
+    geom_density(aes(group=time_p, colour=time_p, fill= time_p, alpha = 0.5)) +
+    geom_vline(xintercept = range(occs_70s$decimalLatitude), colour = "red") +
+    geom_vline(xintercept = range(occs_10s$decimalLatitude))
+
+```
+
+<br>
+
+## multiple species
+
+- Start with a data frame of species names:
+
+```{r}
+my_sp <- data_frame(sciname = c("Actinia equina", "Metridium senile", "Anemonia viridis"))
+```
+
+- Then get the WoRMS records for each:
+
+```{r}
+my_sp_taxo <- wm_records_names(name = my_sp$sciname, fuzzy = FALSE, marine_only = TRUE)
+```
+For 'n' species this returns a list of 'n' tables. Convert these into a single table with 'n' rows:
+
+```{r}
+my_sp_taxo <- bind_rows(my_sp_taxo)
+```
+
+<br>
+
+## get occurences for multiple species
+
+```{r}
+as_data_frame(my_sp_taxo)
+```
+
+```{r, eval=FALSE}
+my_occs <- occurrence(scientificname = my_sp_taxo$valid_name)
+```
+
+
+```{r, eval=FALSE, echo=FALSE}
+saveRDS(my_occs, file = "assets/data/anemones.rds")
+```
+
+```{r, echo=FALSE}
+my_occs <- readRDS(file = "assets/data/anemones.rds")
+```
+
+<br>
+
+## plot mutliple species
+
+```{r}
+occ.map <- worldmap + geom_point(data = my_occs,
+                                 aes(x = decimalLongitude, 
+                                     y = decimalLatitude, 
+                                     colour = species), 
+                                 shape = 21, alpha = 2/3)
+```
+
+##
+
+```{r}
+occ.map
+```
+
+
+<br>
+
+## plot by scientific name
+
+```{r}
+occ.map <- worldmap + geom_point(data = my_occs,
+                                 aes(x = decimalLongitude, 
+                                     y = decimalLatitude, 
+                                     colour = scientificName), 
+                                 shape = 21, alpha = 2/3)
+```
+
+
+##
+
+```{r}
+occ.map
+```
+
+
+<br>
+<br>
+
+#`r hash` exercise 4:
+
+### access some open data
+
+## access and plot some OBIS data
+
+- #### Install robis package
+- #### Pick a marine species and try and extract the occurences
+    - not just fish! Huge diversity! Here's just the [animals](http://www.marinespecies.org/aphia.php?p=taxdetails&id=2)
+- #### Have a go at mapping
+
+<br>
+
+### more ideas
+
+- [**rOpenSci blogpost**](https://ropensci.org/blog/blog/2017/01/25/obis) by Tom Webb
+- [detailed OBIS tutorial](http://www.iobis.org/2016/11/22/sorbycollection/)
+
+<br>
+
+## Next
+
+<br>
 ```{r, echo = F}
-library(maps, quietly = T)
-map(xlim = c(-10,4), ylim = range(occ$latitude), 
-    fill = T, col = "black", mar = c(1,1,1,1))
-points(occ$longitude, occ$latitude, col = "red", pch = "*", cex = 2)
 
+if(names(rmarkdown::metadata$output)[1] == "html_document"){
+    url <- "https://annakrystalli.github.io/ACCE_RDM/docs/outro.html"}
+if(names(rmarkdown::metadata$output)[1] == "ioslides_presentation"){
+    url <- "file:///Users/Anna/Documents/workflows/ACCE_RDM/Rmd/outro.html"}
 ```
 
 
-## Have a go! {.smaller}
+### [Closing Remarks](`r url`)
 
-  - Install rNBN package
-  - Register with NBN online
-    + confirm registration
-  - Pick a species and try and extract the occurences
-  - Have a go at mapping
-
-<br>
-
-Once installed details of using the package can be accessed through:
-```{r, eval = F}
-vignette('rnbn_vignette')
-```
-
-
-## Other rOpenSci packages {.smaller}
-
-http://ropensci.org/packages/
