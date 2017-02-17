@@ -30,6 +30,7 @@ extract_attr_tbl <- function(attr_tbl) {
 }
 
 get_attr_factors <- function(attr_tbl) {
+    attr_tbl[] <- lapply(attr_tbl, as.character)
     factors <- NULL
     vars <- attr_tbl$attributeName[attr_tbl$columnClasses %in% c("ordered", "factor")]
     for(var in vars){
