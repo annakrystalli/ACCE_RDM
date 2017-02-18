@@ -353,14 +353,14 @@ head(messy)</code></pre>
 )
 head(messy, 8)</code></pre>
 <pre><code>##   id   spl.id counts
-## 1  1 1-centre      3
-## 2  1  1-outer      1
-## 3  1 2-centre      1
-## 4  1  2-outer      1
-## 5  1 3-centre      2
-## 6  1  3-outer      3
-## 7  2 1-centre      1
-## 8  2  1-outer      4</code></pre>
+## 1  1 1-centre      2
+## 2  1  1-outer      2
+## 3  1 2-centre      0
+## 4  1  2-outer      0
+## 5  1 3-centre      3
+## 6  1  3-outer      0
+## 7  2 1-centre      0
+## 8  2  1-outer      1</code></pre>
 </div>
 </div>
 <div id="clumped-data-1" class="section level2 smaller">
@@ -387,18 +387,18 @@ head(messy, 8)</code></pre>
 <h3>more than one variable in a single column</h3>
 <pre class="r"><code>separate(data = messy, into = c(&quot;bolus&quot;, &quot;location&quot;), col = spl.id, sep= &quot;\\-&quot;)</code></pre>
 <pre><code>##    id bolus location counts
-## 1   1     1   centre      3
-## 2   1     1    outer      1
-## 3   1     2   centre      1
-## 4   1     2    outer      1
-## 5   1     3   centre      2
-## 6   1     3    outer      3
-## 7   2     1   centre      1
-## 8   2     1    outer      4
-## 9   2     2   centre      2
-## 10  2     2    outer      3
-## 11  2     3   centre      1
-## 12  2     3    outer      1</code></pre>
+## 1   1     1   centre      2
+## 2   1     1    outer      2
+## 3   1     2   centre      0
+## 4   1     2    outer      0
+## 5   1     3   centre      3
+## 6   1     3    outer      0
+## 7   2     1   centre      0
+## 8   2     1    outer      1
+## 9   2     2   centre      3
+## 10  2     2    outer      4
+## 11  2     3   centre      3
+## 12  2     3    outer      2</code></pre>
 <p><br></p>
 </div>
 </div>
@@ -415,10 +415,10 @@ head(messy, 8)</code></pre>
 )
 head(messy, 8)</code></pre>
 <pre><code>##   id       trt   work.T1   home.T1   work.T2   home.T2
-## 1  1   control 0.0921296 0.2711348 0.3132851 0.7367240
-## 2  2 treatment 0.6126960 0.6997996 0.9807260 0.6505525
-## 3  3   control 0.2269636 0.2793719 0.3173783 0.7645863
-## 4  4 treatment 0.4800755 0.2331689 0.7678708 0.8893679</code></pre>
+## 1  1   control 0.1678865 0.7544656 0.7071680 0.9011954
+## 2  2 treatment 0.2306342 0.1632668 0.5714331 0.8882202
+## 3  3 treatment 0.4539539 0.5843090 0.3858390 0.8233155
+## 4  4   control 0.9662730 0.0466396 0.3738385 0.4913549</code></pre>
 </div>
 <div id="combination-of-messy-data-1" class="section level2 smaller">
 <h2>3 - Combination of messy data</h2>
@@ -426,14 +426,14 @@ head(messy, 8)</code></pre>
 <pre class="r"><code>tidier &lt;- gather(data = messy, key = key, value = time, -id, -trt)
 head(tidier, 8)</code></pre>
 <pre><code>##   id       trt     key      time
-## 1  1   control work.T1 0.0921296
-## 2  2 treatment work.T1 0.6126960
-## 3  3   control work.T1 0.2269636
-## 4  4 treatment work.T1 0.4800755
-## 5  1   control home.T1 0.2711348
-## 6  2 treatment home.T1 0.6997996
-## 7  3   control home.T1 0.2793719
-## 8  4 treatment home.T1 0.2331689</code></pre>
+## 1  1   control work.T1 0.1678865
+## 2  2 treatment work.T1 0.2306342
+## 3  3 treatment work.T1 0.4539539
+## 4  4   control work.T1 0.9662730
+## 5  1   control home.T1 0.7544656
+## 6  2 treatment home.T1 0.1632668
+## 7  3 treatment home.T1 0.5843090
+## 8  4   control home.T1 0.0466396</code></pre>
 </div>
 <div id="combination-of-messy-data-2" class="section level2 smaller">
 <h2>3 - Combination of messy data</h2>
@@ -442,14 +442,14 @@ head(tidier, 8)</code></pre>
 
 head(tidy, 8)</code></pre>
 <pre><code>##   id       trt location timepoint      time
-## 1  1   control     work        T1 0.0921296
-## 2  2 treatment     work        T1 0.6126960
-## 3  3   control     work        T1 0.2269636
-## 4  4 treatment     work        T1 0.4800755
-## 5  1   control     home        T1 0.2711348
-## 6  2 treatment     home        T1 0.6997996
-## 7  3   control     home        T1 0.2793719
-## 8  4 treatment     home        T1 0.2331689</code></pre>
+## 1  1   control     work        T1 0.1678865
+## 2  2 treatment     work        T1 0.2306342
+## 3  3 treatment     work        T1 0.4539539
+## 4  4   control     work        T1 0.9662730
+## 5  1   control     home        T1 0.7544656
+## 6  2 treatment     home        T1 0.1632668
+## 7  3 treatment     home        T1 0.5843090
+## 8  4   control     home        T1 0.0466396</code></pre>
 <p><br></p>
 <p><br></p>
 </div>
