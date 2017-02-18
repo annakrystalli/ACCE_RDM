@@ -4,7 +4,7 @@ author:
 date: 
 output: 
   html_document:
-    theme: sandstone
+    css: css/sandstone.min.css
 ---
 
 # **ACCE DTP Research Data management workshop**
@@ -56,4 +56,4 @@ In order to maximise the benefits of ACCE research to future researchers and to 
     - [**tidy exercise answers**](https://annakrystalli.github.io/ACCE_RDM/docs/exercises.html)
 - [**metadata**](https://annakrystalli.github.io/ACCE_RDM/docs/metadata.html)
 - [**open data**](https://annakrystalli.github.io/ACCE_RDM/docs/ROpenSci.html)
-- [**closing remarks**](https://annakrystalli.github.io/ACCE_RDM/docs/ROpenSci.html)
+- [**closing remarks**](https://annakrystalli.github.io/ACCE_RDM/docs/outro.html)

@@ -3,8 +3,6 @@ title: "Tidy data"
 author: "ACCE Data Management Course"
 date: "17 February 2017, University of York"
 output:
-  ioslides_presentation:
-    css: css/ioslides_default.css
   html_document:
     css: css/sandstone.min.css
     fig_width: 7
@@ -12,6 +10,8 @@ output:
     toc: yes
     toc_depth: 2
     toc_float: yes
+  ioslides_presentation:
+    css: css/ioslides_default.css
 ---
 
 ```{r, echo = F}

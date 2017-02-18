@@ -3,15 +3,16 @@ title: "Introduction"
 author: "ACCE Research Data Management Course"
 date: "17 February 2017, University of York"
 output:
-  ioslides_presentation:
-    css: css/ioslides_default.css
   html_document:
     css: css/sandstone.min.css
-    fig_width: 5.5
+    fig_width: 7
     self_contained: no
     toc: yes
     toc_depth: 2
     toc_float: yes
+  ioslides_presentation:
+    css: css/ioslides_default.css
+
 ---
 
 
@@ -203,13 +204,16 @@ if(names(rmarkdown::metadata$output)[1] == "ioslides_presentation"){
 <br>
 
 - openness
-- transaparency
+- transparency
 - aceessibility
 - reusability
 - collaboration
 
 <br>
 
+### #OpenScience
+
+<img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/Open_Science_-_Prinzipien.png" width=400px>
 <br>
 
 ## The grand vision
@@ -220,12 +224,7 @@ if(names(rmarkdown::metadata$output)[1] == "ioslides_presentation"){
 
 <p class="accent_border"><b>How to we get there?</p></b>
 
-<br>
 
-
-### #OpenScience
-
-<img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/Open_Science_-_Prinzipien.png" width=400px>
 
 <br>
 
@@ -240,7 +239,7 @@ if(names(rmarkdown::metadata$output)[1] == "ioslides_presentation"){
 <p class="accent_border"><b>critics say it's constraining, wasted time for which researchers won't be rewarded.</p></b>
 
 #### But this ignores:
-- the value of code and data to other researchers
+- the **value of code and data** to other researchers
 - the impact such research outputs can have
 - the technological capacity for producing these outputs through standard openly avalable tools.
 

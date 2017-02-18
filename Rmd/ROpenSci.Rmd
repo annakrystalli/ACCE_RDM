@@ -3,12 +3,13 @@ title: "Open Data through R"
 author: "ACCE Data Management Course"
 date: "17 February 2017"
 output:
-  ioslides_presentation:
-    css: css/ioslides_default.css
   html_document:
     css: css/sandstone.min.css
     fig_width: 7
     self_contained: yes
+  ioslides_presentation:
+    css: css/ioslides_default.css
+
 ---
 ```{r, echo = F}
 
@@ -220,10 +221,10 @@ occs_10s <- occurrence(scientificname = my_sp_taxo$valid_name, year = 2010:2015)
 occs_10s$time_p <- "2010 - 2015"
 
 occs_70s <- occurrence(scientificname = my_sp_taxo$valid_name, year = 1970:1975)
-occs_10s$time_p <- "1970 - 1975"
+occs_70s$time_p <- "1970 - 1975"
 
 # combine into a single data.frame
-occs_time <- rbind(occs_10s, occs_70s)
+occs_time <- bind_rows(occs_10s, occs_70s)
 occs_time$time_p <- factor(occs_time$time_p)
 ```
 
@@ -270,18 +271,7 @@ g <- ggplot(data = occs_time, aes(x = decimalLatitude)) +
 g
 ```
 
-```{r}
-cols <- unique(g$data[[1]]["fill"])
-```
 
-
-```{r}
-ggplot2::ggplot(data = occs_time, aes(x = decimalLatitude)) + 
-    geom_density(aes(group=time_p, colour=time_p, fill= time_p, alpha = 0.5)) +
-    geom_vline(xintercept = range(occs_70s$decimalLatitude), colour = "red") +
-    geom_vline(xintercept = range(occs_10s$decimalLatitude))
-
-```
 
 <br>
 
