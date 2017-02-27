@@ -204,8 +204,7 @@ if(names(rmarkdown::metadata$output)[1] == "ioslides_presentation"){
 <br>
 
 - openness
-- transparency
-- aceessibility
+- accessibility
 - reusability
 - collaboration
 
@@ -219,11 +218,6 @@ if(names(rmarkdown::metadata$output)[1] == "ioslides_presentation"){
 ## The grand vision
 
 > Hans Rosling on open data in 2006
-
-<iframe width="470" height="250" src="https://goo.gl/ry6AiG" frameborder="0" allowfullscreen></iframe>
-
-<p class="accent_border"><b>How to we get there?</p></b>
-
 
 
 <br>
@@ -239,11 +233,12 @@ if(names(rmarkdown::metadata$output)[1] == "ioslides_presentation"){
 <p class="accent_border"><b>critics say it's constraining, wasted time for which researchers won't be rewarded.</p></b>
 
 #### But this ignores:
+
 - the **value of code and data** to other researchers
 - the impact such research outputs can have
 - the technological capacity for producing these outputs through standard openly avalable tools.
 
-#### clealy a balance is needed
+#### clearly a balance is needed
 
 ### but higher standards are both [**possible and necessary**](https://lgatto.github.io/software-data-papers/)
 <p class="accent_border"><b>need incentivising</p></b>
@@ -580,14 +575,14 @@ read.csv(file, na.strings = c("NA", "-999"), strip.white = TRUE,
 - Check **empty cells**
 - Check the **range of values** (and value types) in each column matches expectation. Use `summary(df)`
 - Check **units of measurement**
-- Check your **software interprets your data correctly** eg. for a data frame `df``;
+- Check your **software interprets your data correctly** eg. for a data frame `df`;
     - `head(df)` will show you  and str(df) are useful)
 
 <br>
 
 ## make your data alignable and generalisable
 
-What information would other users require to combine their your data with their's?
+What information would other users require to combine your data with theirs?
 
 - time `temporal (time of day, day, month, year, season)`
 - space `geography (lat, lon)`
@@ -665,7 +660,9 @@ What information would other users require to combine their your data with their
 
 <br>
 
-## avoid catastrophy
+## avoid catastrophe
+
+<br>
 
 ### Backup on disk
 
@@ -686,7 +683,7 @@ What information would other users require to combine their your data with their
 ## The Open Science Framework [osf.io](https://osf.io/)
 
 - version controlled
-- easily shareble
+- easily shareable
 - works with other apps
 - work on an interface with R ([OSFr](https://github.com/chartgerink/osfr)) is in progress. See more [here](https://youtu.be/cnE3AcdeGVY)
 
