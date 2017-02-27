@@ -2,12 +2,19 @@
 title: "Introduction"
 author: "ACCE Research Data Management Course"
 date: "17 February 2017, University of York"
-output: 
-    ioslides_presentation:
-      css: css/ioslides_default.css
-    html_notebook:
-        css: css/ioslides_default.css
+output:
+  html_document:
+    css: css/sandstone.min.css
+    fig_width: 7
+    self_contained: no
+    toc: yes
+    toc_depth: 2
+    toc_float: yes
+  ioslides_presentation:
+    css: css/ioslides_default.css
+
 ---
+
 
 <script>window.twttr = (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0],
@@ -26,28 +33,83 @@ output:
   return t;
 }(document, "script", "twitter-wjs"));</script>
 
+```{r, echo = F}
 
-## me | Macroecologist
+if(names(rmarkdown::metadata$output)[1] == "html_document"){
+    hash <- "#"}
+if(names(rmarkdown::metadata$output)[1] == "ioslides_presentation"){
+    hash <- ""}
+```
+
+<br>
+
+## me {.columns-2}
+
+#### **Anna Krystalli**
+
+### Marine Ecology
 
 
-<div class="fullback" background-image:"assets/img/qa.png">
-</div>
+<img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/map.png" width="350px">
 
 
-## 
+<br>
+
+### Macroecology 
+
+<img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/aor.png" width="350px">
+
+##
+
+### Open Data Science
+
+<img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/net.png" width="580px">
+
+#### [\@annakrystalli](https://twitter.com/annakrystalli) | annakrystalli@googlemail.com
+
+<br>
+
+##
+
 ### Quality assurance
 
-<img src="assets/img/qa.png" height=400px>
+<img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/qa.png" height=400px>
 
 ## 
 
 ### Stock control
 
-<img src="assets/img/stock.png" height=400px>
+<img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/stock.png" height=400px>
 
-# workshop motivation
+<br>
 
-> why Research Data Management?
+## worshop outline
+
+<br>
+
+- #### Introduction
+
+- #### Tidy Data
+
+- #### Metadata
+
+- #### Open Data
+
+- #### Closing Remarks
+
+<br>
+
+- ### handouts: http://bit.ly/ACCE_2017
+
+<br>
+
+<br>
+
+#`r hash` workshop motivation
+
+> ### why Research Data Management?
+
+<br>
 
 
 ## Technological progress in Science
@@ -67,24 +129,28 @@ output:
 - active open source communities developing data science tools
 - built on a foundation of key digital literacy skills
 
+<br>
+
 ## the internet
 
-<img src="assets/img/www.jpg" width=550px>
+<img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/www.jpg" width=550px>
 
+<br>
 
-## Information overload
+## the reality
 
-- one
-- two
+### Information overload
 
-<img src="assets/img/debugging.gif" width=550px>
+<img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/debugging.gif" width=550px>
 
 ## replicability crisis
 
 > attempts to reproduce published results of many scientific experiments are difficult or impossible to replicate on subsequent investigation, either by independent researchers or by the original researchers themselves.
 
-<img src="assets/img/repro_workflow copy.png" width=400px>
+<img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/repro_workflow copy.png" width=400px>
 
+
+<br>
 
 ##
 
@@ -95,16 +161,20 @@ output:
 
 - convergence of a number of drivers.
     - some part of the scientific process
-    - some statistical resulting of biases introduced by publication system:
+    - some statistical resulting of [biases introduced by publication system](https://academic.oup.com/bioscience/article/2900173/Metaresearch-for-Evaluating-Reproducibility-in?searchresult=1):
     - some by methodological failures and errors.
         - some very low hanging fruit here
     
 <p class="accent_border"><b>at the very least we need to aim towards **reproducing result from code and data**</b></p> 
 
+<br>
+
 ## the pitfalls of #OtherPeoplesData
 
 <iframe width="500" height="250" src="https://www.youtube.com/embed/N2zK3sAtr-4" frameborder="0" allowfullscreen></iframe>
 
+
+<br>
 
 ## culture wars
 
@@ -114,44 +184,66 @@ output:
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">&quot;It&#39;s on github. It&#39;s documented. It&#39;s tested. No need to ask permission, just...take it away and let me know if you run into any problems.&quot; <a href="https://t.co/gZFWQ2ROQG">https://t.co/gZFWQ2ROQG</a></p>&mdash; Titus Brown (@ctitusbrown) <a href="https://twitter.com/ctitusbrown/status/821784991608643584">January 18, 2017</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+<br>
+
 
 ## the core of reproducibility
 
-<img src="assets/img/repro_workflow.png" width=400px>
+<img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/repro_workflow.png" width=400px>
 
 - provide access to code and data.
 - allows us to check section `raw` ➙ **published results**
 
 
-## more broader open sciences
+<br>
 
-focus on reproducibility underpinned by more fundamental qualities:
+## broader open science
+
+#### focus on reproducibility underpinned by more fundamental qualities:
+
+<br>
 
 - openness
-- transparency
 - accessibility
 - reusability
 - collaboration
 
-
+<br>
 
 ### #OpenScience
 
-<img src="assets/img/Open_Science_-_Prinzipien.png" width=400px>
+<img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/Open_Science_-_Prinzipien.png" width=400px>
+<br>
+
+## The grand vision
+
+> Hans Rosling on open data in 2006
 
 
-## stifling science?
+<br>
+
+## Vienna Principles
+
+<iframe src="http://viennaprinciples.org/#quality" width="397" height="500" frameborder="0"></iframe>
+
+<br>
+
+## stiffling the process?
 
 <p class="accent_border"><b>critics say it's constraining, wasted time for which researchers won't be rewarded.</p></b>
 
 #### But this ignores:
-- the value of code and data to other researchers
+
+- the **value of code and data** to other researchers
 - the impact such research outputs can have
 - the technological capacity for producing these outputs through standard openly avalable tools.
 
 #### clearly a balance is needed
 
-### but so higher standards are both possible and imperative
+### but higher standards are both [**possible and necessary**](https://lgatto.github.io/software-data-papers/)
+<p class="accent_border"><b>need incentivising</p></b>
+
+<br>
 
 
 ## A more collaborative approach.
@@ -171,6 +263,10 @@ origins in open source software communities. see [SCIENCE X PYTHON](http://billm
 - capacity building
 - quality control
 
+#### extra refs: [1](https://elifesciences.org/content/5/e16800) [2](https://peerj.com/preprints/2711/) [3](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4957270/)
+
+<br>
+
 ## Drivers of better data management
 
 - Funders: value for money, impact, reputation
@@ -185,7 +281,12 @@ origins in open source software communities. see [SCIENCE X PYTHON](http://billm
 
 > aim to create secure datasets that are easy to use and REUSE
 
-# so...where do you come in?
+
+<br>
+
+<br>
+
+#`r hash` meta - responsibilities
 
 ## RDM at postgraduate level 
 
@@ -195,6 +296,8 @@ origins in open source software communities. see [SCIENCE X PYTHON](http://billm
 
 <blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr">Act as though every short term study will become a long term one <a href="https://twitter.com/tomjwebb">@tomjwebb</a>. Needs to be reproducible in 3, 20, 100 yrs</p>&mdash; oceans initiative (@oceansresearch) <a href="https://twitter.com/oceansresearch/status/556107891610894337">January 16, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<br>
 
 ## Plan your RDM {data-background="https://raw.githubusercontent.com/BillMills/scienceXpython/gh-pages/img/debugging.gif"}
 
@@ -207,13 +310,16 @@ origins in open source software communities. see [SCIENCE X PYTHON](http://billm
 
 <br>
 
-<img src="assets/img/Coleman.png">
+<img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/Coleman.png">
+
+<br>
+<br>
 
 ## {.columns-2}
 
-#### BES guide to data management
+### BES guide to data management
 
-<img src="assets/img/BES.png" height=500px>
+<img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/BES.png" height=500px>
 
 <br>
 
@@ -223,39 +329,51 @@ This guide for early career researchers explains what data and data management a
 
 #### [download](http://www.britishecologicalsociety.org/wp-content/uploads/Publ_Data-Management-Booklet.pdf)
 
+<br>
+<br>
+
 ##
 
-#### Nine simple ways to make it easier to (re)use your data
+### Nine simple ways to make it easier to (re)use your data
 
 <br>
 
 We describe nine simple ways to make it easy to reuse the data that you share and also make it easier to work with it yourself. Our recommendations focus on making your data understandable, easy to analyze, and readily available to the wider community of scientists.
 
 <br>
+<br>
 
-<img src="assets/img/ethan.png" height=200px>
+<img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/ethan.png" height=200px>
 
 
 
 #### [download](http://ojs.library.queensu.ca/index.php/IEE/article/view/4608/4898)
 
-##
-
-#### [storify](https://storify.com/tomjwebb/advice-on-research-data-management) by Tom Webb [\@tomjwebb](https://twitter.com/tomjwebb)
-
 <br>
-
-<img src="assets/img/storify.png" height=300px>
+<br>
 
 
 ##
 
-#### [blog post](https://dynamicecology.wordpress.com/2016/08/22/ten-commandments-for-good-data-management/) by Dynamic ecology [\@DynamicEcology](https://twitter.com/DynamicEcology)
+### [storify](https://storify.com/tomjwebb/advice-on-research-data-management) by Tom Webb [\@tomjwebb](https://twitter.com/tomjwebb)
 
 <br>
 
-<img src="assets/img/vulpes.png" height=300px>
+<img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/storify.png" height=300px>
 
+<br>
+<br>
+
+##
+
+### [blog post](https://dynamicecology.wordpress.com/2016/08/22/ten-commandments-for-good-data-management/) by Dynamic ecology [\@DynamicEcology](https://twitter.com/DynamicEcology)
+
+<br>
+
+<img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/vulpes.png" height=300px>
+
+<br>
+<br>
 
 ##
 
@@ -266,8 +384,10 @@ We describe nine simple ways to make it easy to reuse the data that you share an
 
 
 
-<img src="assets/img/data_carpentry.png" height="350">
+<img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/data_carpentry.png" height="350">
 
+<br>
+<br>
 
 ## 
 
@@ -278,8 +398,10 @@ Most university libraries have assistants dedicated to RDM:
 <blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/tomjwebb">@tomjwebb</a> <a href="https://twitter.com/ScientificData">@ScientificData</a> Talk to their librarian for data management strategies <a href="https://twitter.com/hashtag/datainfolit?src=hash">#datainfolit</a></p>&mdash; Yasmeen Shorish (@yasmeen_azadi) <a href="https://twitter.com/yasmeen_azadi/status/556129700129800192">January 16, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+<br>
+<br>
 
-# Data collection 
+#`r hash` Data collection 
 
 ## Before collection
 - if you're going to record data manually, produce data entry sheets or tables. Design them with both ease of entry and digitisation in mind.
@@ -293,6 +415,8 @@ Most university libraries have assistants dedicated to RDM:
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
+<br>
+
 ## record...everything! 
 
 #### Even details that seem insignificant may prove vital to your research, or to interoperability with others' work:
@@ -300,6 +424,8 @@ Most university libraries have assistants dedicated to RDM:
 <blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/tomjwebb">@tomjwebb</a> record every detail about how/where/why it is collected</p>&mdash; Sal Keith (@Sal_Keith) <a href="https://twitter.com/Sal_Keith/status/556110605053349888">January 16, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+
+<br>
 
 ## Data entering
 
@@ -316,10 +442,14 @@ Most university libraries have assistants dedicated to RDM:
 <blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/jaimedash">@jaimedash</a> just don’t let excel anywhere near dates or times.  <a href="https://twitter.com/tomjwebb">@tomjwebb</a> <a href="https://twitter.com/tpoi">@tpoi</a> <a href="https://twitter.com/larysar">@larysar</a></p>&mdash; Dave Harris (@davidjayharris) <a href="https://twitter.com/davidjayharris/status/556126474550263809">January 16, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+<br>
+
 ## spreadsheet advice 
 
 <blockquote class="twitter-tweet" data-cards="hidden" data-lang="en"><p lang="en" dir="ltr">God bless the UK Gov’t Statistical Service Good Practice Team. Sane spreadsheet advice. <a href="https://t.co/MLQMvnBzkV">https://t.co/MLQMvnBzkV</a> <a href="http://t.co/OD7GzfVKLW">pic.twitter.com/OD7GzfVKLW</a></p>&mdash; Jenny Bryan (@JennyBryan) <a href="https://twitter.com/JennyBryan/status/538013071826898944">November 27, 2014</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<br>
 
 ## databases: more robust
 
@@ -349,6 +479,8 @@ Most university libraries have assistants dedicated to RDM:
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
+<br>
+
 ## data formats
 
 - csv files most common
@@ -360,30 +492,34 @@ Most university libraries have assistants dedicated to RDM:
 
 - more unusual formats will need instruction on use.
 
+<br>
+
 ## ensure data is machine readable
 
 ### bad
 
-<img src="assets/img/bad_xl1.png" width=600px>
+<img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/bad_xl1.png" width=600px>
 
 ##
 
 ### bad
-<img src="assets/img/bad_xl2.png" width=600px>
+<img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/bad_xl2.png" width=600px>
 
 ##
 
 ### good 
-<img src="assets/img/good_xl.png" width=600px>
+<img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/good_xl.png" width=600px>
 
 ##
 
 ### ok
 
-<img src="assets/img/ok_xl.png" width=600px>
+<img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/ok_xl.png" width=600px>
 
 - could help data entry
 - `.csv` copy would need to be saved.
+
+<br>
 
 ## file naming
 
@@ -400,6 +536,8 @@ df <- read.csv(paste("variable_", res, month, sep ="_"))
 ```
 
 
+<br>
+
 
 ## Use good null values
 
@@ -410,6 +548,8 @@ df <- read.csv(paste("variable_", res, month, sep ="_"))
 - **NEVER use `0`**. Avoid numbers like **`-999`**
 - Don’t make up your own code for missing values
 
+
+<br>
 
 ## [**`read.csv()`**](http://stat.ethz.ch/R-manual/R-devel/library/utils/html/read.table.html) utilities
 
@@ -422,6 +562,8 @@ df <- read.csv(paste("variable_", res, month, sep ="_"))
 read.csv(file, na.strings = c("NA", "-999"), strip.white = TRUE, 
          blank.lines.skip = TRUE, fileEncoding = "mac")
 ```
+
+<br>
 
 ## basic quality control
 
@@ -436,6 +578,8 @@ read.csv(file, na.strings = c("NA", "-999"), strip.white = TRUE,
 - Check your **software interprets your data correctly** eg. for a data frame `df`;
     - `head(df)` will show you  and str(df) are useful)
 
+<br>
+
 ## make your data alignable and generalisable
 
 What information would other users require to combine your data with theirs?
@@ -446,7 +590,11 @@ What information would other users require to combine your data with theirs?
 - provide information on **extent** and **resolution**
 - consider writing some **simple QA tests** (eg. checks against *number of dimensions*, *sum of numeric columns* etc)
 
-# data management
+<br>
+
+<br>
+
+#`r hash` data management
 
 ## raw data are sacrosanct
 
@@ -455,6 +603,8 @@ What information would other users require to combine your data with theirs?
 
 <blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/tomjwebb">@tomjwebb</a> <a href="https://twitter.com/srsupp">@srsupp</a> Keep one or a few good master data files (per data collection of interest), and code your formatting with good annotation.</p>&mdash; Desiree Narango (@DLNarango) <a href="https://twitter.com/DLNarango/status/556128407445323778">January 16, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<br>
 
 ## from raw to analytical data
 
@@ -469,9 +619,33 @@ What information would other users require to combine your data with theirs?
 - Ideally, incorporate checks to ensure correct processing of data through to analytical.
 - Clearly document any processing.
     - Well-commented script-based manipulation (e.g. in R) makes this easy
-    
+  
+<br>
+  
+## Croucher's Law
 
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Ran out of <a href="https://twitter.com/hashtag/JupyterICMS?src=hash">#JupyterICMS</a> looking for my wallet. Hotel and back. Started to panic. I had left it by presentation machine! <a href="https://twitter.com/hashtag/CrouchersLaw?src=hash">#CrouchersLaw</a> <a href="https://t.co/GFLnZrdfkX">pic.twitter.com/GFLnZrdfkX</a></p>&mdash; Mike Croucher (@walkingrandomly) <a href="https://twitter.com/walkingrandomly/status/820970653302013952">January 16, 2017</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+<br>
+
+## automated = reproducible
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/s3JldKoA0zw" frameborder="0" allowfullscreen></iframe>
+
+<br>
+
+## use R projects
+
+### Keep your work [tidy and self-contained](https://nicercode.github.io/blog/2013-04-05-projects/)
+
+<img src="https://image.slidesharecdn.com/20150422reproresr8-160404131652/95/reproducible-research-in-r-and-r-studio-21-638.jpg?cb=1459775831" height="150">
+
+#### use sensible / standardised file system structure
+
+<img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/proj_str.png" height="150">
+
+<br>
 
 ## Know your masters
 
@@ -484,7 +658,12 @@ What information would other users require to combine your data with theirs?
 
 <img src="http://www.revit-lebanon.com/images/Revit_A_3/Adv-12.jpg" width=300px>
 
+<br>
+
 ## avoid catastrophe
+
+<br>
+
 ### Backup on disk
 
 - consider using backup software like [Time Machine](https://support.apple.com/en-gb/HT201250) (mac) or [File History](http://www.thundercloud.net/infoave/new/windows-10-has-a-time-machine/) (Windows 10)
@@ -499,20 +678,34 @@ What information would other users require to combine your data with theirs?
 <blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/tomjwebb">@tomjwebb</a> Back it up</p>&mdash; Ben Bond-Lamberty (@BenBondLamberty) <a href="https://twitter.com/BenBondLamberty/status/556120946722222080">January 16, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-
-
-
+<br>
 
 ## The Open Science Framework [osf.io](https://osf.io/)
-
-<iframe width="450" height="315" src="https://www.youtube.com/embed/2TV21gOzfhw" frameborder="0" allowfullscreen></iframe>
 
 - version controlled
 - easily shareable
 - works with other apps
-- work on an interface with R ([OSFr](https://github.com/chartgerink/osfr)) is in progress
+- work on an interface with R ([OSFr](https://github.com/chartgerink/osfr)) is in progress. See more [here](https://youtu.be/cnE3AcdeGVY)
+
+<br>
+
+## OSF intro
 
 
+<iframe width="450" height="250" src="https://www.youtube.com/embed/2TV21gOzfhw" frameborder="0" allowfullscreen></iframe>
 
+
+## next
+
+```{r, echo = F}
+
+if(names(rmarkdown::metadata$output)[1] == "html_document"){
+    url <- "https://annakrystalli.github.io/ACCE_RDM/docs/tidy_data.html"}
+if(names(rmarkdown::metadata$output)[1] == "ioslides_presentation"){
+    url <- "file:///Users/Anna/Documents/workflows/ACCE_RDM/Rmd/tidy_data.html"}
+```
+
+
+### [tidy data](`r url`)
 
 

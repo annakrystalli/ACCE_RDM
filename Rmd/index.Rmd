@@ -1,0 +1,59 @@
+---
+title: 
+author: 
+date: 
+output: 
+  html_document:
+    css: css/sandstone.min.css
+---
+
+# **ACCE DTP Research Data management workshop**
+
+### **17 February, 2017**
+
+#### **University of York**
+
+<br>
+
+Facilitator: **Anna Krystalli (<annakrystalli@googlemail.com>)**
+
+***
+
+
+### Introduction
+
+
+In order to maximise the benefits of ACCE research to future researchers and to society more generally, the data generated must be adequately described, archived, and made discoverable. Existing NERC data centres facilitate this, but prompt delivery of data in the optimal format for sharing and reuse is hindered by lack of awareness among PIs and students, and lack of adequate tools for easily turning individual datasets into sharable resources. This course will introduce students to best practice in research data management, including tips and tools that help to make data more useful. This is of direct benefit to the students themselves, as properly formatted, well-documented data make revising and reproducing previous analyses (an inevitable part of publishing research) a simple process. It also makes it easier to share data with other users, including researchers and stakeholders, and to combine individual datasets to provide new insights into our changing environment. The workshop is designed to be relevant to students with a wide range of backgrounds, working with anything from relatively small sets of data collected from field or experimental observations, to those taking a more computational approach and harnessing the power of big data. It also builds on the Quantitative Skills Workshop by focusing on data management through R.
+
+<br>
+
+### Programme
+
+##### Location: Biology A004
+
+| Time          | Session                                                       |
+|---------------|---------------------------------------------------------------|
+| 09:00 – 09:30 | Feedback on Quantitative Skills Workshop                      |
+| 09:30 – 10:00 | Introduction: Why make the effort to manage data effectively? |
+| 10:00 – 10:30 | Tea/Coffee                                                    |
+| 10:30 – 12:00 | Session 1: Principles of tidy data                            |
+| 12:30 – 13:00 | Lunch                                                         |
+| 13:00 – 15:00 | Session 2: Principles of data documentation                   |
+| 15:00 – 15:30 | Tea/Coffee                                                    |
+| 15:30 – 17:00 | Session 3: Principles of open data                            |
+
+
+<br>
+
+***
+
+### Resources
+
+#### Handouts
+
+- [**introduction**](https://annakrystalli.github.io/ACCE_RDM/docs/RDM_intro.html)
+- [**tidy data**](https://annakrystalli.github.io/ACCE_RDM/docs/tidy_data.html)
+    - [**tidy exercise answers**](https://annakrystalli.github.io/ACCE_RDM/docs/exercises.html)
+- [**metadata**](https://annakrystalli.github.io/ACCE_RDM/docs/metadata.html)
+- [**open data**](https://annakrystalli.github.io/ACCE_RDM/docs/ROpenSci.html)
+- [**closing remarks**](https://annakrystalli.github.io/ACCE_RDM/docs/outro.html)

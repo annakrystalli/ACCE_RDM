@@ -1,0 +1,170 @@
+---
+title: "Closing Remarks"
+author: "ACCE Research Data Management Course"
+date: "17 February 2017, University of York"
+output:
+  html_document:
+    css: css/sandstone.min.css
+    fig_width: 7
+    self_contained: no
+    # theme: journal
+    toc: yes
+    toc_depth: 2
+    toc_float: yes
+  ioslides_presentation:
+    css: css/ioslides_default.css
+---
+
+
+<script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));</script>
+
+
+
+<br>
+
+## take ownership
+
+<br>
+
+
+- #### Try to think ahead about where the pitfalls lie.
+
+- #### Iterate on your process.
+
+- #### What works? What makes using data easy, what makes it painful?
+
+- #### What simple steps are most helpful?
+    - standard taxonomies
+    - controlled vocabularies
+    - tidy data
+    - simple format
+    - etc. etc.
+
+<br>
+
+## take aways
+
+- #### prepare it to share it
+- #### I am an idiot
+- #### human readable code and machine readable data
+- #### better in the open
+
+<br>
+
+> #### make yourself the [most expendable member](http://www.datacarpentry.org/blog/soft-skills/) of you team!
+
+## what we haven't covered
+
+> ### How data intensive is your work likely going to be? You might want to work on programming and version control
+
+<br>
+
+## coding and version control {.columns-2}
+
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/tomjwebb">@tomjwebb</a> agree very much with <a href="https://twitter.com/ucfagls">@ucfagls</a>. Early investment in programming skills pays off in the future in terms of speed &amp; reproducibility.</p>&mdash; Susan Johnston (@SuseJohnston) <a href="https://twitter.com/SuseJohnston/status/556110171483947008">January 16, 2015</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/SuseJohnston">@SuseJohnston</a> +1 if I had a second top point to get across, learn version control so that  all your changes are tracked/documented <a href="https://twitter.com/tomjwebb">@tomjwebb</a></p>&mdash; Gavin Simpson (@ucfagls) <a href="https://twitter.com/ucfagls/status/556110567694295040">January 16, 2015</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<br>
+<br>
+<br>
+<br>
+
+#### [software carpentry](https://software-carpentry.org/)
+
+![](https://d21ii91i3y6o6h.cloudfront.net/gallery_images/from_proof/3802/large/1421543874/software-carpentry.png)
+
+#### [mozilla study groups](https://science.mozilla.org/programs/studygroups/runso)
+
+<img src="https://bolarampaul.files.wordpress.com/2015/07/f21c4-mozilla-science-lab-logo.png" width="180pm">
+
+<br>
+
+- [Version control tutorial](https://annakrystalli.github.io/UNAM/collab_gh_intro.nb.html)
+
+<br>
+
+
+
+## literate programming
+
+#### Learn `rmarkdown`!
+- [tutorial](https://annakrystalli.github.io/UNAM/rmarkdown.nb.html)
+
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/tomjwebb">@tomjwebb</a> keep the code with the data (try knitr) <a href="http://t.co/HCU3sHPy9l">http://t.co/HCU3sHPy9l</a> <a href="https://twitter.com/hashtag/rstats?src=hash">#rstats</a></p>&mdash; Mango Solutions (@MangoTheCat) <a href="https://twitter.com/MangoTheCat/status/556112808505769984">January 16, 2015</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/MangoTheCat">@MangoTheCat</a> <a href="https://twitter.com/tomjwebb">@tomjwebb</a> Agree - knitr is amazing, and just one step away from using Sweave, LaTeX etc. Has changed my whole workflow.</p>&mdash; Susan Johnston (@SuseJohnston) <a href="https://twitter.com/SuseJohnston/status/556113517636767744">January 16, 2015</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<br>
+
+## go further
+
+- #### [An Introduction to Reproducible Research in R and R Studio.](https://susanejohnston.wordpress.com/category/reproducible-research/)
+
+<br>
+
+- #### Research data management (RDM) open training materials on [Zenodo](https://zenodo.org/communities/dcc-rdm-training-materials/?page=1&size=20)
+
+<br>
+
+- #### Coursera Reproducible Research [MOOC](https://www.coursera.org/learn/reproducible-research)
+
+<br>
+
+## seek opportunities
+
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Take a look at this <a href="https://twitter.com/hashtag/OpenScience?src=hash">#OpenScience</a> training program <a href="https://t.co/pDiKslMOfJ">https://t.co/pDiKslMOfJ</a> offered by <a href="https://twitter.com/nceas">@nceas</a> <a href="https://twitter.com/DataONEorg">@DataONEorg</a> <a href="https://twitter.com/datacarpentry">@datacarpentry</a> apply by 17 Feb</p>&mdash; David Mellor (@EvoMellor) <a href="https://twitter.com/EvoMellor/status/824664248219529216">January 26, 2017</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<blockquote class="twitter-tweet" data-cards="hidden" data-lang="en"><p lang="en" dir="ltr">Join our next Working Open Workshop and <a href="https://twitter.com/MozOpenLeaders">@MozOpenLeaders</a> training in Montreal (March 2017) <a href="https://twitter.com/hashtag/mozwow?src=hash">#mozwow</a>! <a href="https://t.co/ky8oAUu7VM">https://t.co/ky8oAUu7VM</a> <a href="https://t.co/j3Yl8N9zci">pic.twitter.com/j3Yl8N9zci</a></p>&mdash; Mozilla Science Lab (@MozillaScience) <a href="https://twitter.com/MozillaScience/status/829039146828050432">February 7, 2017</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<br>
+
+## seek support
+
+<br>
+
+- #### Your supervisor / research group /ACCE peers
+- #### Institutional Research Data Management Teams
+    - http://www.york.ac.uk/rdm
+    - https://www.sheffield.ac.uk/library/rdm
+    - http://www.liv.ac.uk/research-data-management/
+- #### NERC data centres (BODC Liverpool, EIDC CEH)
+- #### ROpenSci, Data Carpentry, Figshare, DMPTool...
+
+<br>
+
+## have fun
+
+<br>
+
+> ### keep learning, get creative!
+
+<br>
+
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/tomjwebb">@tomjwebb</a> Use it and share it.</p>&mdash; John Kennedy (@micefearboggis) <a href="https://twitter.com/micefearboggis/status/556108057479225344">January 16, 2015</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+#### have your say! please complete [survey](https://goo.gl/forms/VEzonI5I4X08VCND3)
