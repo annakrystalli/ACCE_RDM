@@ -228,7 +228,7 @@ if(names(rmarkdown::metadata$output)[1] == "ioslides_presentation"){
 
 ## Vienna Principles
 
-<iframe src="http://viennaprinciples.org/#quality" width="397" height="500" frameborder="0"></iframe>
+<iframe src="http://viennaprinciples.org/" width="397" height="500" frameborder="0"></iframe>
 
 <br>
 
@@ -305,7 +305,8 @@ origins in open source software communities. see [SCIENCE X PYTHON](http://billm
 
 ## Plan your RDM {data-background="https://raw.githubusercontent.com/BillMills/scienceXpython/gh-pages/img/debugging.gif"}
 
-- **Start early**. Make an RMD plan before collecting data.
+- **Start early**. Make an RDM plan before collecting data.
+    - [**RDM checklist**](http://www.dcc.ac.uk/sites/default/files/documents/resource/DMP/DMP_Checklist_2013.pdf)
 
 - Anticipate **data products** as part of your thesis **outputs**
 - Think about what technologies to use
