@@ -83,7 +83,7 @@ if(names(rmarkdown::metadata$output)[1] == "ioslides_presentation"){
 
 <br>
 
-## worshop outline
+## workshop outline
 
 <br>
 
@@ -137,7 +137,7 @@ if(names(rmarkdown::metadata$output)[1] == "ioslides_presentation"){
 
 <br>
 
-## the reality
+## reality
 
 ### Information overload
 
@@ -219,8 +219,12 @@ if(names(rmarkdown::metadata$output)[1] == "ioslides_presentation"){
 
 > Hans Rosling on open data in 2006
 
+<iframe width="470" height="250" src="https://goo.gl/ry6AiG" frameborder="0" allowfullscreen></iframe>
+
+<p class="accent_border"><b>How do we get there?</p></b>
 
 <br>
+
 
 ## Vienna Principles
 
@@ -575,8 +579,9 @@ read.csv(file, na.strings = c("NA", "-999"), strip.white = TRUE,
 - Check **empty cells**
 - Check the **range of values** (and value types) in each column matches expectation. Use `summary(df)`
 - Check **units of measurement**
-- Check your **software interprets your data correctly** eg. for a data frame `df`;
-    - `head(df)` will show you  and str(df) are useful)
+- Check your **software interprets your data correctly** eg.   
+    for a data frame `df`;
+    - `head(df)` (see top few rows) and `str(df)` (see object structure) are useful.
 
 <br>
 
