@@ -434,7 +434,7 @@ Most university libraries have assistants dedicated to RDM:
 
 ## Data entering
 
-### an extreme but in many ways defendable approach
+### extreme but in many ways defendable
 
 <blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/tomjwebb">@tomjwebb</a> stay away from excel at all costs?</p>&mdash; Timothée Poisot (@tpoi) <a href="https://twitter.com/tpoi/status/556107000950829056">January 16, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
