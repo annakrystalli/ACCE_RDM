@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>License</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">ACCE_RDM</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/jdblischak/workflowr">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">License</h1>
+
+</div>
+
+
+<p><strong>Last updated:</strong> 2018-04-18</p>
+<strong>workflowr checks:</strong> <small>(Click a bullet for more information)</small>
+<ul>
+<li>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>R Markdown file:</strong> up-to-date </summary></p>
+<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+</details>
+</li>
+<li>
+<p><details> <summary> <strong style="color:blue;">✔</strong> <strong>Repository version:</strong> <a href="https://github.com/annakrystalli/ACCE_RDM/tree/b547e2a511df96b5a90ad7c71ad741519c74ffbb" target="_blank">b547e2a</a> </summary></p>
+Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+<pre><code>
+Ignored files:
+    Ignored:    .RData
+    Ignored:    .Rhistory
+    Ignored:    .Rproj.user/
+    Ignored:    inputs/
+    Ignored:    outputs/
+
+Untracked files:
+    Untracked:  .DS_Store
+    Untracked:  R/.DS_Store
+    Untracked:  analysis/setup.Rmd
+    Untracked:  docs/.DS_Store
+    Untracked:  example/.DS_Store
+    Untracked:  setup
+    Untracked:  v01/
+
+Unstaged changes:
+    Modified:   R/Data Create.R
+    Deleted:    Rmd/RDM_intro.Rmd
+    Deleted:    Rmd/ROpenSci.Rmd
+    Deleted:    Rmd/R_markdown.Rmd
+    Deleted:    Rmd/TidyR Exercise.Rmd
+    Deleted:    Rmd/TidyR full - Handout.Rmd
+    Deleted:    Rmd/assets/img/ResearchDataMechanics_Poster.pdf
+    Deleted:    Rmd/assets/img/debugging.gif
+    Deleted:    Rmd/assets/img/www.jpg
+    Deleted:    Rmd/css/fonts/Lato.ttf
+    Deleted:    Rmd/css/fonts/LatoBold.ttf
+    Deleted:    Rmd/css/fonts/LatoItalic.ttf
+    Deleted:    Rmd/css/fonts/NewsCycle.ttf
+    Deleted:    Rmd/css/fonts/NewsCycleBold.ttf
+    Deleted:    Rmd/css/fonts/OpenSans.ttf
+    Deleted:    Rmd/css/fonts/OpenSansBold.ttf
+    Deleted:    Rmd/css/fonts/OpenSansBoldItalic.ttf
+    Deleted:    Rmd/css/fonts/OpenSansItalic.ttf
+    Deleted:    Rmd/css/fonts/OpenSansLight.ttf
+    Deleted:    Rmd/css/fonts/OpenSansLightItalic.ttf
+    Deleted:    Rmd/css/fonts/Raleway.ttf
+    Deleted:    Rmd/css/fonts/RalewayBold.ttf
+    Deleted:    Rmd/css/fonts/Roboto.ttf
+    Deleted:    Rmd/css/fonts/RobotoBold.ttf
+    Deleted:    Rmd/css/fonts/RobotoLight.ttf
+    Deleted:    Rmd/css/fonts/RobotoMedium.ttf
+    Deleted:    Rmd/css/fonts/SourceSansPro.ttf
+    Deleted:    Rmd/css/fonts/SourceSansProBold.ttf
+    Deleted:    Rmd/css/fonts/SourceSansProItalic.ttf
+    Deleted:    Rmd/css/fonts/SourceSansProLight.ttf
+    Deleted:    Rmd/css/fonts/Ubuntu.ttf
+    Deleted:    Rmd/css/fonts/glyphicons-halflings-regular.eot
+    Deleted:    Rmd/css/fonts/glyphicons-halflings-regular.svg
+    Deleted:    Rmd/css/fonts/glyphicons-halflings-regular.ttf
+    Deleted:    Rmd/css/fonts/glyphicons-halflings-regular.woff
+    Deleted:    Rmd/css/fonts/glyphicons-halflings-regular.woff2
+    Deleted:    Rmd/css/ioslides_default.css
+    Deleted:    Rmd/css/sandstone.min.css
+    Deleted:    Rmd/exercises.Rmd
+    Deleted:    Rmd/index.Rmd
+    Deleted:    Rmd/metadata.Rmd
+    Deleted:    Rmd/outro.Rmd
+    Deleted:    Rmd/rEML handout.Rmd
+    Deleted:    Rmd/render.R
+    Deleted:    Rmd/tidy_data.Rmd
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/bootstrap-theme.css
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/bootstrap-theme.css.map
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/bootstrap-theme.min.css
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/bootstrap.css
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/bootstrap.css.map
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/bootstrap.min.css
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/cerulean.min.css
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/cosmo.min.css
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/flatly.min.css
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/fonts/Lato.ttf
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/fonts/LatoBold.ttf
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/fonts/LatoItalic.ttf
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/fonts/NewsCycle.ttf
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/fonts/NewsCycleBold.ttf
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/fonts/OpenSans.ttf
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/fonts/OpenSansBold.ttf
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/fonts/OpenSansBoldItalic.ttf
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/fonts/OpenSansItalic.ttf
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/fonts/OpenSansLight.ttf
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/fonts/OpenSansLightItalic.ttf
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/fonts/Raleway.ttf
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/fonts/RalewayBold.ttf
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/fonts/Roboto.ttf
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/fonts/RobotoBold.ttf
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/fonts/RobotoLight.ttf
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/fonts/RobotoMedium.ttf
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/fonts/SourceSansPro.ttf
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/fonts/SourceSansProBold.ttf
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/fonts/SourceSansProItalic.ttf
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/fonts/SourceSansProLight.ttf
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/fonts/Ubuntu.ttf
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/journal.min.css
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/lumen.min.css
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/paper.min.css
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/readable.min.css
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/sandstone.min.css
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/simplex.min.css
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/spacelab.min.css
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/united.min.css
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/css/yeti.min.css
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.eot
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.svg
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.ttf
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.woff
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.woff2
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/js/bootstrap.js
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/js/bootstrap.min.js
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/js/npm.js
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/shim/html5shiv.min.js
+    Deleted:    docs/RDM_intro_files/bootstrap-3.3.5/shim/respond.min.js
+    Deleted:    docs/RDM_intro_files/highlightjs-1.1/default.css
+    Deleted:    docs/RDM_intro_files/highlightjs-1.1/highlight.js
+    Deleted:    docs/RDM_intro_files/highlightjs-1.1/textmate.css
+    Deleted:    docs/RDM_intro_files/jquery-1.11.3/jquery.min.js
+    Deleted:    docs/RDM_intro_files/jqueryui-1.11.4/README
+    Deleted:    docs/RDM_intro_files/jqueryui-1.11.4/jquery-ui.css
+    Deleted:    docs/RDM_intro_files/jqueryui-1.11.4/jquery-ui.js
+    Deleted:    docs/RDM_intro_files/jqueryui-1.11.4/jquery-ui.min.css
+    Deleted:    docs/RDM_intro_files/jqueryui-1.11.4/jquery-ui.min.js
+    Deleted:    docs/RDM_intro_files/jqueryui-1.11.4/jquery-ui.structure.css
+    Deleted:    docs/RDM_intro_files/jqueryui-1.11.4/jquery-ui.structure.min.css
+    Deleted:    docs/RDM_intro_files/jqueryui-1.11.4/jquery-ui.theme.css
+    Deleted:    docs/RDM_intro_files/jqueryui-1.11.4/jquery-ui.theme.min.css
+    Deleted:    docs/RDM_intro_files/navigation-1.1/FileSaver.min.js
+    Deleted:    docs/RDM_intro_files/navigation-1.1/codefolding.js
+    Deleted:    docs/RDM_intro_files/navigation-1.1/sourceembed.js
+    Deleted:    docs/RDM_intro_files/navigation-1.1/tabsets.js
+    Deleted:    docs/RDM_intro_files/tocify-1.9.1/jquery.tocify.css
+    Deleted:    docs/RDM_intro_files/tocify-1.9.1/jquery.tocify.js
+    Deleted:    docs/assets/img/ResearchDataMechanics_Poster.pdf
+    Deleted:    docs/assets/img/debugging.gif
+    Deleted:    docs/assets/img/www.jpg
+    Deleted:    docs/css/bootstrap-theme.css
+    Deleted:    docs/css/bootstrap-theme.css.map
+    Deleted:    docs/css/bootstrap-theme.min.css
+    Deleted:    docs/css/bootstrap.css
+    Deleted:    docs/css/bootstrap.css.map
+    Deleted:    docs/css/bootstrap.min.css
+    Deleted:    docs/css/cerulean.min.css
+    Deleted:    docs/css/cosmo.min.css
+    Deleted:    docs/css/flatly.min.css
+    Deleted:    docs/css/fonts/Lato.ttf
+    Deleted:    docs/css/fonts/LatoBold.ttf
+    Deleted:    docs/css/fonts/LatoItalic.ttf
+    Deleted:    docs/css/fonts/NewsCycle.ttf
+    Deleted:    docs/css/fonts/NewsCycleBold.ttf
+    Deleted:    docs/css/fonts/OpenSans.ttf
+    Deleted:    docs/css/fonts/OpenSansBold.ttf
+    Deleted:    docs/css/fonts/OpenSansBoldItalic.ttf
+    Deleted:    docs/css/fonts/OpenSansItalic.ttf
+    Deleted:    docs/css/fonts/OpenSansLight.ttf
+    Deleted:    docs/css/fonts/OpenSansLightItalic.ttf
+    Deleted:    docs/css/fonts/Raleway.ttf
+    Deleted:    docs/css/fonts/RalewayBold.ttf
+    Deleted:    docs/css/fonts/Roboto.ttf
+    Deleted:    docs/css/fonts/RobotoBold.ttf
+    Deleted:    docs/css/fonts/RobotoLight.ttf
+    Deleted:    docs/css/fonts/RobotoMedium.ttf
+    Deleted:    docs/css/fonts/SourceSansPro.ttf
+    Deleted:    docs/css/fonts/SourceSansProBold.ttf
+    Deleted:    docs/css/fonts/SourceSansProItalic.ttf
+    Deleted:    docs/css/fonts/SourceSansProLight.ttf
+    Deleted:    docs/css/fonts/Ubuntu.ttf
+    Deleted:    docs/css/fonts/glyphicons-halflings-regular.eot
+    Deleted:    docs/css/fonts/glyphicons-halflings-regular.svg
+    Deleted:    docs/css/fonts/glyphicons-halflings-regular.ttf
+    Deleted:    docs/css/fonts/glyphicons-halflings-regular.woff
+    Deleted:    docs/css/fonts/glyphicons-halflings-regular.woff2
+    Deleted:    docs/css/handout_ioslides.css
+    Deleted:    docs/css/ioslide_handout.css
+    Deleted:    docs/css/ioslides_default.css
+    Deleted:    docs/css/journal.min.css
+    Deleted:    docs/css/lumen.min.css
+    Deleted:    docs/css/paper.min.css
+    Deleted:    docs/css/readable.min.css
+    Deleted:    docs/css/sandstone.min.css
+    Deleted:    docs/css/simplex.min.css
+    Deleted:    docs/css/slidy.css
+    Deleted:    docs/css/spacelab.min.css
+    Deleted:    docs/css/united.min.css
+    Deleted:    docs/css/w3c-blue.css
+    Deleted:    docs/css/yeti.min.css
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/bootstrap-theme.css
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/bootstrap-theme.css.map
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/bootstrap-theme.min.css
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/bootstrap.css
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/bootstrap.css.map
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/bootstrap.min.css
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/cerulean.min.css
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/cosmo.min.css
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/flatly.min.css
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/fonts/Lato.ttf
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/fonts/LatoBold.ttf
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/fonts/LatoItalic.ttf
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/fonts/NewsCycle.ttf
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/fonts/NewsCycleBold.ttf
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/fonts/OpenSans.ttf
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/fonts/OpenSansBold.ttf
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/fonts/OpenSansBoldItalic.ttf
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/fonts/OpenSansItalic.ttf
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/fonts/OpenSansLight.ttf
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/fonts/OpenSansLightItalic.ttf
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/fonts/Raleway.ttf
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/fonts/RalewayBold.ttf
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/fonts/Roboto.ttf
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/fonts/RobotoBold.ttf
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/fonts/RobotoLight.ttf
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/fonts/RobotoMedium.ttf
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/fonts/SourceSansPro.ttf
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/fonts/SourceSansProBold.ttf
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/fonts/SourceSansProItalic.ttf
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/fonts/SourceSansProLight.ttf
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/fonts/Ubuntu.ttf
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/journal.min.css
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/lumen.min.css
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/paper.min.css
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/readable.min.css
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/sandstone.min.css
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/simplex.min.css
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/spacelab.min.css
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/united.min.css
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/css/yeti.min.css
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.eot
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.svg
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.ttf
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.woff
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.woff2
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/js/bootstrap.js
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/js/bootstrap.min.js
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/js/npm.js
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/shim/html5shiv.min.js
+    Deleted:    docs/exercises_files/bootstrap-3.3.5/shim/respond.min.js
+    Deleted:    docs/exercises_files/highlightjs-1.1/default.css
+    Deleted:    docs/exercises_files/highlightjs-1.1/highlight.js
+    Deleted:    docs/exercises_files/highlightjs-1.1/textmate.css
+    Deleted:    docs/exercises_files/jquery-1.11.3/jquery.min.js
+    Deleted:    docs/exercises_files/jqueryui-1.11.4/README
+    Deleted:    docs/exercises_files/jqueryui-1.11.4/jquery-ui.css
+    Deleted:    docs/exercises_files/jqueryui-1.11.4/jquery-ui.js
+    Deleted:    docs/exercises_files/jqueryui-1.11.4/jquery-ui.min.css
+    Deleted:    docs/exercises_files/jqueryui-1.11.4/jquery-ui.min.js
+    Deleted:    docs/exercises_files/jqueryui-1.11.4/jquery-ui.structure.css
+    Deleted:    docs/exercises_files/jqueryui-1.11.4/jquery-ui.structure.min.css
+    Deleted:    docs/exercises_files/jqueryui-1.11.4/jquery-ui.theme.css
+    Deleted:    docs/exercises_files/jqueryui-1.11.4/jquery-ui.theme.min.css
+    Deleted:    docs/exercises_files/navigation-1.1/FileSaver.min.js
+    Deleted:    docs/exercises_files/navigation-1.1/codefolding.js
+    Deleted:    docs/exercises_files/navigation-1.1/sourceembed.js
+    Deleted:    docs/exercises_files/navigation-1.1/tabsets.js
+    Deleted:    docs/exercises_files/tocify-1.9.1/jquery.tocify.css
+    Deleted:    docs/exercises_files/tocify-1.9.1/jquery.tocify.js
+    Deleted:    docs/js/bootstrap.js
+    Deleted:    docs/js/bootstrap.min.js
+    Deleted:    docs/js/npm.js
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/bootstrap-theme.css
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/bootstrap-theme.css.map
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/bootstrap-theme.min.css
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/bootstrap.css
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/bootstrap.css.map
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/bootstrap.min.css
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/cerulean.min.css
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/cosmo.min.css
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/flatly.min.css
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/fonts/Lato.ttf
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/fonts/LatoBold.ttf
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/fonts/LatoItalic.ttf
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/fonts/NewsCycle.ttf
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/fonts/NewsCycleBold.ttf
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/fonts/OpenSans.ttf
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/fonts/OpenSansBold.ttf
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/fonts/OpenSansBoldItalic.ttf
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/fonts/OpenSansItalic.ttf
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/fonts/OpenSansLight.ttf
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/fonts/OpenSansLightItalic.ttf
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/fonts/Raleway.ttf
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/fonts/RalewayBold.ttf
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/fonts/Roboto.ttf
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/fonts/RobotoBold.ttf
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/fonts/RobotoLight.ttf
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/fonts/RobotoMedium.ttf
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/fonts/SourceSansPro.ttf
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/fonts/SourceSansProBold.ttf
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/fonts/SourceSansProItalic.ttf
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/fonts/SourceSansProLight.ttf
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/fonts/Ubuntu.ttf
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/journal.min.css
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/lumen.min.css
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/paper.min.css
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/readable.min.css
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/sandstone.min.css
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/simplex.min.css
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/spacelab.min.css
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/united.min.css
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/css/yeti.min.css
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.eot
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.svg
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.ttf
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.woff
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.woff2
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/js/bootstrap.js
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/js/bootstrap.min.js
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/js/npm.js
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/shim/html5shiv.min.js
+    Deleted:    docs/metadata_files/bootstrap-3.3.5/shim/respond.min.js
+    Deleted:    docs/metadata_files/highlightjs-1.1/default.css
+    Deleted:    docs/metadata_files/highlightjs-1.1/highlight.js
+    Deleted:    docs/metadata_files/highlightjs-1.1/textmate.css
+    Deleted:    docs/metadata_files/jquery-1.11.3/jquery.min.js
+    Deleted:    docs/metadata_files/jqueryui-1.11.4/README
+    Deleted:    docs/metadata_files/jqueryui-1.11.4/jquery-ui.css
+    Deleted:    docs/metadata_files/jqueryui-1.11.4/jquery-ui.js
+    Deleted:    docs/metadata_files/jqueryui-1.11.4/jquery-ui.min.css
+    Deleted:    docs/metadata_files/jqueryui-1.11.4/jquery-ui.min.js
+    Deleted:    docs/metadata_files/jqueryui-1.11.4/jquery-ui.structure.css
+    Deleted:    docs/metadata_files/jqueryui-1.11.4/jquery-ui.structure.min.css
+    Deleted:    docs/metadata_files/jqueryui-1.11.4/jquery-ui.theme.css
+    Deleted:    docs/metadata_files/jqueryui-1.11.4/jquery-ui.theme.min.css
+    Deleted:    docs/metadata_files/navigation-1.1/FileSaver.min.js
+    Deleted:    docs/metadata_files/navigation-1.1/codefolding.js
+    Deleted:    docs/metadata_files/navigation-1.1/sourceembed.js
+    Deleted:    docs/metadata_files/navigation-1.1/tabsets.js
+    Deleted:    docs/metadata_files/tocify-1.9.1/jquery.tocify.css
+    Deleted:    docs/metadata_files/tocify-1.9.1/jquery.tocify.js
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/bootstrap-theme.css
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/bootstrap-theme.css.map
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/bootstrap-theme.min.css
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/bootstrap.css
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/bootstrap.css.map
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/bootstrap.min.css
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/cerulean.min.css
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/cosmo.min.css
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/flatly.min.css
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/fonts/Lato.ttf
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/fonts/LatoBold.ttf
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/fonts/LatoItalic.ttf
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/fonts/NewsCycle.ttf
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/fonts/NewsCycleBold.ttf
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/fonts/OpenSans.ttf
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/fonts/OpenSansBold.ttf
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/fonts/OpenSansBoldItalic.ttf
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/fonts/OpenSansItalic.ttf
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/fonts/OpenSansLight.ttf
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/fonts/OpenSansLightItalic.ttf
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/fonts/Raleway.ttf
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/fonts/RalewayBold.ttf
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/fonts/Roboto.ttf
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/fonts/RobotoBold.ttf
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/fonts/RobotoLight.ttf
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/fonts/RobotoMedium.ttf
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/fonts/SourceSansPro.ttf
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/fonts/SourceSansProBold.ttf
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/fonts/SourceSansProItalic.ttf
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/fonts/SourceSansProLight.ttf
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/fonts/Ubuntu.ttf
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/journal.min.css
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/lumen.min.css
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/paper.min.css
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/readable.min.css
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/sandstone.min.css
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/simplex.min.css
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/spacelab.min.css
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/united.min.css
+    Deleted:    docs/outro_files/bootstrap-3.3.5/css/yeti.min.css
+    Deleted:    docs/outro_files/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.eot
+    Deleted:    docs/outro_files/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.svg
+    Deleted:    docs/outro_files/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.ttf
+    Deleted:    docs/outro_files/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.woff
+    Deleted:    docs/outro_files/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.woff2
+    Deleted:    docs/outro_files/bootstrap-3.3.5/js/bootstrap.js
+    Deleted:    docs/outro_files/bootstrap-3.3.5/js/bootstrap.min.js
+    Deleted:    docs/outro_files/bootstrap-3.3.5/js/npm.js
+    Deleted:    docs/outro_files/bootstrap-3.3.5/shim/html5shiv.min.js
+    Deleted:    docs/outro_files/bootstrap-3.3.5/shim/respond.min.js
+    Deleted:    docs/outro_files/highlightjs-1.1/default.css
+    Deleted:    docs/outro_files/highlightjs-1.1/highlight.js
+    Deleted:    docs/outro_files/highlightjs-1.1/textmate.css
+    Deleted:    docs/outro_files/jquery-1.11.3/jquery.min.js
+    Deleted:    docs/outro_files/jqueryui-1.11.4/README
+    Deleted:    docs/outro_files/jqueryui-1.11.4/jquery-ui.css
+    Deleted:    docs/outro_files/jqueryui-1.11.4/jquery-ui.js
+    Deleted:    docs/outro_files/jqueryui-1.11.4/jquery-ui.min.css
+    Deleted:    docs/outro_files/jqueryui-1.11.4/jquery-ui.min.js
+    Deleted:    docs/outro_files/jqueryui-1.11.4/jquery-ui.structure.css
+    Deleted:    docs/outro_files/jqueryui-1.11.4/jquery-ui.structure.min.css
+    Deleted:    docs/outro_files/jqueryui-1.11.4/jquery-ui.theme.css
+    Deleted:    docs/outro_files/jqueryui-1.11.4/jquery-ui.theme.min.css
+    Deleted:    docs/outro_files/navigation-1.1/FileSaver.min.js
+    Deleted:    docs/outro_files/navigation-1.1/codefolding.js
+    Deleted:    docs/outro_files/navigation-1.1/sourceembed.js
+    Deleted:    docs/outro_files/navigation-1.1/tabsets.js
+    Deleted:    docs/outro_files/tocify-1.9.1/jquery.tocify.css
+    Deleted:    docs/outro_files/tocify-1.9.1/jquery.tocify.js
+    Deleted:    docs/shim/html5shiv.min.js
+    Deleted:    docs/shim/respond.min.js
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/bootstrap-theme.css
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/bootstrap-theme.css.map
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/bootstrap-theme.min.css
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/bootstrap.css
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/bootstrap.css.map
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/bootstrap.min.css
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/cerulean.min.css
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/cosmo.min.css
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/flatly.min.css
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/fonts/Lato.ttf
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/fonts/LatoBold.ttf
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/fonts/LatoItalic.ttf
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/fonts/NewsCycle.ttf
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/fonts/NewsCycleBold.ttf
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/fonts/OpenSans.ttf
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/fonts/OpenSansBold.ttf
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/fonts/OpenSansBoldItalic.ttf
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/fonts/OpenSansItalic.ttf
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/fonts/OpenSansLight.ttf
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/fonts/OpenSansLightItalic.ttf
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/fonts/Raleway.ttf
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/fonts/RalewayBold.ttf
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/fonts/Roboto.ttf
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/fonts/RobotoBold.ttf
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/fonts/RobotoLight.ttf
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/fonts/RobotoMedium.ttf
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/fonts/SourceSansPro.ttf
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/fonts/SourceSansProBold.ttf
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/fonts/SourceSansProItalic.ttf
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/fonts/SourceSansProLight.ttf
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/fonts/Ubuntu.ttf
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/journal.min.css
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/lumen.min.css
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/paper.min.css
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/readable.min.css
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/sandstone.min.css
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/simplex.min.css
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/spacelab.min.css
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/united.min.css
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/css/yeti.min.css
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.eot
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.svg
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.ttf
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.woff
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.woff2
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/js/bootstrap.js
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/js/bootstrap.min.js
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/js/npm.js
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/shim/html5shiv.min.js
+    Deleted:    docs/tidy_data_files/bootstrap-3.3.5/shim/respond.min.js
+    Deleted:    docs/tidy_data_files/highlightjs-1.1/default.css
+    Deleted:    docs/tidy_data_files/highlightjs-1.1/highlight.js
+    Deleted:    docs/tidy_data_files/highlightjs-1.1/textmate.css
+    Deleted:    docs/tidy_data_files/jquery-1.11.3/jquery.min.js
+    Deleted:    docs/tidy_data_files/jqueryui-1.11.4/README
+    Deleted:    docs/tidy_data_files/jqueryui-1.11.4/jquery-ui.css
+    Deleted:    docs/tidy_data_files/jqueryui-1.11.4/jquery-ui.js
+    Deleted:    docs/tidy_data_files/jqueryui-1.11.4/jquery-ui.min.css
+    Deleted:    docs/tidy_data_files/jqueryui-1.11.4/jquery-ui.min.js
+    Deleted:    docs/tidy_data_files/jqueryui-1.11.4/jquery-ui.structure.css
+    Deleted:    docs/tidy_data_files/jqueryui-1.11.4/jquery-ui.structure.min.css
+    Deleted:    docs/tidy_data_files/jqueryui-1.11.4/jquery-ui.theme.css
+    Deleted:    docs/tidy_data_files/jqueryui-1.11.4/jquery-ui.theme.min.css
+    Deleted:    docs/tidy_data_files/navigation-1.1/FileSaver.min.js
+    Deleted:    docs/tidy_data_files/navigation-1.1/codefolding.js
+    Deleted:    docs/tidy_data_files/navigation-1.1/sourceembed.js
+    Deleted:    docs/tidy_data_files/navigation-1.1/tabsets.js
+    Deleted:    docs/tidy_data_files/tocify-1.9.1/jquery.tocify.css
+    Deleted:    docs/tidy_data_files/tocify-1.9.1/jquery.tocify.js
+
+</code></pre>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes. </details>
+</li>
+</ul>
+<details> <summary> <small><strong>Expand here to see past versions:</strong></small> </summary>
+<ul>
+<table style="border-collapse:separate; border-spacing:5px;">
+<thead>
+<tr>
+<th style="text-align:left;">
+File
+</th>
+<th style="text-align:left;">
+Version
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Date
+</th>
+<th style="text-align:left;">
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Rmd
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/annakrystalli/ACCE_RDM/blob/b547e2a511df96b5a90ad7c71ad741519c74ffbb/analysis/license.Rmd" target="_blank">b547e2a</a>
+</td>
+<td style="text-align:left;">
+annakrystalli
+</td>
+<td style="text-align:left;">
+2018-04-18
+</td>
+<td style="text-align:left;">
+Start workflowr project.
+</td>
+</tr>
+</tbody>
+</table>
+</ul>
+<p></details></p>
+<hr />
+<p>What license are you using for your code? See <a href="http://choosealicense.com/">choosealicense.com</a> for help deciding. It’s a convention to save a file <code>LICENSE</code> in the root of your Git repo that contains the license text.</p>
+<p>What license are you using for the written content on your site? It is traditional to choose a <a href="https://creativecommons.org/choose/">Creative Commons</a> license for this type of content.</p>
+<p>How should others cite your work? It’s a convention to save a file <code>CITATION</code> in the root of your Git repo that contains the citation information.</p>
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+http://docs.mathjax.org/en/latest/configuration.html.  This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+<hr>
+<p>
+  This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a>
+  analysis was created with
+  <a href="https://github.com/jdblischak/workflowr">workflowr</a> 1.0.0
+</p>
+<hr>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
