@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="ACCE Research Data Management Course" />
+
+
+<title>Introduction</title>
+
+<script src="RDM_intro_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="RDM_intro_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="RDM_intro_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="RDM_intro_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="RDM_intro_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="RDM_intro_files/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="RDM_intro_files/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="RDM_intro_files/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="RDM_intro_files/navigation-1.1/tabsets.js"></script>
+<link href="RDM_intro_files/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="RDM_intro_files/highlightjs-1.1/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="css/sandstone.min.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Introduction</h1>
+<h4 class="author"><em>ACCE Research Data Management Course</em></h4>
+<h4 class="date"><em>17 February 2017, University of York</em></h4>
+
+</div>
+
+
+<script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));</script>
+<p><br></p>
+<div id="me" class="section level2 columns-2">
+<h2>me</h2>
+<div id="anna-krystalli" class="section level4">
+<h4><strong>Anna Krystalli</strong></h4>
+</div>
+<div id="marine-ecology" class="section level3">
+<h3>Marine Ecology</h3>
+<p><img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/map.png" width="350px"></p>
+<p><br></p>
+</div>
+<div id="macroecology" class="section level3">
+<h3>Macroecology</h3>
+<p><img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/aor.png" width="350px"></p>
+</div>
+</div>
+<div id="section" class="section level2">
+<h2></h2>
+<div id="open-data-science" class="section level3">
+<h3>Open Data Science</h3>
+<p><img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/net.png" width="580px"></p>
+<div id="annakrystalli-annakrystalligooglemail.com" class="section level4">
+<h4><a href="https://twitter.com/annakrystalli">@annakrystalli</a> | <a href="mailto:annakrystalli@googlemail.com">annakrystalli@googlemail.com</a></h4>
+<p><br></p>
+</div>
+</div>
+</div>
+<div id="section-1" class="section level2">
+<h2></h2>
+<div id="quality-assurance" class="section level3">
+<h3>Quality assurance</h3>
+<p><img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/qa.png" height=400px></p>
+</div>
+</div>
+<div id="section-2" class="section level2">
+<h2></h2>
+<div id="stock-control" class="section level3">
+<h3>Stock control</h3>
+<p><img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/stock.png" height=400px></p>
+<p><br></p>
+</div>
+</div>
+<div id="workshop-outline" class="section level2">
+<h2>workshop outline</h2>
+<p><br></p>
+<ul>
+<li><h4 id="introduction">Introduction</h4></li>
+<li><h4 id="tidy-data">Tidy Data</h4></li>
+<li><h4 id="metadata">Metadata</h4></li>
+<li><h4 id="open-data">Open Data</h4></li>
+<li><h4 id="closing-remarks">Closing Remarks</h4></li>
+</ul>
+<p><br></p>
+<ul>
+<li><h3 id="handouts-httpbit.lyacce_2017">handouts: <a href="http://bit.ly/ACCE_2017" class="uri">http://bit.ly/ACCE_2017</a></h3></li>
+</ul>
+<p><br></p>
+<p><br></p>
+</div>
+<div id="workshop-motivation" class="section level2">
+<h2>workshop motivation</h2>
+<blockquote>
+<h3 id="why-research-data-management">why Research Data Management?</h3>
+</blockquote>
+<p><br></p>
+</div>
+<div id="technological-progress-in-science" class="section level2">
+<h2>Technological progress in Science</h2>
+<p class="accent_border">
+<b>Technology is increasing data collection throughput</b>
+</p>
+<ul>
+<li>data are more complex and high-dimensional</li>
+<li>existing databases <strong><em>can</em></strong> be merged to become bigger databases</li>
+</ul>
+<p class="accent_border">
+<b>Computing power allows more sophisticated analyses</b>
+</p>
+<ul>
+<li>even on “small” data</li>
+<li>for every field <code>&quot;X&quot;</code> there is a <code>&quot;Computational X&quot;</code></li>
+</ul>
+<p class="accent_border">
+<b>powerful statistical tools freely available</b>
+</p>
+<ul>
+<li>active open source communities developing data science tools</li>
+<li>built on a foundation of key digital literacy skills</li>
+</ul>
+<p><br></p>
+</div>
+<div id="the-internet" class="section level2">
+<h2>the internet</h2>
+<p><img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/www.jpg" width=550px></p>
+<p><br></p>
+</div>
+<div id="reality" class="section level2">
+<h2>reality</h2>
+<div id="information-overload" class="section level3">
+<h3>Information overload</h3>
+<p><img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/debugging.gif" width=550px></p>
+</div>
+</div>
+<div id="replicability-crisis" class="section level2">
+<h2>replicability crisis</h2>
+<blockquote>
+<p>attempts to reproduce published results of many scientific experiments are difficult or impossible to replicate on subsequent investigation, either by independent researchers or by the original researchers themselves.</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/repro_workflow copy.png" width=400px></p>
+<p><br></p>
+</div>
+<div id="section-3" class="section level2">
+<h2></h2>
+<div id="the-big-question" class="section level3">
+<h3>The big question:</h3>
+<div id="how-much-can-we-trust-published-results" class="section level4">
+<h4>How much can we trust published results?</h4>
+<p><br></p>
+<ul>
+<li>convergence of a number of drivers.
+<ul>
+<li>some part of the scientific process</li>
+<li>some statistical resulting of <a href="https://academic.oup.com/bioscience/article/2900173/Metaresearch-for-Evaluating-Reproducibility-in?searchresult=1">biases introduced by publication system</a>:</li>
+<li>some by methodological failures and errors.
+<ul>
+<li>some very low hanging fruit here</li>
+</ul></li>
+</ul></li>
+</ul>
+<p class="accent_border">
+<b>at the very least we need to aim towards <strong>reproducing result from code and data</strong></b>
+</p>
+<p><br></p>
+</div>
+</div>
+</div>
+<div id="the-pitfalls-of-otherpeoplesdata" class="section level2">
+<h2>the pitfalls of #OtherPeoplesData</h2>
+<iframe width="500" height="250" src="https://www.youtube.com/embed/N2zK3sAtr-4" frameborder="0" allowfullscreen>
+</iframe>
+<p><br></p>
+</div>
+<div id="culture-wars" class="section level2">
+<h2>culture wars</h2>
+<blockquote class="twitter-tweet" data-lang="en">
+<p lang="en" dir="ltr">
+I think I have seen the worse <a href="https://twitter.com/hashtag/otherpeoplesdata?src=hash">#otherpeoplesdata</a> yet. There is not a SINGLE thing done right. NOT ONE.
+</p>
+— Timothée Poisot (<span class="citation">@tpoi</span>) <a href="https://twitter.com/tpoi/status/821753714755194880">January 18, 2017</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet" data-lang="en">
+<p lang="en" dir="ltr">
+“It's on github. It's documented. It's tested. No need to ask permission, just…take it away and let me know if you run into any problems.” <a href="https://t.co/gZFWQ2ROQG">https://t.co/gZFWQ2ROQG</a>
+</p>
+— Titus Brown (<span class="citation">@ctitusbrown</span>) <a href="https://twitter.com/ctitusbrown/status/821784991608643584">January 18, 2017</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p><br></p>
+</div>
+<div id="the-core-of-reproducibility" class="section level2">
+<h2>the core of reproducibility</h2>
+<p><img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/repro_workflow.png" width=400px></p>
+<ul>
+<li>provide access to code and data.</li>
+<li>allows us to check section <code>raw</code> ➙ <strong>published results</strong></li>
+</ul>
+<p><br></p>
+</div>
+<div id="broader-open-science" class="section level2">
+<h2>broader open science</h2>
+<div id="focus-on-reproducibility-underpinned-by-more-fundamental-qualities" class="section level4">
+<h4>focus on reproducibility underpinned by more fundamental qualities:</h4>
+<p><br></p>
+<ul>
+<li>openness</li>
+<li>accessibility</li>
+<li>reusability</li>
+<li>collaboration</li>
+</ul>
+<p><br></p>
+</div>
+<div id="openscience" class="section level3">
+<h3>#OpenScience</h3>
+<p><img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/Open_Science_-_Prinzipien.png" width=400px> <br></p>
+</div>
+</div>
+<div id="the-grand-vision" class="section level2">
+<h2>The grand vision</h2>
+<blockquote>
+<p>Hans Rosling on open data in 2006</p>
+</blockquote>
+<iframe width="470" height="250" src="https://goo.gl/ry6AiG" frameborder="0" allowfullscreen>
+</iframe>
+<p class="accent_border">
+<b>How do we get there?
+</p>
+<p></b></p>
+<p><br></p>
+</div>
+<div id="vienna-principles" class="section level2">
+<h2>Vienna Principles</h2>
+<iframe src="http://viennaprinciples.org/" width="397" height="500" frameborder="0">
+</iframe>
+<p><br></p>
+</div>
+<div id="stiffling-the-process" class="section level2">
+<h2>stiffling the process?</h2>
+<p class="accent_border">
+<b>critics say it’s constraining, wasted time for which researchers won’t be rewarded.
+</p>
+<p></b></p>
+<div id="but-this-ignores" class="section level4">
+<h4>But this ignores:</h4>
+<ul>
+<li>the <strong>value of code and data</strong> to other researchers</li>
+<li>the impact such research outputs can have</li>
+<li>the technological capacity for producing these outputs through standard openly avalable tools.</li>
+</ul>
+</div>
+<div id="clearly-a-balance-is-needed" class="section level4">
+<h4>clearly a balance is needed</h4>
+</div>
+<div id="but-higher-standards-are-both-possible-and-necessary" class="section level3">
+<h3>but higher standards are both <a href="https://lgatto.github.io/software-data-papers/"><strong>possible and necessary</strong></a></h3>
+<p class="accent_border">
+<b>need incentivising
+</p>
+<p></b></p>
+<p><br></p>
+</div>
+</div>
+<div id="a-more-collaborative-approach." class="section level2">
+<h2>A more collaborative approach.</h2>
+<p>origins in open source software communities. see <a href="http://billmills.github.io/scienceXpython/#1">SCIENCE X PYTHON</a></p>
+<div id="both-selfish-and-self-less-motivations.-but-change-incentive-system" class="section level4">
+<h4>Both selfish and self-less motivations. But change incentive system</h4>
+</div>
+<div id="contributor" class="section level3">
+<h3>Contributor</h3>
+<ul>
+<li>broader impact of research outputs like code and data</li>
+<li>more opportunity for recognition for diverse but useful outputs</li>
+<li>skills are very transferable and employable</li>
+</ul>
+</div>
+<div id="community-benefits" class="section level3">
+<h3>Community benefits</h3>
+<ul>
+<li>innovation</li>
+<li>efficient reuse of resources</li>
+<li>capacity building</li>
+<li>quality control</li>
+</ul>
+<div id="extra-refs-1-2-3" class="section level4">
+<h4>extra refs: <a href="https://elifesciences.org/content/5/e16800">1</a> <a href="https://peerj.com/preprints/2711/">2</a> <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4957270/">3</a></h4>
+<p><br></p>
+</div>
+</div>
+</div>
+<div id="drivers-of-better-data-management" class="section level2">
+<h2>Drivers of better data management</h2>
+<ul>
+<li>Funders: value for money, impact, reputation
+<ul>
+<li>NERC data policy</li>
+</ul></li>
+<li>Publishers: many now require code and data.</li>
+<li>Supervisors and immediate research group</li>
+<li>Your wider scientific community</li>
+</ul>
+<div id="yourselves" class="section level3">
+<h3>Yourselves!</h3>
+<div id="be-your-own-best-friend" class="section level4">
+<h4>be your own best friend:</h4>
+<blockquote>
+<p>aim to create secure datasets that are easy to use and REUSE</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+</div>
+</div>
+</div>
+<div id="meta---responsibilities" class="section level2">
+<h2>meta - responsibilities</h2>
+</div>
+<div id="rdm-at-postgraduate-level" class="section level2">
+<h2>RDM at postgraduate level</h2>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/tomjwebb"><span class="citation">@tomjwebb</span></a> “Remember what you did in your Master program? Yeah? Well, don't do that anymore.”
+</p>
+— Nate Hough-Snee (<span class="citation">@NHoughSnee</span>) <a href="https://twitter.com/NHoughSnee/status/556235794466082816">January 16, 2015</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+Act as though every short term study will become a long term one <a href="https://twitter.com/tomjwebb"><span class="citation">@tomjwebb</span></a>. Needs to be reproducible in 3, 20, 100 yrs
+</p>
+— oceans initiative (<span class="citation">@oceansresearch</span>) <a href="https://twitter.com/oceansresearch/status/556107891610894337">January 16, 2015</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p><br></p>
+</div>
+<div id="plan-your-rdm" class="section level2" data-background="https://raw.githubusercontent.com/BillMills/scienceXpython/gh-pages/img/debugging.gif">
+<h2>Plan your RDM</h2>
+<ul>
+<li><strong>Start early</strong>. Make an RDM plan before collecting data.
+<ul>
+<li><a href="http://www.dcc.ac.uk/sites/default/files/documents/resource/DMP/DMP_Checklist_2013.pdf"><strong>RDM checklist</strong></a></li>
+</ul></li>
+<li>Anticipate <strong>data products</strong> as part of your thesis <strong>outputs</strong></li>
+<li>Think about what technologies to use</li>
+</ul>
+<div id="take-initiative.-you-are-now-responsible" class="section level3">
+<h3><strong>Take initiative. You are now responsible:</strong></h3>
+<p><br></p>
+<p><img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/Coleman.png"></p>
+<p><br> <br></p>
+</div>
+</div>
+<div id="section-4" class="section level2 columns-2">
+<h2></h2>
+<div id="bes-guide-to-data-management" class="section level3">
+<h3>BES guide to data management</h3>
+<p><img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/BES.png" height=500px></p>
+<p><br></p>
+<p>This guide for early career researchers explains what data and data management are, and provides advice and examples of best practices in data management, including case studies from researchers currently working in ecology and evolution.</p>
+<p><br></p>
+<div id="download" class="section level4">
+<h4><a href="http://www.britishecologicalsociety.org/wp-content/uploads/Publ_Data-Management-Booklet.pdf">download</a></h4>
+<p><br> <br></p>
+</div>
+</div>
+</div>
+<div id="section-5" class="section level2">
+<h2></h2>
+<div id="nine-simple-ways-to-make-it-easier-to-reuse-your-data" class="section level3">
+<h3>Nine simple ways to make it easier to (re)use your data</h3>
+<p><br></p>
+<p>We describe nine simple ways to make it easy to reuse the data that you share and also make it easier to work with it yourself. Our recommendations focus on making your data understandable, easy to analyze, and readily available to the wider community of scientists.</p>
+<p><br> <br></p>
+<p><img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/ethan.png" height=200px></p>
+<div id="download-1" class="section level4">
+<h4><a href="http://ojs.library.queensu.ca/index.php/IEE/article/view/4608/4898">download</a></h4>
+<p><br> <br></p>
+</div>
+</div>
+</div>
+<div id="section-6" class="section level2">
+<h2></h2>
+<div id="storify-by-tom-webb-tomjwebb" class="section level3">
+<h3><a href="https://storify.com/tomjwebb/advice-on-research-data-management">storify</a> by Tom Webb <a href="https://twitter.com/tomjwebb">@tomjwebb</a></h3>
+<p><br></p>
+<p><img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/storify.png" height=300px></p>
+<p><br> <br></p>
+</div>
+</div>
+<div id="section-7" class="section level2">
+<h2></h2>
+<div id="blog-post-by-dynamic-ecology-dynamicecology" class="section level3">
+<h3><a href="https://dynamicecology.wordpress.com/2016/08/22/ten-commandments-for-good-data-management/">blog post</a> by Dynamic ecology <a href="https://twitter.com/DynamicEcology">@DynamicEcology</a></h3>
+<p><br></p>
+<p><img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/vulpes.png" height=300px></p>
+<p><br> <br></p>
+</div>
+</div>
+<div id="section-8" class="section level2">
+<h2></h2>
+<div id="data-carpentry" class="section level3">
+<h3>data carpentry</h3>
+<ul>
+<li>available <a href="http://www.datacarpentry.org/lessons/#ecology-workshop">free online</a></li>
+<li>look out for training sessions</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/data_carpentry.png" height="350"></p>
+<p><br> <br></p>
+</div>
+</div>
+<div id="section-9" class="section level2">
+<h2></h2>
+<div id="seek-help-from-support-teams" class="section level3">
+<h3><strong>seek help from support teams</strong></h3>
+<p>Most university libraries have assistants dedicated to RDM:</p>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/tomjwebb"><span class="citation">@tomjwebb</span></a> <a href="https://twitter.com/ScientificData"><span class="citation">@ScientificData</span></a> Talk to their librarian for data management strategies <a href="https://twitter.com/hashtag/datainfolit?src=hash">#datainfolit</a>
+</p>
+— Yasmeen Shorish (<span class="citation">@yasmeen_azadi</span>) <a href="https://twitter.com/yasmeen_azadi/status/556129700129800192">January 16, 2015</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p><br> <br></p>
+</div>
+</div>
+<div id="data-collection" class="section level2">
+<h2>Data collection</h2>
+</div>
+<div id="before-collection" class="section level2">
+<h2>Before collection</h2>
+<ul>
+<li>if you’re going to record data manually, produce data entry sheets or tables. Design them with both ease of entry and digitisation in mind.</li>
+<li>if you are doing fieldwork consider using a pencil!</li>
+<li>think in good time about variable definitions and naming</li>
+<li>think about what other ancilliary data might be useful. Include in your collection plan</li>
+</ul>
+<p><br></p>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/tomjwebb"><span class="citation">@tomjwebb</span></a> at minimum conform units, data fields to existing public databases, traits=TRY, collections=DarwinCore, plots=SALVIASVegBank
+</p>
+— Brian J. Enquist (<span class="citation">@bjenquist</span>) <a href="https://twitter.com/bjenquist/status/556122032123826177">January 16, 2015</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p><br></p>
+</div>
+<div id="recordeverything" class="section level2">
+<h2>record…everything!</h2>
+<div id="even-details-that-seem-insignificant-may-prove-vital-to-your-research-or-to-interoperability-with-others-work" class="section level4">
+<h4>Even details that seem insignificant may prove vital to your research, or to interoperability with others’ work:</h4>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/tomjwebb"><span class="citation">@tomjwebb</span></a> record every detail about how/where/why it is collected
+</p>
+— Sal Keith (<span class="citation">@Sal_Keith</span>) <a href="https://twitter.com/Sal_Keith/status/556110605053349888">January 16, 2015</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p><br></p>
+</div>
+</div>
+<div id="data-entering" class="section level2">
+<h2>Data entering</h2>
+<div id="an-extreme-but-in-many-ways-defendable-approach" class="section level3">
+<h3>an extreme but in many ways defendable approach</h3>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/tomjwebb"><span class="citation">@tomjwebb</span></a> stay away from excel at all costs?
+</p>
+— Timothée Poisot (<span class="citation">@tpoi</span>) <a href="https://twitter.com/tpoi/status/556107000950829056">January 16, 2015</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+</div>
+<div id="excel-read-only" class="section level2">
+<h2>excel: <code>read only</code></h2>
+<blockquote class="twitter-tweet" data-conversation="none" data-cards="hidden" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/tomjwebb"><span class="citation">@tomjwebb</span></a> <a href="https://twitter.com/tpoi"><span class="citation">@tpoi</span></a> excel is fine for data entry. Just save in plain text format like csv. Some additional tips: <a href="https://t.co/8fUv9PyVjC">pic.twitter.com/8fUv9PyVjC</a>
+</p>
+— Jaime Ashander (<span class="citation">@jaimedash</span>) <a href="https://twitter.com/jaimedash/status/556113131932381185">January 16, 2015</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/jaimedash"><span class="citation">@jaimedash</span></a> just don’t let excel anywhere near dates or times. <a href="https://twitter.com/tomjwebb"><span class="citation">@tomjwebb</span></a> <a href="https://twitter.com/tpoi"><span class="citation">@tpoi</span></a> <a href="https://twitter.com/larysar"><span class="citation">@larysar</span></a>
+</p>
+— Dave Harris (<span class="citation">@davidjayharris</span>) <a href="https://twitter.com/davidjayharris/status/556126474550263809">January 16, 2015</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p><br></p>
+</div>
+<div id="spreadsheet-advice" class="section level2">
+<h2>spreadsheet advice</h2>
+<blockquote class="twitter-tweet" data-cards="hidden" data-lang="en">
+<p lang="en" dir="ltr">
+God bless the UK Gov’t Statistical Service Good Practice Team. Sane spreadsheet advice. <a href="https://t.co/MLQMvnBzkV">https://t.co/MLQMvnBzkV</a> <a href="http://t.co/OD7GzfVKLW">pic.twitter.com/OD7GzfVKLW</a>
+</p>
+— Jenny Bryan (<span class="citation">@JennyBryan</span>) <a href="https://twitter.com/JennyBryan/status/538013071826898944">November 27, 2014</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p><br></p>
+</div>
+<div id="databases-more-robust" class="section level2">
+<h2>databases: more robust</h2>
+<ul>
+<li>good qc and advisable for multiple contributors</li>
+</ul>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/tomjwebb"><span class="citation">@tomjwebb</span></a> databases? <a href="https://twitter.com/swcarpentry"><span class="citation">@swcarpentry</span></a> has a good course on SQLite
+</p>
+— Timothée Poisot (<span class="citation">@tpoi</span>) <a href="https://twitter.com/tpoi/status/556142573308608513">January 16, 2015</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/tomjwebb"><span class="citation">@tomjwebb</span></a> <a href="https://twitter.com/tpoi"><span class="citation">@tpoi</span></a> if the data are moderately complex, or involve multiple people, best to set up a database with well designed entry form 1/2
+</p>
+— Luca Borger (<span class="citation">@lucaborger</span>) <a href="https://twitter.com/lucaborger/status/556226732496535552">January 16, 2015</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+<div id="databases-benefits" class="section level2 columns-2">
+<h2>databases: benefits</h2>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/tomjwebb"><span class="citation">@tomjwebb</span></a> Entering via a database management system (e.g., Access, Filemaker) can make entry easier &amp; help prevent data entry errors <a href="https://twitter.com/tpoi"><span class="citation">@tpoi</span></a>
+</p>
+— Ethan White (<span class="citation">@ethanwhite</span>) <a href="https://twitter.com/ethanwhite/status/556119480493813760">January 16, 2015</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/tomjwebb"><span class="citation">@tomjwebb</span></a> it also prevents a lot of different bad practices. It is possible to do some of this in Excel. <a href="https://twitter.com/tpoi"><span class="citation">@tpoi</span></a>
+</p>
+— Ethan White (<span class="citation">@ethanwhite</span>) <a href="https://twitter.com/ethanwhite/status/556119826582605824">January 16, 2015</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p><br> <br> <br></p>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/ethanwhite"><span class="citation">@ethanwhite</span></a> +1 Enforcing data types, options from selection etc, just some useful things a DB gives you, if you turn them on <a href="https://twitter.com/tomjwebb"><span class="citation">@tomjwebb</span></a> <a href="https://twitter.com/tpoi"><span class="citation">@tpoi</span></a>
+</p>
+— Gavin Simpson (<span class="citation">@ucfagls</span>) <a href="https://twitter.com/ucfagls/status/556120176748290048">January 16, 2015</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p><br></p>
+</div>
+<div id="data-formats" class="section level2">
+<h2>data formats</h2>
+<ul>
+<li>csv files most common</li>
+<li>Text files are the most general file format</li>
+</ul>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/tomjwebb"><span class="citation">@tomjwebb</span></a> It has to be interoperability/openness - can I read your data with whatever I use, without having to convert it?
+</p>
+— Paul Swaddle (<span class="citation">@paul_swaddle</span>) <a href="https://twitter.com/paul_swaddle/status/556148166270406656">January 16, 2015</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<ul>
+<li>more unusual formats will need instruction on use.</li>
+</ul>
+<p><br></p>
+</div>
+<div id="ensure-data-is-machine-readable" class="section level2">
+<h2>ensure data is machine readable</h2>
+<div id="bad" class="section level3">
+<h3>bad</h3>
+<p><img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/bad_xl1.png" width=600px></p>
+</div>
+</div>
+<div id="section-10" class="section level2">
+<h2></h2>
+<div id="bad-1" class="section level3">
+<h3>bad</h3>
+<p><img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/bad_xl2.png" width=600px></p>
+</div>
+</div>
+<div id="section-11" class="section level2">
+<h2></h2>
+<div id="good" class="section level3">
+<h3>good</h3>
+<p><img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/good_xl.png" width=600px></p>
+</div>
+</div>
+<div id="section-12" class="section level2">
+<h2></h2>
+<div id="ok" class="section level3">
+<h3>ok</h3>
+<p><img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/ok_xl.png" width=600px></p>
+<ul>
+<li>could help data entry</li>
+<li><code>.csv</code> copy would need to be saved.</li>
+</ul>
+<p><br></p>
+</div>
+</div>
+<div id="file-naming" class="section level2">
+<h2>file naming</h2>
+<ul>
+<li><strong>Give files descriptive, consistent names</strong>, e.g. “AK_IUCNDataExtraction_20131002.csv”
+<ul>
+<li>include any pertinent parameter information</li>
+</ul></li>
+</ul>
+<div id="machine-writeable-machine-readable" class="section level3">
+<h3><strong>machine writeable = machine readable</strong></h3>
+<pre class="r"><code>write.csv(df, paste(&quot;variable_&quot;, res, month, sep =&quot;_&quot;))
+
+df &lt;- read.csv(paste(&quot;variable_&quot;, res, month, sep =&quot;_&quot;))</code></pre>
+<p><br></p>
+</div>
+</div>
+<div id="use-good-null-values" class="section level2">
+<h2>Use good null values</h2>
+<div id="missing-values-are-a-fact-of-life" class="section level3">
+<h3>Missing values are a fact of life</h3>
+<ul>
+<li>Usually, best solution is to <strong>leave blank</strong></li>
+<li><strong><code>NA</code></strong> or <strong><code>NULL</code></strong> are also good options</li>
+<li><strong>NEVER use <code>0</code></strong>. Avoid numbers like <strong><code>-999</code></strong></li>
+<li>Don’t make up your own code for missing values</li>
+</ul>
+<p><br></p>
+</div>
+</div>
+<div id="read.csv-utilities" class="section level2">
+<h2><a href="http://stat.ethz.ch/R-manual/R-devel/library/utils/html/read.table.html"><strong><code>read.csv()</code></strong></a> utilities</h2>
+<ul>
+<li><strong><code>na.string</code>:</strong> character vector of values to be coded missing and replaced with <code>NA</code> to argument eg</li>
+<li><strong><code>strip.white</code>:</strong> Logical. if <code>TRUE</code> strips leading and trailing white space from unquoted character fields</li>
+<li><strong><code>blank.lines.skip</code>:</strong> Logical: if <code>TRUE</code> blank lines in the input are ignored.</li>
+<li><strong><code>fileEncoding</code>:</strong> if you’re getting funny characters, you probably need to specify the correct encoding.</li>
+</ul>
+<pre class="r"><code>read.csv(file, na.strings = c(&quot;NA&quot;, &quot;-999&quot;), strip.white = TRUE, 
+         blank.lines.skip = TRUE, fileEncoding = &quot;mac&quot;)</code></pre>
+<p><br></p>
+</div>
+<div id="basic-quality-control" class="section level2">
+<h2>basic quality control</h2>
+<div id="have-a-look-at-your-data-with-viewerdf" class="section level4">
+<h4>Have a look at your data with <code>Viewer(df)</code></h4>
+<p><br> <br></p>
+<ul>
+<li>Check <strong>empty cells</strong></li>
+<li>Check the <strong>range of values</strong> (and value types) in each column matches expectation. Use <code>summary(df)</code></li>
+<li>Check <strong>units of measurement</strong></li>
+<li>Check your <strong>software interprets your data correctly</strong> eg.<br />
+for a data frame <code>df</code>;
+<ul>
+<li><code>head(df)</code> (see top few rows) and <code>str(df)</code> (see object structure) are useful.</li>
+</ul></li>
+</ul>
+<p><br></p>
+</div>
+</div>
+<div id="make-your-data-alignable-and-generalisable" class="section level2">
+<h2>make your data alignable and generalisable</h2>
+<p>What information would other users require to combine your data with theirs?</p>
+<ul>
+<li>time <code>temporal (time of day, day, month, year, season)</code></li>
+<li>space <code>geography (lat, lon)</code></li>
+<li>taxonomy <code>species name; authority / source</code></li>
+<li>provide information on <strong>extent</strong> and <strong>resolution</strong></li>
+<li>consider writing some <strong>simple QA tests</strong> (eg. checks against <em>number of dimensions</em>, <em>sum of numeric columns</em> etc)</li>
+</ul>
+<p><br></p>
+<p><br></p>
+</div>
+<div id="data-management" class="section level2">
+<h2>data management</h2>
+</div>
+<div id="raw-data-are-sacrosanct" class="section level2">
+<h2>raw data are sacrosanct</h2>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/tomjwebb"><span class="citation">@tomjwebb</span></a> don't, not even with a barge pole, not for one second, touch or otherwise edit the raw data files. Do any manipulations in script
+</p>
+— Gavin Simpson (<span class="citation">@ucfagls</span>) <a href="https://twitter.com/ucfagls/status/556107371634634755">January 16, 2015</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/tomjwebb"><span class="citation">@tomjwebb</span></a> <a href="https://twitter.com/srsupp"><span class="citation">@srsupp</span></a> Keep one or a few good master data files (per data collection of interest), and code your formatting with good annotation.
+</p>
+— Desiree Narango (<span class="citation">@DLNarango</span>) <a href="https://twitter.com/DLNarango/status/556128407445323778">January 16, 2015</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p><br></p>
+</div>
+<div id="from-raw-to-analytical-data" class="section level2">
+<h2>from raw to analytical data</h2>
+<div id="the-repeatable-pipeline" class="section level3">
+<h3><a href="https://dynamicecology.wordpress.com/2016/08/22/ten-commandments-for-good-data-management/">the repeatable pipeline</a></h3>
+<p class="accent_border">
+<b>Do not manually edit raw data</b>
+</p>
+<p class="accent_border">
+<b>Keep a clean pipeline of data processing from raw to analytical.</b>
+</p>
+<p><img src="https://dynamicecology.files.wordpress.com/2016/08/pipeline1.jpg" height="150"></p>
+<ul>
+<li>Ideally, incorporate checks to ensure correct processing of data through to analytical.</li>
+<li>Clearly document any processing.
+<ul>
+<li>Well-commented script-based manipulation (e.g. in R) makes this easy</li>
+</ul></li>
+</ul>
+<p><br></p>
+</div>
+</div>
+<div id="crouchers-law" class="section level2">
+<h2>Croucher’s Law</h2>
+<blockquote class="twitter-tweet" data-lang="en">
+<p lang="en" dir="ltr">
+Ran out of <a href="https://twitter.com/hashtag/JupyterICMS?src=hash">#JupyterICMS</a> looking for my wallet. Hotel and back. Started to panic. I had left it by presentation machine! <a href="https://twitter.com/hashtag/CrouchersLaw?src=hash">#CrouchersLaw</a> <a href="https://t.co/GFLnZrdfkX">pic.twitter.com/GFLnZrdfkX</a>
+</p>
+— Mike Croucher (<span class="citation">@walkingrandomly</span>) <a href="https://twitter.com/walkingrandomly/status/820970653302013952">January 16, 2017</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p><br></p>
+</div>
+<div id="automated-reproducible" class="section level2">
+<h2>automated = reproducible</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/s3JldKoA0zw" frameborder="0" allowfullscreen>
+</iframe>
+<p><br></p>
+</div>
+<div id="use-r-projects" class="section level2">
+<h2>use R projects</h2>
+<div id="keep-your-work-tidy-and-self-contained" class="section level3">
+<h3>Keep your work <a href="https://nicercode.github.io/blog/2013-04-05-projects/">tidy and self-contained</a></h3>
+<p><img src="https://image.slidesharecdn.com/20150422reproresr8-160404131652/95/reproducible-research-in-r-and-r-studio-21-638.jpg?cb=1459775831" height="150"></p>
+<div id="use-sensible-standardised-file-system-structure" class="section level4">
+<h4>use sensible / standardised file system structure</h4>
+<p><img src="https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/Rmd/assets/img/proj_str.png" height="150"></p>
+<p><br></p>
+</div>
+</div>
+</div>
+<div id="know-your-masters" class="section level2">
+<h2>Know your masters</h2>
+<ul>
+<li>identify the <code>master</code> copy of files</li>
+<li>keep it safe and and accessible</li>
+<li>consider version control</li>
+<li>consider centralising</li>
+</ul>
+<p><br></p>
+<p><img src="http://www.revit-lebanon.com/images/Revit_A_3/Adv-12.jpg" width=300px></p>
+<p><br></p>
+</div>
+<div id="avoid-catastrophe" class="section level2">
+<h2>avoid catastrophe</h2>
+<p><br></p>
+<div id="backup-on-disk" class="section level3">
+<h3>Backup on disk</h3>
+<ul>
+<li>consider using backup software like <a href="https://support.apple.com/en-gb/HT201250">Time Machine</a> (mac) or <a href="http://www.thundercloud.net/infoave/new/windows-10-has-a-time-machine/">File History</a> (Windows 10)</li>
+</ul>
+</div>
+<div id="backup-in-the-cloud" class="section level3">
+<h3>Backup in the cloud</h3>
+<ul>
+<li>dropbox, googledrive etc.</li>
+<li>if <a href="https://tools.google.com/dlpage/drive">installed</a> on your system, can programmatically access them through <code>R</code></li>
+<li>some version control</li>
+</ul>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/tomjwebb"><span class="citation">@tomjwebb</span></a> Back it up
+</p>
+— Ben Bond-Lamberty (<span class="citation">@BenBondLamberty</span>) <a href="https://twitter.com/BenBondLamberty/status/556120946722222080">January 16, 2015</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p><br></p>
+</div>
+</div>
+<div id="the-open-science-framework-osf.io" class="section level2">
+<h2>The Open Science Framework <a href="https://osf.io/">osf.io</a></h2>
+<ul>
+<li>version controlled</li>
+<li>easily shareable</li>
+<li>works with other apps</li>
+<li>work on an interface with R (<a href="https://github.com/chartgerink/osfr">OSFr</a>) is in progress. See more <a href="https://youtu.be/cnE3AcdeGVY">here</a></li>
+</ul>
+<p><br></p>
+</div>
+<div id="osf-intro" class="section level2">
+<h2>OSF intro</h2>
+<iframe width="450" height="250" src="https://www.youtube.com/embed/2TV21gOzfhw" frameborder="0" allowfullscreen>
+</iframe>
+</div>
+<div id="next" class="section level2">
+<h2>next</h2>
+<div id="tidy-data-1" class="section level3">
+<h3><a href="https://annakrystalli.github.io/ACCE_RDM/docs/tidy_data.html">tidy data</a></h3>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

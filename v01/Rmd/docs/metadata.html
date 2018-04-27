@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="ACCE Data Management Course" />
+
+<meta name="date" content="2017-02-17" />
+
+<title>Data Documentation &amp; Metadata</title>
+
+<script src="metadata_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="metadata_files/bootstrap-3.3.5/css/sandstone.min.css" rel="stylesheet" />
+<script src="metadata_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="metadata_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="metadata_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="metadata_files/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="metadata_files/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="metadata_files/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="metadata_files/navigation-1.1/tabsets.js"></script>
+<link href="metadata_files/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="metadata_files/highlightjs-1.1/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Data Documentation &amp; Metadata</h1>
+<h4 class="author"><em>ACCE Data Management Course</em></h4>
+<h4 class="date"><em>17 February 2017</em></h4>
+
+</div>
+
+
+<script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));</script>
+<div id="documenting-your-data" class="section level2 columns-2">
+<h2>Documenting your data</h2>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/tomjwebb"><span class="citation">@tomjwebb</span></a> I see tons of spreadsheets that i don't understand anything (or the stduent), making it really hard to share.
+</p>
+— Erika Berenguer (<span class="citation">@Erika_Berenguer</span>) <a href="https://twitter.com/Erika_Berenguer/status/556111838715580417">January 16, 2015</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/tomjwebb"><span class="citation">@tomjwebb</span></a> Create a tab on your excel sheet that explains exactly what you did to get each part of the data and how you have treat it so far.
+</p>
+— Erika Berenguer (<span class="citation">@Erika_Berenguer</span>) <a href="https://twitter.com/Erika_Berenguer/status/556109844659597312">January 16, 2015</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p><br> <br> <br></p>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/tomjwebb"><span class="citation">@tomjwebb</span></a> <a href="https://twitter.com/SuseJohnston"><span class="citation">@SuseJohnston</span></a> Write comments into any data or code file as if for yourself one year from now when you won't recall the details.
+</p>
+— Albert Cardona (<span class="citation">@albertcardona</span>) <a href="https://twitter.com/albertcardona/status/556113639594528769">January 16, 2015</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+<div id="section" class="section level2 columns-2">
+<h2></h2>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/srsupp"><span class="citation">@srsupp</span></a> <a href="https://twitter.com/tomjwebb"><span class="citation">@tomjwebb</span></a> Document! Many sharing platforms exist (e.g. <a href="https://twitter.com/figshare"><span class="citation">@figshare</span></a>), but w/o documentation/metadata, research data aren't v. useful
+</p>
+— Jonathan Petters (<span class="citation">@jon_petters</span>) <a href="https://twitter.com/jon_petters/status/556146541921320961">January 16, 2015</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/tomjwebb"><span class="citation">@tomjwebb</span></a> <a href="https://twitter.com/ScientificData"><span class="citation">@ScientificData</span></a> “Document. Everything.” Data without documentation has no value.
+</p>
+— Sven Kochmann (<span class="citation">@indianalytics</span>) <a href="https://twitter.com/indianalytics/status/556120920881115136">January 16, 2015</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p><br> <br></p>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="it" dir="ltr">
+<a href="https://twitter.com/tomjwebb"><span class="citation">@tomjwebb</span></a> Annotate, annotate, annotate!
+</p>
+— CanJFishAquaticSci (<span class="citation">@cjfas</span>) <a href="https://twitter.com/cjfas/status/556109252788379649">January 16, 2015</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+<div id="section-1" class="section level2 columns-2">
+<h2></h2>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/tomjwebb"><span class="citation">@tomjwebb</span></a> Have good metadata so others can understand it/use it
+</p>
+— Nathan B Furey (<span class="citation">@NBFurey</span>) <a href="https://twitter.com/NBFurey/status/556113773811867648">January 16, 2015</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/Sal_Keith"><span class="citation">@Sal_Keith</span></a> +1 Metadata essential &amp; prerequisite for the new breed of data journals like <a href="https://twitter.com/ScientificData"><span class="citation">@ScientificData</span></a> or repos like <a href="https://twitter.com/datadryad"><span class="citation">@datadryad</span></a> <a href="https://twitter.com/tomjwebb"><span class="citation">@tomjwebb</span></a>
+</p>
+— Gavin Simpson (<span class="citation">@ucfagls</span>) <a href="https://twitter.com/ucfagls/status/556111062517284864">January 16, 2015</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p><br> <br></p>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="und" dir="ltr">
+Document all the metadata (including protocols).<a href="https://twitter.com/tomjwebb"><span class="citation">@tomjwebb</span></a>
+</p>
+— Ward Appeltans (<span class="citation">@WrdAppltns</span>) <a href="https://twitter.com/WrdAppltns/status/556108414955560961">January 16, 2015</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+<div id="section-2" class="section level2">
+<h2></h2>
+<blockquote class="twitter-tweet" data-lang="en">
+<p lang="en" dir="ltr">
+You download a zip file of <a href="https://twitter.com/hashtag/OpenData?src=hash">#OpenData</a>. Apart from your data file(s), what else should it contain?
+</p>
+— Leigh Dodds (<span class="citation">@ldodds</span>) <a href="https://twitter.com/ldodds/status/828657155863638016">February 6, 2017</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+<div id="otherpeoplesdata-dream-match" class="section level2">
+<h2>#otherpeoplesdata dream match!</h2>
+<blockquote>
+<p>imagine an open data set</p>
+</blockquote>
+<p>It’s out there somewhere:</p>
+<p><br></p>
+<div id="how-would-you-locate-it" class="section level4">
+<h4>How would you locate it?</h4>
+<p><br></p>
+<ul>
+<li>what details would you need to know to determine relevance?</li>
+<li>what information would you need to know to use it? <br></li>
+</ul>
+<blockquote>
+<h4 id="think-about-all-you-would-neeed-to-understand-someone-elses-data.-in-18-months-you-will-be-that-other-person-with-your-own-data.">Think about all you would neeed to understand someone else’s data. In 18 months <strong>YOU will be that other person with your own data.</strong></h4>
+</blockquote>
+</div>
+</div>
+<div id="metadata" class="section level2">
+<h2>metadata</h2>
+<blockquote>
+<h3 id="information-that-describes-explains-locates-or-in-some-way-makes-it-easier-to-find-access-and-use-a-resource-in-this-case-data.">Information that <strong>describes, explains, locates</strong>, or in some way makes it easier to <strong>find, access</strong>, and <strong>use</strong> a resource (in this case, data).</h3>
+</blockquote>
+<p><br></p>
+<p><img src="http://www.webhostingsecretrevealed.net/wp-content/uploads/2014/09/who-what-when-how-why.jpg" height="200px"></p>
+<p><br></p>
+</div>
+<div id="exercise-2" class="section level1">
+<h1>exercise 2:</h1>
+<div id="introduce-your-data" class="section level3">
+<h3>introduce your data</h3>
+</div>
+<div id="prepare-it-to-share-it" class="section level2">
+<h2>prepare it to share it</h2>
+<div id="lets-start-documenting-your-data" class="section level3">
+<h3>Let’s start documenting your data!</h3>
+<ul>
+<li>in pairs describe the <strong>who, what, when, where, why</strong> of your dataset.</li>
+<li>use the <strong>Data Reuse Checklist</strong> to guide your description.</li>
+</ul>
+</div>
+<div id="data-reuse-checklist" class="section level3">
+<h3>Data Reuse Checklist</h3>
+<p><a href="http://mozillascience.github.io/checklist/" class="uri">http://mozillascience.github.io/checklist/</a></p>
+<p><br> <br></p>
+<p><img src="/Users/Anna/Documents/WORK/ACCE%20Data%20management%20course/Resources/figures/msl%20logo.png" height="100"></p>
+</div>
+</div>
+<div id="metadata-data-about-data" class="section level2">
+<h2>metadata = data about data</h2>
+<div id="backbone-of-digital-curation.-without-it-a-digital-resource-may-be-irretrievable-unidentifiable-or-unusable." class="section level4">
+<h4>Backbone of digital curation. Without it a digital resource may be irretrievable, unidentifiable or unusable.</h4>
+<p class="accent_border">
+<b>Descriptive</b>
+</p>
+<ul>
+<li><em>enables identification, location and retrieval of data, often includes use of controlled vocabularies for classification and indexing.</em></li>
+</ul>
+<p class="accent_border">
+<b>Technical</b>
+</p>
+<ul>
+<li><em>describes the technical processes used to produce, or required to use a digital data object.</em></li>
+</ul>
+<p class="accent_border">
+<b>Administrative</b>
+</p>
+<ul>
+<li><em>used to manage administrative aspects of the digital object e.g. intellectual property rights and acquisition.</em></li>
+</ul>
+<p>This usually takes the form of a structured set of elements.</p>
+</div>
+</div>
+<div id="elements-of-metadata" class="section level2">
+<h2>elements of metadata</h2>
+<ul>
+<li><h4 id="structured-data-files">Structured data files:</h4>
+<ul>
+<li>readable by machines and humans, accessible through the web</li>
+</ul></li>
+<li><h4 id="controlled-vocabularies-eg.-nerc-vocabulary-server">controlled vocabularies eg. <a href="https://www.bodc.ac.uk/resources/products/web_services/vocab/">NERC Vocabulary server</a></h4>
+<ul>
+<li>allows for connectivity of data</li>
+</ul></li>
+</ul>
+<p><img src="/Users/Anna/Documents/workflows/ACCE_RDM/Rmd/assets/img/NERC_vocab.png" width=400px></p>
+<div id="key-to-search-function" class="section level3">
+<h3>KEY TO SEARCH FUNCTION</h3>
+<p>By structuring &amp; adhering to controlled vocabularies, data can be combined, accessed and searched!</p>
+<p class="accent_border">
+<b>Different communities develop different standards which define both the structure and content of metadata.</b>
+</p>
+</div>
+</div>
+<div id="ecological-metadata-language-eml" class="section level2 smaller">
+<h2>Ecological Metadata Language (EML)</h2>
+<div id="last-decade---tremendous-explosion-of-ecological-and-environmental-data---potential-for-broad-scale-or-synthetic-research" class="section level4">
+<h4>last decade -&gt; tremendous explosion of ecological and environmental data -&gt; potential for broad-scale or synthetic research</h4>
+<p><br></p>
+</div>
+<div id="but" class="section level3">
+<h3>But</h3>
+<ul>
+<li><p>extremely heterogeneous and complexity</p></li>
+<li><p>dispersed across many separate repositories.</p></li>
+<li><h5 id="data-are-largely-unorganized-and-inaccessible">data are <strong>largely unorganized and inaccessible</strong></h5></li>
+</ul>
+<p><br></p>
+</div>
+<div id="ecological-metadata-language-eml-1" class="section level3">
+<h3><a href="http://www.dcc.ac.uk/resources/metadata-standards/eml-ecological-metadata-language"><strong>Ecological Metadata Language (EML)</strong></a></h3>
+<div id="a-metadata-standard-developed-by-and-for-the-ecology-discipline." class="section level4">
+<h4>a metadata standard developed by and for the ecology discipline.</h4>
+<p>EML is a <a href="https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/index.html">set of XML schema</a> documents that allow for the <strong>structural expression of metadata</strong>.</p>
+</div>
+<div id="harmonising-ecological-data" class="section level4">
+<h4>harmonising ecological data</h4>
+<p><big><strong>Wide adoption and use of EML will create exciting new opportunities for data discovery, access, integration and synthesis.</strong></big></p>
+</div>
+</div>
+</div>
+<div id="example-eml" class="section level2">
+<h2>example EML</h2>
+<p><strong>EML = extensible markup language</strong>: Emphasis on simplicity, generality, and usability across the Internet.</p>
+<div id="similar-to-html-what-the-web-is-made-of" class="section level4">
+<h4>similar to html: what the web is made of!</h4>
+<pre><code>## &lt;eml packageId=&quot;eml.1.1&quot; system=&quot;knb&quot; xsi:schemaLocation=&quot;eml://ecoinformatics.org/eml-2.1.1 eml.xsd&quot;&gt;
+##   &lt;dataset&gt;
+##     &lt;title&gt;Sample dataset Description&lt;/title&gt;
+##     &lt;creator id=&quot;23445&quot; scope=&quot;document&quot;&gt;
+##       &lt;individualName&gt;
+##         &lt;surName&gt;Smith&lt;/surName&gt;
+##       &lt;/individualName&gt;
+##     &lt;/creator&gt;
+##     &lt;creator id=&quot;23446&quot; scope=&quot;document&quot;&gt;
+##       &lt;individualName&gt;
+##         &lt;surName&gt;Smith&lt;/surName&gt;
+##       &lt;/individualName&gt;
+##     &lt;/creator&gt;
+##     &lt;additionalInfo&gt;
+##       &lt;para&gt;My comments go here.&lt;/para&gt;
+##     &lt;/additionalInfo&gt;
+##     &lt;intellectualRights&gt;
+##       &lt;section&gt;
+##         &lt;para&gt;Anyone can use it.&lt;/para&gt;
+##       &lt;/section&gt;
+##     &lt;/intellectualRights&gt;
+##     &lt;distribution&gt;
+##       &lt;online&gt;
+##         &lt;connectionDefinition scope=&quot;document&quot;&gt;
+##           &lt;schemeName system=&quot;CAP&quot;&gt;sde&lt;/schemeName&gt;
+##           &lt;description&gt;
+##             &lt;para&gt;The SDE scheme used at CAP LTER&lt;/para&gt;
+##           &lt;/description&gt;
+##           &lt;parameterDefinition&gt;
+##             &lt;name&gt;hostname&lt;/name&gt;
+##             &lt;definition&gt;The host&lt;/definition&gt;
+##             &lt;defaultValue&gt;mohave.asu.edu&lt;/defaultValue&gt;
+##           &lt;/parameterDefinition&gt;
+##           &lt;parameterDefinition&gt;
+##             &lt;name&gt;databaseName&lt;/name&gt;
+##             &lt;definition&gt;The name of the database or catalog&lt;/definition&gt;
+##           &lt;/parameterDefinition&gt;
+##           &lt;parameterDefinition&gt;
+##             &lt;name&gt;owner&lt;/name&gt;
+##             &lt;definition&gt;The owner catalog&lt;/definition&gt;
+##             &lt;defaultValue&gt;dbo&lt;/defaultValue&gt;
+##           &lt;/parameterDefinition&gt;
+##         &lt;/connectionDefinition&gt;
+##       &lt;/online&gt;
+##     &lt;/distribution&gt;
+##     &lt;purpose&gt;
+##       &lt;para&gt;Provide data to the whole world.&lt;/para&gt;
+##     &lt;/purpose&gt;
+##     &lt;contact&gt;
+##       &lt;individualName&gt;
+##         &lt;surName&gt;Johnson&lt;/surName&gt;
+##       &lt;/individualName&gt;
+##     &lt;/contact&gt;
+##     &lt;contact&gt;
+##       &lt;references&gt;23445&lt;/references&gt;
+##     &lt;/contact&gt;
+##   &lt;/dataset&gt;
+## &lt;/eml&gt;</code></pre>
+</div>
+</div>
+<div id="documenting-your-data-1" class="section level2">
+<h2>Documenting your data</h2>
+<ul>
+<li>Start at the very least by <strong>creating a metadata tab within your raw data spreadsheet</strong></li>
+<li>Ideally set up a system of <strong>normalised tables</strong> <a href="https://dynamicecology.wordpress.com/2016/08/22/ten-commandments-for-good-data-management/">see section 3 in this post</a> and <strong><code>README</code></strong> and <strong><code>vignette</code></strong> documents to manage and document metadata.</li>
+<li>finally, when you’re ready to publish:</li>
+</ul>
+<div id="structure-metadata-into-an-eml-file-a-searchable-shareable-file." class="section level3">
+<h3>structure metadata into an <code>EML</code> file, a searchable, shareable file.</h3>
+<p><br></p>
+<div id="different-types-data-require-different-metadata" class="section level4">
+<h4><strong>Different types data require different metadata</strong></h4>
+<p class="accentborder">
+<b>Ensure everything someone might need to understand your data is documented
+</p>
+<p></b></p>
+</div>
+</div>
+</div>
+<div id="example-eml-workflow" class="section level2">
+<h2>Example EML workflow</h2>
+<div id="bird-trait-networks-project" class="section level3">
+<h3>Bird Trait Networks project</h3>
+<p><br> I’m using data from a project in which we <strong><em>compiled large dataset on bird reproductive, morphological, physiological, life history and ecological traits across as many bird species as possible</em></strong> to perform a network analysis on associations between trait pairs.</p>
+<p><br></p>
+<div id="lets-use-a-simplified-subset-of-the-data-to-explore-some-of-the-concepts-and-tools-from-producing-an-eml" class="section level4">
+<h4>Let’s use a simplified subset of the data to explore some of the concepts and tools from <strong>producing an <code>eml</code></strong></h4>
+<ul>
+<li>all materials can be found <a href="https://github.com/annakrystalli/ACCE_RDM/tree/master/example">here</a>.</li>
+</ul>
+<p><br></p>
+<ul>
+<li>I’ll include some dummy data sourced from the <code>eml</code> package <a href="https://github.com/ropensci/EML/blob/master/vignettes/creating-EML.Rmd">vignette on creating an EML</a> to cover broader scope of data.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="data" class="section level2">
+<h2>data</h2>
+<table>
+<caption>bird trait networks dataTable</caption>
+<thead>
+<tr class="header">
+<th align="left">species</th>
+<th align="right">max.altitude</th>
+<th align="right">dev.mode</th>
+<th align="right">courtship.feed.m</th>
+<th align="right">song.dur</th>
+<th align="right">breed.system</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Acridotheres_tristis</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Aix_galericulata</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">Anas_americana</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">Anas_clypeata</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">Anthracothorax_nigricollis</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">Anthus_hodgsoni</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Aphelocoma_coerulescens</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">Aphelocoma_ultramarina</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">Ardea_cinerea</td>
+<td align="right">NA</td>
+<td align="right">2</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>Like many real data sets, column headings are convenient for data entry and manipulation, but <strong>not particularly descriptive to a user not already familiar with this data</strong>.</p></li>
+<li><p>More importantly, they <strong>don’t let us know what units they are measured in</strong> (or in the case of categorical / factor data like species names or life stages, <strong>what the factor abbreviations refer to</strong>). So let us take a moment to be more explicit:</p></li>
+</ul>
+</div>
+<div id="eml-ropenscience-package" class="section level2">
+<h2>EML rOpenScience package</h2>
+<p class="accentborder">
+<b>We can store this information by creating EML files and explicity supply variable descriptions and units.</b>
+</p>
+<div class="figure">
+<img src="http://ivanhanigan.github.io/images/workflow-rmd-md.png" />
+
+</div>
+<pre class="r"><code>install.packages(&quot;EML&quot;)</code></pre>
+</div>
+<div id="eml" class="section level2">
+<h2>EML</h2>
+<div id="functions-in-the-package-help-build-an-eml-object-from-modular-elements" class="section level4">
+<h4>functions in the package help build an <code>eml</code> object from modular elements</h4>
+<pre><code>- eml
+  - dataset
+    - creator
+    - title
+    - publisher
+    - pubDate
+    - keywords
+    - abstract 
+    - intellectualRights
+    - contact
+    - methods
+    - coverage
+      - geographicCoverage
+      - temporalCoverage
+      - taxonomicCoverage
+    - dataTable
+      - entityName
+      - entityDescription
+      - physical
+      - attributeList
+      </code></pre>
+</div>
+</div>
+<div id="creating-an-eml" class="section level2">
+<h2>creating an EML</h2>
+<div id="start-with-datatable" class="section level4">
+<h4>start with <code>dataTable</code></h4>
+<pre><code>    - dataTable
+      - entityName
+      - entityDescription
+      - physical
+      - attributeList</code></pre>
+<p>We will build this <code>eml</code> file from the bottom up, starting with the <strong>two main components</strong> of a <code>dataTable</code> indicated above:</p>
+<ul>
+<li><code>attributeList</code></li>
+<li><code>physical</code></li>
+</ul>
+<p>We will then slip these two pieces into place inside a dataTable element, and slip that into our eml element along with the rest of the generic metadata</p>
+</div>
+</div>
+<div id="attributeslist-structure" class="section level2">
+<h2>attributesList structure</h2>
+<div id="we-need-to-supply-two-data.frames" class="section level3">
+<h3>we need to supply two <code>data.frames</code></h3>
+<ul>
+<li><h4 id="attributes"><code>attributes</code></h4></li>
+<li><h4 id="factors"><code>factors</code></h4></li>
+</ul>
+<p>and a vector of:</p>
+<ul>
+<li><h4 id="columnclass"><code>columnClass</code></h4></li>
+</ul>
+<p><br></p>
+<ul>
+<li>create a <code>attr_tbl</code> in which to complete all info required</li>
+<li>use <strong><code>eml_utils.R</code></strong> functions to extract <code>attributeList</code> elements from <code>attr_tbl</code></li>
+</ul>
+<pre class="r"><code>library(RCurl)
+eval(parse(text = getURL(
+    &quot;https://raw.githubusercontent.com/annakrystalli/ACCE_RDM/master/R/eml_utils.R&quot;, 
+    ssl.verifypeer = FALSE)))</code></pre>
+<p><br></p>
+</div>
+</div>
+<div id="attributes-df" class="section level2">
+<h2><code>attributes</code> df</h2>
+<p>The attributes data frame must use only the recognized column headers shown here. The attributes data frame must contain columns for required metadata. These are: For all data:</p>
+<ul>
+<li>attributeName (required, free text field)</li>
+<li>attributeDefinition (required, free text field)</li>
+<li>columnClasses (required, <code>&quot;numeric&quot;</code>, <code>&quot;character&quot;</code>, <code>&quot;factor&quot;</code>, <code>&quot;ordered&quot;</code>, or <code>&quot;Date&quot;</code>, case sensitive)</li>
+</ul>
+<p><br></p>
+<div id="columnclasses-dependant-attributes" class="section level4">
+<h4><code>columnClasses</code> dependant attributes</h4>
+<ul>
+<li>For <code>numeric</code> (ratio or interval) data:
+<ul>
+<li>unit (required, see <a href="https://knb.ecoinformatics.org/#external//emlparser/docs/eml-2.1.1/./eml-unitTypeDefinitions.html">eml-unitTypeDefinitions</a> and <a href="https://github.com/ropensci/EML/blob/master/vignettes/working-with-units.Rmd">working with units</a>)</li>
+</ul></li>
+<li>For <code>character</code> (textDomain) data:
+<ul>
+<li>definition (required)</li>
+</ul></li>
+<li>For <code>dateTime</code> data:
+<ul>
+<li>formatString (required) e.g for date <code>11-03-2001</code> formatString would be <code>&quot;DD-MM-YYYY&quot;</code></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="create-attr_tbl-shell" class="section level2">
+<h2>create <code>attr_tbl</code> shell</h2>
+<ul>
+<li><h4 id="load-data">load data</h4></li>
+</ul>
+<pre class="r"><code>dt   &lt;- read.csv(&quot;data/bird_trait_db-v0.1.csv&quot;)</code></pre>
+<ul>
+<li><h4 id="create-attr_tbl-shell-from-your-data-dt">create <code>attr_tbl</code> shell from <strong>your data (<code>dt</code>)</strong></h4>
+<ul>
+<li>use function <code>get_attr_shell</code> from <code>eml_utils.R</code>.</li>
+</ul></li>
+</ul>
+<pre class="r"><code>attr_shell &lt;- get_attr_shell(dt)
+str(attr_shell)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    6 obs. of  11 variables:
+##  $ attributeName      : chr  &quot;species&quot; &quot;max.altitude&quot; &quot;dev.mode&quot; &quot;courtship.feed.m&quot; ...
+##  $ attributeDefinition: logi  NA NA NA NA NA NA
+##  $ columnClasses      : chr  &quot;character&quot; &quot;numeric&quot; &quot;numeric&quot; &quot;numeric&quot; ...
+##  $ numberType         : logi  NA NA NA NA NA NA
+##  $ unit               : logi  NA NA NA NA NA NA
+##  $ minimum            : logi  NA NA NA NA NA NA
+##  $ maximum            : logi  NA NA NA NA NA NA
+##  $ formatString       : logi  NA NA NA NA NA NA
+##  $ definition         : logi  NA NA NA NA NA NA
+##  $ code               : logi  NA NA NA NA NA NA
+##  $ levels             : logi  NA NA NA NA NA NA</code></pre>
+</div>
+<div id="complete-attr_tbl" class="section level2">
+<h2>complete <code>attr_tbl</code></h2>
+<div id="save-shell" class="section level4">
+<h4>save shell</h4>
+<ul>
+<li>write <code>attr_shell</code> to <code>.csv</code></li>
+</ul>
+<pre class="r"><code>write.csv(attr_shell, file = &quot;data/attr_shell.csv&quot;)</code></pre>
+<p><br></p>
+</div>
+<div id="complete-attr_tbl-1" class="section level4">
+<h4>complete attr_tbl</h4>
+<ul>
+<li>complete in excel and save to <strong>attr_tbl.csv</strong></li>
+<li>read in completed <strong>attr_tbl.csv</strong></li>
+</ul>
+<pre class="r"><code>attr_tbl &lt;- read.csv(file = &quot;data/attr_tbl.csv&quot;)</code></pre>
+<p><br></p>
+</div>
+</div>
+<div id="attr_tbl" class="section level2">
+<h2><code>attr_tbl</code></h2>
+<table>
+<caption>table 2. bird trait networks attr_tbl</caption>
+<thead>
+<tr class="header">
+<th align="left">attributeName</th>
+<th align="left">attributeDefinition</th>
+<th align="left">columnClasses</th>
+<th align="left">numberType</th>
+<th align="left">unit</th>
+<th align="right">minimum</th>
+<th align="left">maximum</th>
+<th align="left">formatString</th>
+<th align="left">definition</th>
+<th align="left">code</th>
+<th align="left">levels</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">species</td>
+<td align="left">species</td>
+<td align="left">character</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">species</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">max.altitude</td>
+<td align="left">Maximum altitudinal distribution</td>
+<td align="left">numeric</td>
+<td align="left">integer</td>
+<td align="left">meter</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">dev.mode</td>
+<td align="left">Developmental mode</td>
+<td align="left">ordered</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">1;2;3</td>
+<td align="left">Altricial;Semiprecocial;Precocial</td>
+</tr>
+<tr class="even">
+<td align="left">courtship.feed.m</td>
+<td align="left">Courtship feeding (by the male)</td>
+<td align="left">factor</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">Courtship feeding (by the male)</td>
+<td align="left">0;1</td>
+<td align="left">FALSE;TRUE</td>
+</tr>
+<tr class="odd">
+<td align="left">song.dur</td>
+<td align="left">Song duration</td>
+<td align="left">numeric</td>
+<td align="left">real</td>
+<td align="left">second</td>
+<td align="right">0</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">breed.system</td>
+<td align="left">Which adult(s) provides the majority of care:</td>
+<td align="left">factor</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">Breeding system</td>
+<td align="left">1;2;3;4;5</td>
+<td align="left">Pair;Female;Male;Cooperative;Occassional</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="section-3" class="section level2">
+<h2></h2>
+<p><br></p>
+<ul>
+<li>I use the columns <code>code</code> and <code>levels</code> to store information on factors. Use <code>&quot;;&quot;</code> to separate code and level descriptions. These can be extracted by <code>eml_utils.R</code> function <code>get_attr_factors()</code> later on.</li>
+</ul>
+</div>
+<div id="make-attributes-df" class="section level2">
+<h2>make <code>attributes</code> df</h2>
+<pre class="r"><code>attributes &lt;- extract_attr_tbl(attr_tbl)
+str(attributes, max.level = 2)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    6 obs. of  9 variables:
+##  $ attributeName      : chr  &quot;species&quot; &quot;max.altitude&quot; &quot;dev.mode&quot; &quot;courtship.feed.m&quot; ...
+##  $ attributeDefinition: chr  &quot;species&quot; &quot;Maximum altitudinal distribution&quot; &quot;Developmental mode&quot; &quot;Courtship feeding (by the male)&quot; ...
+##  $ columnClasses      : logi  NA NA NA NA NA NA
+##  $ numberType         : chr  NA &quot;integer&quot; NA NA ...
+##  $ unit               : chr  NA &quot;meter&quot; NA NA ...
+##  $ minimum            : int  NA NA NA NA 0 NA
+##  $ maximum            : logi  NA NA NA NA NA NA
+##  $ formatString       : logi  NA NA NA NA NA NA
+##  $ definition         : chr  &quot;species&quot; NA NA &quot;Courtship feeding (by the male)&quot; ...</code></pre>
+</div>
+<div id="make-factors-df" class="section level2">
+<h2>make <code>factors</code> df</h2>
+<pre class="r"><code>factors &lt;- get_attr_factors(attr_tbl)
+kable(head(factors, 9))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">attributeName</th>
+<th align="left">code</th>
+<th align="left">definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">dev.mode</td>
+<td align="left">1</td>
+<td align="left">Altricial</td>
+</tr>
+<tr class="even">
+<td align="left">dev.mode</td>
+<td align="left">2</td>
+<td align="left">Semiprecocial</td>
+</tr>
+<tr class="odd">
+<td align="left">dev.mode</td>
+<td align="left">3</td>
+<td align="left">Precocial</td>
+</tr>
+<tr class="even">
+<td align="left">courtship.feed.m</td>
+<td align="left">0</td>
+<td align="left">FALSE</td>
+</tr>
+<tr class="odd">
+<td align="left">courtship.feed.m</td>
+<td align="left">1</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="even">
+<td align="left">breed.system</td>
+<td align="left">1</td>
+<td align="left">Pair</td>
+</tr>
+<tr class="odd">
+<td align="left">breed.system</td>
+<td align="left">2</td>
+<td align="left">Female</td>
+</tr>
+<tr class="even">
+<td align="left">breed.system</td>
+<td align="left">3</td>
+<td align="left">Male</td>
+</tr>
+<tr class="odd">
+<td align="left">breed.system</td>
+<td align="left">4</td>
+<td align="left">Cooperative</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="make-attributelist" class="section level2">
+<h2>make attributeList</h2>
+<pre class="r"><code>library(EML)
+attributeList &lt;- set_attributes(attributes, factors, col_classes = attr_tbl$columnClasses)
+str(attributeList, max.level = 2)</code></pre>
+<pre><code>## Formal class &#39;attributeList&#39; [package &quot;EML&quot;] with 7 slots
+##   ..@ .Data         : chr(0) 
+##   ..@ schemaLocation:Formal class &#39;xml_attribute&#39; [package &quot;EML&quot;] with 1 slot
+##   ..@ lang          :Formal class &#39;xml_attribute&#39; [package &quot;EML&quot;] with 1 slot
+##   ..@ slot_order    :Formal class &#39;slot_order&#39; [package &quot;EML&quot;] with 1 slot
+##   ..@ attribute     :Formal class &#39;ListOfattribute&#39; [package &quot;EML&quot;] with 1 slot
+##   ..@ references    :Formal class &#39;references&#39; [package &quot;EML&quot;] with 6 slots
+##   ..@ id            :Formal class &#39;xml_attribute&#39; [package &quot;EML&quot;] with 1 slot</code></pre>
+</div>
+<div id="set-physical" class="section level2">
+<h2>set <code>physical</code></h2>
+<div id="document-a-description-of-the-file-format-itself." class="section level4">
+<h4>document a description of the file format itself.</h4>
+<pre class="r"><code>physical &lt;- set_physical(&quot;bird_trait_db-v0.1.csv&quot;)
+
+physical</code></pre>
+<pre><code>## &lt;physical&gt;
+##   &lt;objectName&gt;bird_trait_db-v0.1.csv&lt;/objectName&gt;
+##   &lt;size unit=&quot;bytes&quot;/&gt;
+##   &lt;dataFormat&gt;
+##     &lt;textFormat&gt;
+##       &lt;recordDelimiter&gt;\n\r&lt;/recordDelimiter&gt;
+##       &lt;attributeOrientation&gt;column&lt;/attributeOrientation&gt;
+##       &lt;simpleDelimited&gt;
+##         &lt;fieldDelimiter&gt;,&lt;/fieldDelimiter&gt;
+##       &lt;/simpleDelimited&gt;
+##     &lt;/textFormat&gt;
+##   &lt;/dataFormat&gt;
+## &lt;/physical&gt;</code></pre>
+</div>
+</div>
+<div id="assemble-datatable" class="section level2">
+<h2>assemble <code>dataTable</code></h2>
+<p>we can now assemble the dataTable element itself by creating a new <code>dataTable</code> class</p>
+<pre class="r"><code>dataTable &lt;- new(&quot;dataTable&quot;,
+                 entityName = &quot;bird_trait_db-v0.1.csv&quot;,
+                 entityDescription = &quot;Subsample of bird trait database&quot;,
+                 physical = physical,
+                 attributeList = attributeList)</code></pre>
+<pre class="r"><code>str(dataTable, max.level = 2)</code></pre>
+<pre><code>## Formal class &#39;dataTable&#39; [package &quot;EML&quot;] with 19 slots
+##   ..@ .Data              : chr(0) 
+##   ..@ schemaLocation     :Formal class &#39;xml_attribute&#39; [package &quot;EML&quot;] with 1 slot
+##   ..@ lang               :Formal class &#39;xml_attribute&#39; [package &quot;EML&quot;] with 1 slot
+##   ..@ slot_order         :Formal class &#39;slot_order&#39; [package &quot;EML&quot;] with 1 slot
+##   ..@ alternateIdentifier:Formal class &#39;ListOfalternateIdentifier&#39; [package &quot;EML&quot;] with 1 slot
+##   ..@ entityName         :Formal class &#39;entityName&#39; [package &quot;EML&quot;] with 4 slots
+##   ..@ entityDescription  :Formal class &#39;entityDescription&#39; [package &quot;EML&quot;] with 4 slots
+##   ..@ physical           :Formal class &#39;ListOfphysical&#39; [package &quot;EML&quot;] with 1 slot
+##   ..@ coverage           :Formal class &#39;coverage&#39; [package &quot;EML&quot;] with 11 slots
+##   ..@ methods            :Formal class &#39;methods&#39; [package &quot;EML&quot;] with 7 slots
+##   ..@ additionalInfo     :Formal class &#39;ListOfadditionalInfo&#39; [package &quot;EML&quot;] with 1 slot
+##   ..@ attributeList      :Formal class &#39;attributeList&#39; [package &quot;EML&quot;] with 7 slots
+##   ..@ constraint         :Formal class &#39;ListOfconstraint&#39; [package &quot;EML&quot;] with 1 slot
+##   ..@ caseSensitive      :Formal class &#39;caseSensitive&#39; [package &quot;EML&quot;] with 4 slots
+##   ..@ numberOfRecords    :Formal class &#39;numberOfRecords&#39; [package &quot;EML&quot;] with 4 slots
+##   ..@ references         :Formal class &#39;references&#39; [package &quot;EML&quot;] with 6 slots
+##   ..@ id                 :Formal class &#39;xml_attribute&#39; [package &quot;EML&quot;] with 1 slot
+##   ..@ system             :Formal class &#39;xml_attribute&#39; [package &quot;EML&quot;] with 1 slot
+##   ..@ scope              :Formal class &#39;xml_attribute&#39; [package &quot;EML&quot;] with 1 slot</code></pre>
+<p><br></p>
+</div>
+<div id="set-coverage" class="section level2">
+<h2>set <code>coverage</code></h2>
+<div id="set-taxonomic-coverage" class="section level3">
+<h3>set taxonomic coverage</h3>
+<p>Must either be a <code>data.frame</code> or <code>list</code> specifying <strong>taxonomic information on species in data</strong>.</p>
+<p><br></p>
+<div id="columns-or-list-elements-should-contain-rank-names." class="section level4">
+<h4>Columns or list elements should contain rank names.</h4>
+<pre class="r"><code>taxon_coverage &lt;- read.csv(&quot;data/taxo.csv&quot;, stringsAsFactors = F)</code></pre>
+<pre><code>## # A tibble: 6 × 7
+##    KINGDOM   PHYLUM CLASS         ORDER       FAMILY          GENUS
+##      &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;         &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;
+## 1 Animalia Chordata  Aves Passeriformes    Sturnidae   Acridotheres
+## 2 Animalia Chordata  Aves  Anseriformes     Anatidae            Aix
+## 3 Animalia Chordata  Aves  Anseriformes     Anatidae           Anas
+## 4 Animalia Chordata  Aves  Anseriformes     Anatidae           Anas
+## 5 Animalia Chordata  Aves   Apodiformes  Trochilidae Anthracothorax
+## 6 Animalia Chordata  Aves Passeriformes Motacillidae         Anthus
+## # ... with 1 more variables: SPECIES &lt;chr&gt;</code></pre>
+</div>
+</div>
+</div>
+<div id="section-4" class="section level2">
+<h2></h2>
+<div id="temporal-and-spatial-coverage" class="section level3">
+<h3>temporal and spatial coverage</h3>
+<p>my example doesn’t have temporal or spatial coverage so I include some dummy information from the EML vignette.</p>
+<pre class="r"><code>geographicDescription &lt;- &quot;The Geographic region of the kelp bed data extends 
+along the California coast, down through the coast of Baja, Mexico: Central 
+California (Halfmoon Bay to Purisima Point), Southern California (Point 
+Arguello to the United States/Mexico border including the Channel Islands) 
+and Baja California (points south of the United States/Mexico border including 
+several offshore islands)&quot;</code></pre>
+<div id="set-coverage-1" class="section level4">
+<h4>set <code>coverage</code></h4>
+<ul>
+<li>supply taxonomic information to argument <code>sci_names</code>.</li>
+</ul>
+<pre class="r"><code>coverage &lt;- set_coverage(begin = &#39;2012-06-01&#39;, end = &#39;2013-12-31&#39;,
+                         sci_names = taxon_coverage,
+                         geographicDescription = geographicDescription,
+                         west = -122.44, east = -117.15, 
+                         north = 37.38, south = 30.00,
+                         altitudeMin = 160, altitudeMaximum = 330,
+                         altitudeUnits = &quot;meter&quot;)</code></pre>
+</div>
+</div>
+</div>
+<div id="section-5" class="section level2">
+<h2></h2>
+<pre class="r"><code>eml_get(coverage, &quot;geographicDescription&quot;)</code></pre>
+<pre><code>## [1] &quot;The Geographic region of the kelp bed data extends \nalong the California coast, down through the coast of Baja, Mexico: Central \nCalifornia (Halfmoon Bay to Purisima Point), Southern California (Point \nArguello to the United States/Mexico border including the Channel Islands) \nand Baja California (points south of the United States/Mexico border including \nseveral offshore islands)&quot;</code></pre>
+<pre class="r"><code>eml_get(coverage, &quot;temporalCoverage&quot;)</code></pre>
+<pre><code>## An object of class &quot;ListOftemporalCoverage&quot;
+## [[1]]
+## &lt;temporalCoverage&gt;
+##   &lt;rangeOfDates&gt;
+##     &lt;beginDate&gt;
+##       &lt;calendarDate&gt;2012-06-01&lt;/calendarDate&gt;
+##     &lt;/beginDate&gt;
+##     &lt;endDate&gt;
+##       &lt;calendarDate&gt;2013-12-31&lt;/calendarDate&gt;
+##     &lt;/endDate&gt;
+##   &lt;/rangeOfDates&gt;
+## &lt;/temporalCoverage&gt;</code></pre>
+</div>
+<div id="create-methods" class="section level2">
+<h2>create <code>methods</code></h2>
+<div id="document-your-protocols-in-a-word-.doc" class="section level4">
+<h4>document your protocols in a word .doc</h4>
+<p>Keep a dynamic document used to <strong>plan</strong>, <strong>record</strong> and <strong>write up</strong> methods. Again, for a more relevant example, I just include the example provided in the vignette. You can find a copy of the document <a href="https://github.com/annakrystalli/ACCE_RDM/blob/master/example/methods/hf205-methods.docx">here</a></p>
+<pre class="r"><code>methods_file &lt;- system.file(&quot;examples/hf205-methods.docx&quot;, package = &quot;EML&quot;)
+methods_file</code></pre>
+<pre><code>## [1] &quot;/Users/Anna/Library/R/3.3/library/EML/examples/hf205-methods.docx&quot;</code></pre>
+<pre class="r"><code>methods &lt;- set_methods(methods_file)
+
+eml_get(methods, &quot;methodStep&quot;)</code></pre>
+<pre><code>## An object of class &quot;ListOfmethodStep&quot;
+## [[1]]
+## &lt;methodStep&gt;
+##   &lt;description&gt;
+##     &lt;section&gt;
+##       &lt;title&gt;General Protocols&lt;/title&gt;
+##       &lt;para&gt;
+##     Field methods. All experiments will be carried out in the greenhouse
+##     at Harvard Forest. We have developed an instrumentation system that
+##     allows us to collect continuous dissolved [O2] measurements:
+##     dedicated micro-probes (DO-166MT; Lazar Research Laboratories:
+##     http://www.shelfscientific.com/) connected to multiplexers and data
+##     loggers (AM16/32B multiplexer, CR-1000 datalogger and control system
+##     [Campbell Scientific: http://www.cambellsci.com]). The initial
+##     ecosystem composition in all experimental plants will be
+##     standardized by seeding each pitcher with a 10-ml inoculum of liquid
+##     collected from pitchers growing at Tom Swamp. In all experiments,
+##     prey will be supplied to pitchers as standardized aliquots of dried
+##     and finely ground bald-faced hornets (Dolichovespula maculata;
+##     Hymenoptera: Vespidae), which we collect in quantity throughout New
+##     England. Both hornets and ants (the latter are the dominant prey of
+##     S. purpurea) are hymenoptera, and have nearly identical C:N ratios
+##     (hornets: 3.97; common bog-dwelling ants [Tapinoma sessile and
+##     Myrmica lobifrons]: 3.37), but on average hornets have greater than
+##     100 times the dry mass of these ants, and are easier to collect and
+##     process as a standardized food source. Additions of prey, either as
+##     large &quot;pulses&quot; or chronic &quot;presses&quot; are
+##     analogous to the enrichment and eutrophication that occur in aquatic
+##     &quot;green&quot; food webs in which phytoplankton abundance is
+##     boosted through addition of limiting nutrients. In &quot;brown&quot;
+##     food webs such as the Sarracenia microecosystem, detritus - not
+##     primary production - is at the base of the web, and our treatments
+##     boost this material as would happen through increases in arthropod
+##     prey capture78 or through nitrogen-enriched precipitation.
+##   &lt;/para&gt;
+##       &lt;para&gt;
+##     Proteomic analysis. Proteomic profiles of microbial communities are
+##     determined after separating the microbial fraction from the pitcher
+##     fluid, prey, and other detritus. The microbial &quot;pellet&quot; is
+##     subjected to SDS-PAGE (sodium dodecyl sulfate polyacrylamide gel)
+##     electrophoresis; bands are cut out and digested in-gel with trypsin.
+##     Tryptic peptides are subjected to LC-MS/MS (liquid chromatography
+##     tandem mass spectrometry) for peptide and protein identification.
+##     Absolute abundance of peptides and proteins are quantified using
+##     AQUA (Absolute QUAntification) analysis109.
+##   &lt;/para&gt;
+##     &lt;/section&gt;
+##     &lt;section&gt;
+##       &lt;title&gt;Specific Experiments&lt;/title&gt;
+##       &lt;para&gt;
+##     Experiment #1. Effects of nutrient enrichment on state changes and
+##     [O2] profiles. This experiment alters nutrient enrichment rates to
+##     characterize the [O2] profile and the transition to the anaerobic
+##     state. The experimental design is a one-way layout with 5 treatment
+##     groups: one control (no enrichment) and 4 enrichment levels (0.125,
+##     0.25, 0.5, 1.0 mg prey added ml-1 d-1). One plant is assigned to
+##     each treatment group, and the entire set is replicated 6 times over
+##     successive weeks. [O2] is monitored continuously for 4 days to
+##     characterize state changes and tipping points under different
+##     enrichment rates. This experiment tracks a continuous [O2] profile
+##     but does not include proteomic analysis. The purpose of Experiment
+##     #1 is to identify an enrichment rate E that generates a long
+##     pre-tipping period before transition time T to the anaerobic state.
+##     This enrichment rate will be used in Experiments #2 - #4.
+##   &lt;/para&gt;
+##       &lt;para&gt;
+##     Experiment #2. Identification of early intervention time and
+##     characterization of aerobic and anaerobic proteomes. This experiment
+##     will use the single enrichment rate E determined from Experiment #1
+##     and impose different intervention times I at which nutrient
+##     enrichment will be terminated. Thus, this experiment will identify
+##     the latest time I* at which it is possible to intervene and stop the
+##     transition to the anaerobic state by halting enrichment. The [O2]
+##     profile will again be monitored continuously over 10 days to measure
+##     the state of the system. From Experiment #1, the transition time T
+##     to the anaerobic state with no intervention will be known. We will
+##     use one control group (no prey addition) and ten levels of
+##     intervention time (all with the same enrichment rate E) as a
+##     proportion of T (0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0).
+##     Six plants will be assigned randomly to each of the 11 treatments in
+##     a randomized one-way layout and [O2] profiles will be monitored
+##     continuously. In addition to the [O2] profiles, we will also
+##     characterize the protein profiles of aerobic and anaerobic pitchers
+##     in all 11 treatment groups at the end of the experiment.
+##   &lt;/para&gt;
+##       &lt;para&gt;
+##     After the plants are harvested, we will create proteomic profiles of
+##     the predominantly bacterial portion (centrifuged pellet) of the
+##     pitcher fluid from each plant, as described in General Protocols.
+##     Thus, 66 separate pellet-fraction samples will be analyzed by
+##     SDS-PAGE. After examining the SDS-PAGE profiles, approximately ten
+##     proteins that show dynamic patterns consistent with state change and
+##     five that do not change will be cut from the gel, subjected to
+##     in-gel tryptic digestion and a portion of the tryptic peptides will
+##     be analyzed by LC-MS/MS. Using these data, we will choose three
+##     identified peptides from each protein for peptide synthesis such
+##     that each synthesized peptide contains stable isotope labels (AQUA
+##     peptides) to distinguish them by mass from the native peptides. We
+##     will then quantify all 45 of the native peptides from the original
+##     samples using a known amount of each AQUA peptide spiked into the
+##     tryptic digest. The AQUA analysis of proteins that do not show
+##     changes will be used for normalization between samples. These data
+##     will be used to independently identify the current state of the
+##     system and forecast the time-to-transition.
+##   &lt;/para&gt;
+##       &lt;para&gt;
+##     We will use Sequest searches for initial identification of peptides;
+##     relevant scores including Xcorr and Delta Cn values will be given
+##     for each peptide. Other peptides will be identified by de novo
+##     sequencing using PepNovo; all PepNovo scores will likewise be given
+##     including any N- or C-terminal gaps. Mass error in ppm will be
+##     reported for each precursor ion. We will use standard multivariate
+##     analysis to search for distinctive proteomic profiles114 that
+##     characterize aerobic and anaerobic ecosystems, as well as ecosystems
+##     that developed with and without inputs of photosynthetic O2 and
+##     plant metabolites.
+##   &lt;/para&gt;
+##       &lt;para&gt;
+##     Experiment #3. Identification of diagnostic proteins. Using
+##     Experiments #1 and 2, we will have identified an enrichment rate E
+##     with a long pre-tipping period and an intervention time I* before
+##     which mitigation and termination of enrichment will prevent
+##     eutrophication. Experiment #3 will characterize the mean and
+##     variance of the protein profile before and after I*. We are
+##     especially interested in identifying proteins that increase rapidly
+##     in abundance (or variance) well before the onset of flickering in
+##     [O2] and before the transition time T from the aerobic to the
+##     anaerobic state.
+##   &lt;/para&gt;
+##       &lt;para&gt;
+##     A cohort of 100 plants all will be fed at rate E (determined from
+##     Experiment #1), with intervention time I* determined from Experiment
+##     #2, although no intervention will be used in this &quot;press&quot;
+##     experiment so that we can contrast proteins before and after the
+##     state change. At seven times before I* and three times after
+##     I&lt;emphasis&gt;, we will harvest 10 randomly chosen plants. At each
+##     prescribed harvest time, we will measure [O2] and collect samples
+##     from each plant for proteomic screening using both SDS-PAGE and AQUA
+##     analysis. This experiment will identify proteins that rise quickly
+##     in abundance during the pre- I&lt;/emphasis&gt; period and can be used as
+##     early indicators of a future tipping point. Because different plants
+##     will be harvested at each time period, this is a one-way ANOVA
+##     design, with pre-and post- I* a priori contrasts. A randomization
+##     test will be used to determine whether variances in protein
+##     expression differ through time. During these analyses we will use
+##     the data from the AQUA peptides and from known amounts of protein
+##     standards, such as bovine serum albumin, to approximate the amount
+##     of protein in a given coomassie-stained SDS-PAGE gel band. The
+##     reason for doing this is to provide a fast &quot;real-time&quot;
+##     assay based just on expression in the SDS-PAGE. This rapid assay
+##     will be used in Experiment #4.
+##   &lt;/para&gt;
+##       &lt;para&gt;
+##     Experiment # 4. Proof-of-application. This experiment will provide a
+##     benchmark test of our methods and their ability to correctly
+##     identify tipping points. A cohort of 100 plants will each be fitted
+##     with [O2] probes and started on the enrichment regime. Two times per
+##     day, we will collect 3 plants each, pool their contents, and conduct
+##     a rapid screen in the lab with SDS-PAGE for the diagnostic proteins
+##     that were identified in Experiment #3. We will use the protein
+##     expression in the gel to delineate an &quot;early&quot; and a
+##     &quot;late&quot; mitigation strategy. As soon as diagnostic proteins
+##     measured in the SDS-gels are at abundances that signal we are at
+##     0.5×I* - approximately one-half of the way to the latest
+##     intervention time - we will randomly select one third of the
+##     remaining plants for mitigation and termination of enrichment (the
+##     &quot;early&quot; mitigation strategy). We will continue to harvest
+##     plants from the remainder of the cohort and monitor proteins. As
+##     soon as diagnostic proteins signal we are at 0.75 times I*, we will
+##     randomly select one half of the remaining plants for mitigation and
+##     termination of enrichment (the &quot;late&quot; mitigation
+##     strategy). The remaining plants (approximately one sixth to one
+##     third of the original cohort) will continue to be enriched. We will
+##     monitor [O2] in all 3 groups (no-mitigation control, early
+##     mitigation, late mitigation) until all plants reach a new [O2]
+##     equilibrium. If the protein markers are successful, the proportion
+##     of food webs that remain aerobic will be significantly higher in the
+##     two mitigation treatments than in the no-mitigation control.
+##   &lt;/para&gt;
+##     &lt;/section&gt;
+##   &lt;/description&gt;
+## &lt;/methodStep&gt;</code></pre>
+</div>
+</div>
+<div id="create-person" class="section level2">
+<h2>create person</h2>
+<p>it’s important to be able to trace back the creator / maintainer of a dataset</p>
+<pre class="r"><code>R_person &lt;- as.person(&quot;Anna Krystalli &lt;fakeaddress@email.com&gt;&quot;)
+anna &lt;-as(R_person, &quot;creator&quot;)</code></pre>
+<pre class="r"><code>HF_address &lt;- new(&quot;address&quot;,
+                  deliveryPoint = &quot;Dept. Animal &amp; Plant Science&quot;,
+                  city = &quot;Sheffield&quot;,
+                  administrativeArea = &quot;South Yorkshire&quot;,
+                  postalCode = &quot;S10 2TN&quot;,
+                  country = &quot;UK&quot;)</code></pre>
+<pre class="r"><code>contact &lt;- 
+  new(&quot;contact&quot;,
+    individualName = anna@individualName,
+    electronicMail = anna@electronicMailAddress,
+    address = HF_address,
+    organizationName = &quot;University of Sheffield&quot;,
+    phone = &quot;000-000-0000&quot;)</code></pre>
+</div>
+<div id="section-6" class="section level2">
+<h2></h2>
+<pre class="r"><code>contact</code></pre>
+<pre><code>## &lt;contact&gt;
+##   &lt;individualName&gt;
+##     &lt;givenName&gt;Anna&lt;/givenName&gt;
+##     &lt;surName&gt;Krystalli&lt;/surName&gt;
+##   &lt;/individualName&gt;
+##   &lt;organizationName&gt;University of Sheffield&lt;/organizationName&gt;
+##   &lt;address&gt;
+##     &lt;deliveryPoint&gt;Dept. Animal &amp;amp; Plant Science&lt;/deliveryPoint&gt;
+##     &lt;city&gt;Sheffield&lt;/city&gt;
+##     &lt;administrativeArea&gt;South Yorkshire&lt;/administrativeArea&gt;
+##     &lt;postalCode&gt;S10 2TN&lt;/postalCode&gt;
+##     &lt;country&gt;UK&lt;/country&gt;
+##   &lt;/address&gt;
+##   &lt;phone&gt;000-000-0000&lt;/phone&gt;
+##   &lt;electronicMailAddress&gt;fakeaddress@email.com&lt;/electronicMailAddress&gt;
+## &lt;/contact&gt;</code></pre>
+</div>
+<div id="create-a-keywordset" class="section level2">
+<h2>create a <code>keywordSet</code></h2>
+<pre class="r"><code>keywordSet &lt;-
+  c(new(&quot;keywordSet&quot;,
+        keywordThesaurus = &quot;LTER controlled vocabulary&quot;,
+        keyword = c(&quot;birds&quot;,
+                    &quot;animals&quot;,
+                    &quot;vertebrates&quot;)),
+    new(&quot;keywordSet&quot;,
+        keywordThesaurus = &quot;trait categories&quot;,
+        keyword =  c(&quot;life history&quot;, &quot;ecology&quot;, &quot;breeding biology&quot;, &quot;mating system&quot;, &quot;macroecology&quot;))
+  )</code></pre>
+</div>
+<div id="final-details" class="section level2">
+<h2>final details</h2>
+<pre class="r"><code>pubDate &lt;- &quot;2017&quot; 
+
+title &lt;- &quot;Sub sample of bird macroecological trait variables&quot;
+
+abstract &lt;- &quot;The primary goal of this project is to compile a working example of an EML dataset using a subsample of the data from the bird trait networks project. The original dataset was compiled to examing the network structure between pair of a large number of traits. Additional files and objects were created to demonsted a broader example to ACCE research students&quot;  
+
+intellectualRights &lt;- &quot;This dataset is released to the public and may be freely
+  downloaded. Please keep the designated Contact person informed of any
+plans to use the dataset. Consultation or collaboration with the original
+investigators is strongly encouraged. Publications and data products
+that make use of the dataset must include proper acknowledgement&quot;</code></pre>
+<ul>
+<li>or load abstract from a word file again by specifying the path to the .docx e.g.</li>
+</ul>
+<pre class="r"><code>abstract &lt;- as(set_TextType(abstract_file), &quot;abstract&quot;)</code></pre>
+</div>
+<div id="create-dataset" class="section level2">
+<h2>create <code>dataset</code></h2>
+<pre class="r"><code>dataset &lt;- new(&quot;dataset&quot;,
+               title = title,
+               creator = anna,
+               pubDate = pubDate,
+               intellectualRights = intellectualRights,
+               abstract = abstract,
+               keywordSet = keywordSet,
+               coverage = coverage,
+               contact = contact,
+               methods = methods,
+               dataTable = dataTable)</code></pre>
+<p>This step is modular. Remove any arguments you may have skipped.</p>
+<p><br></p>
+</div>
+<div id="create-eml" class="section level2">
+<h2>create <code>eml</code></h2>
+<div id="create-eml-class-object" class="section level4">
+<h4>create <code>eml</code> class object</h4>
+<pre class="r"><code>library(uuid)
+eml &lt;- new(&quot;eml&quot;,
+           packageId = uuid::UUIDgenerate(), 
+           system = &quot;uuid&quot;, # type of identifier
+           dataset = dataset)</code></pre>
+<p><br></p>
+</div>
+<div id="validate-eml" class="section level4">
+<h4>validate <code>eml</code></h4>
+<pre class="r"><code>eml_validate(eml)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+<div id="success" class="section level3">
+<h3>success!</h3>
+</div>
+</div>
+<div id="parsing-your-eml-file" class="section level2">
+<h2>parsing your EML file</h2>
+<div id="eg-access-factors-from-attributes" class="section level4">
+<h4>eg access <code>factors</code> from attributes:</h4>
+<pre class="r"><code>dtT &lt;- eml_get(eml, &quot;dataTable&quot;)
+attrs &lt;- eml_get(dtT, &quot;attributeList&quot;)
+attrs$factors</code></pre>
+<pre><code>##       attributeName code    definition
+## 1          dev.mode    1     Altricial
+## 2          dev.mode    2 Semiprecocial
+## 3          dev.mode    3     Precocial
+## 4  courtship.feed.m    0         FALSE
+## 5  courtship.feed.m    1          TRUE
+## 6      breed.system    1          Pair
+## 7      breed.system    2        Female
+## 8      breed.system    3          Male
+## 9      breed.system    4   Cooperative
+## 10     breed.system    5   Occassional</code></pre>
+</div>
+</div>
+<div id="save-eml" class="section level2">
+<h2>save <code>eml</code></h2>
+<pre class="r"><code>write_eml(eml, &quot;example.xml&quot;)</code></pre>
+<pre><code>## [1] &quot;example.xml&quot;</code></pre>
+<div id="the-eml-is-now-ready-for-combining-with-your-data-and-sharing-through-repositories." class="section level4">
+<h4>The eml is now ready for combining with your data and <a href="https://github.com/ropensci/EML/blob/master/vignettes/metadata-repositories.Rmd">sharing</a> through repositories.</h4>
+</div>
+</div>
+</div>
+<div id="exercise-3" class="section level1">
+<h1>Exercise 3:</h1>
+<div id="create-an-eml" class="section level3">
+<h3>create an <code>eml</code></h3>
+</div>
+<div id="create-your-own-eml" class="section level2">
+<h2>create your own <code>eml</code></h2>
+<p><br></p>
+<div id="get-organised" class="section level4">
+<h4>get organised</h4>
+<p><br></p>
+<ul>
+<li>Add your data to the <code>data/</code> folder.</li>
+<li>create a new script eg <code>create_eml.R</code></li>
+<li>load your data</li>
+<li>have a look at it with <code>Viewer(data)</code></li>
+<li>create an <code>attr_shell</code> and complete it</li>
+<li>write a sample <code>methods .docx</code> document</li>
+<li>follow the steps to create your <code>eml</code>.</li>
+</ul>
+<p><br></p>
+</div>
+<div id="the-materials-you-create-can-form-the-basis-for-your-rdm." class="section level3">
+<h3>The materials you create can form the basis for your RDM.</h3>
+</div>
+</div>
+<div id="sharing-data" class="section level2 columns-2">
+<h2>sharing data</h2>
+<div id="repositiories" class="section level3">
+<h3>repositiories:</h3>
+<ul>
+<li><h4 id="nerc-data-centres"><a href="http://www.nerc.ac.uk/research/sites/data/">NERC data centres</a></h4></li>
+</ul>
+<p><img src="/Users/Anna/Documents/workflows/ACCE_RDM/Rmd/assets/img/NERC.png" width="300px"></p>
+<p><br> <br> <br> <br></p>
+<ul>
+<li><h4 id="dryad"><a href="http://datadryad.org/">DRYAD</a></h4></li>
+</ul>
+<p><img src="/Users/Anna/Documents/workflows/ACCE_RDM/Rmd/assets/img/dryad.png" width="300px"></p>
+<p><br></p>
+<ul>
+<li><h4 id="figshare"><a href="https://figshare.com/">figshare</a></h4></li>
+</ul>
+<p><img src="/Users/Anna/Documents/workflows/ACCE_RDM/Rmd/assets/img/figshare.png" width="300px"></p>
+</div>
+</div>
+<div id="identify-repositories" class="section level2">
+<h2>identify repositories</h2>
+<div id="these-will-dictate-the-appropriate-controlled-vocabulary-and-data-structure." class="section level3">
+<h3>these will dictate the appropriate controlled vocabulary and data structure.</h3>
+<div id="re3data.org" class="section level4">
+<h4><a href="http://www.re3data.org/">re3data.org</a></h4>
+<p><img src="/Users/Anna/Documents/workflows/ACCE_RDM/Rmd/assets/img/re3data.png" height="150px"></p>
+<p><br></p>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="en">
+<p lang="en" dir="ltr">
+<a href="https://twitter.com/tomjwebb"><span class="citation">@tomjwebb</span></a> Think early about where you will archive your data. Ask repository for advice on format &amp; metadata standards <a href="https://twitter.com/Sal_Keith"><span class="citation">@Sal_Keith</span></a> <a href="https://twitter.com/ucfagls"><span class="citation">@ucfagls</span></a>
+</p>
+— Scientific Data (<span class="citation">@ScientificData</span>) <a href="https://twitter.com/ScientificData/status/556120847078158337">January 16, 2015</a>
+</blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p><br></p>
+</div>
+</div>
+</div>
+<div id="using-metadata-in-workflows" class="section level2">
+<h2>using metadata in workflows</h2>
+<div id="metadata-can-be-extremely-useful-in-analyses" class="section level4">
+<h4>metadata can be extremely useful in analyses!</h4>
+<ul>
+<li>accessing distributional/ statistical properties of variables.</li>
+<li>accessing the levels of factor data.</li>
+<li>accessing units and more informative descriptions for presentation.</li>
+</ul>
+<p><br></p>
+<p>eg. longer descriptions of variables, units and other useful metadata can be stored as part of dataframes in R using the function <code>attributes()</code></p>
+</div>
+</div>
+<div id="uses-of-metadata-in-analysis" class="section level2">
+<h2>Uses of metadata in analysis</h2>
+<p>All r object have attributes and basic <code>data.frames</code> have 3. These can be accessed by using the same function.</p>
+<pre class="r"><code>str(attributes(dt))</code></pre>
+<pre><code>## List of 3
+##  $ names    : chr [1:6] &quot;species&quot; &quot;max.altitude&quot; &quot;dev.mode&quot; &quot;courtship.feed.m&quot; ...
+##  $ class    : chr &quot;data.frame&quot;
+##  $ row.names: int [1:100] 1 2 3 4 5 6 7 8 9 10 ...</code></pre>
+</div>
+<div id="appending-metadata-as-attributes" class="section level2">
+<h2>Appending metadata as attributes</h2>
+<p>So lets append some metadata to the <strong><code>dt</code></strong> data.frame as attributes. Indexing using the match function ensures the attributes are stores in order that match match the variable names</p>
+<pre class="r"><code>descr.att &lt;- attr_tbl$attributeDefinition[match(names(dt), attr_tbl$attributeName)]
+names(descr.att) &lt;- names(dt)
+attributes(dt)$descr &lt;- descr.att
+  
+units.att &lt;- attr_tbl$unit[match(names(dt), attr_tbl$attributeName)]
+names(units.att) &lt;- names(dt)
+attributes(dt)$units &lt;- units.att</code></pre>
+<pre class="r"><code>str(attributes(dt))</code></pre>
+<pre><code>## List of 5
+##  $ names    : chr [1:6] &quot;species&quot; &quot;max.altitude&quot; &quot;dev.mode&quot; &quot;courtship.feed.m&quot; ...
+##  $ class    : chr &quot;data.frame&quot;
+##  $ row.names: int [1:100] 1 2 3 4 5 6 7 8 9 10 ...
+##  $ descr    : Named chr [1:6] &quot;species&quot; &quot;Maximum altitudinal distribution&quot; &quot;Developmental mode&quot; &quot;Courtship feeding (by the male)&quot; ...
+##   ..- attr(*, &quot;names&quot;)= chr [1:6] &quot;species&quot; &quot;max.altitude&quot; &quot;dev.mode&quot; &quot;courtship.feed.m&quot; ...
+##  $ units    : Named chr [1:6] NA &quot;meter&quot; NA NA ...
+##   ..- attr(*, &quot;names&quot;)= chr [1:6] &quot;species&quot; &quot;max.altitude&quot; &quot;dev.mode&quot; &quot;courtship.feed.m&quot; ...</code></pre>
+</div>
+<div id="accessing-attributes" class="section level2">
+<h2>Accessing attributes</h2>
+<p>So let’s go ahead and make use of some of those attributes. There’s a few ways they can be accessed. Say we want the <code>descr</code> attribute for all variables</p>
+<pre class="r"><code>attr(dt, &quot;descr&quot;)</code></pre>
+<pre><code>##                                         species 
+##                                       &quot;species&quot; 
+##                                    max.altitude 
+##              &quot;Maximum altitudinal distribution&quot; 
+##                                        dev.mode 
+##                            &quot;Developmental mode&quot; 
+##                                courtship.feed.m 
+##               &quot;Courtship feeding (by the male)&quot; 
+##                                        song.dur 
+##                                 &quot;Song duration&quot; 
+##                                    breed.system 
+## &quot;Which adult(s) provides the majority of care:&quot;</code></pre>
+</div>
+<div id="accessing-attributes-1" class="section level2">
+<h2>Accessing attributes</h2>
+<p>So let’s go ahead and make use of some of those attributes. There’s a few ways they can be accessed. Say we want the <code>descr</code> attribute for all variables</p>
+<pre class="r"><code>attributes(dt)$descr</code></pre>
+<pre><code>##                                         species 
+##                                       &quot;species&quot; 
+##                                    max.altitude 
+##              &quot;Maximum altitudinal distribution&quot; 
+##                                        dev.mode 
+##                            &quot;Developmental mode&quot; 
+##                                courtship.feed.m 
+##               &quot;Courtship feeding (by the male)&quot; 
+##                                        song.dur 
+##                                 &quot;Song duration&quot; 
+##                                    breed.system 
+## &quot;Which adult(s) provides the majority of care:&quot;</code></pre>
+</div>
+<div id="working-with-attributes" class="section level2">
+<h2>Working with attributes</h2>
+<p>Let’s make an axis label by combining the description and unit attributes using the <code>paste</code> function.</p>
+<pre class="r"><code>descr &lt;- attributes(dt)$descr[&quot;song.dur&quot;]
+unit &lt;- attributes(dt)$unit[&quot;song.dur&quot;]
+label &lt;- paste(descr, &quot; (&quot;, unit, &quot;)&quot;, sep = &quot;&quot;)
+
+plot(density(na.omit(dt[,&quot;song.dur&quot;])), main = label)</code></pre>
+<p><img src="metadata_files/figure-html/unnamed-chunk-42-1.png" width="528" /></p>
+</div>
+<div id="next" class="section level2">
+<h2>next</h2>
+<p><br></p>
+<div id="open-science" class="section level3">
+<h3><a href="https://annakrystalli.github.io/ACCE_RDM/Rmd/ROpenSci.html">Open Science</a></h3>
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
